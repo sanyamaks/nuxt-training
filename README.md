@@ -1,6 +1,6 @@
-# SuperProjectJS
+# rak-lechitsa
 
-> My exquisite Nuxt.js project
+> project for rak lechitsa
 
 ## Build Setup
 

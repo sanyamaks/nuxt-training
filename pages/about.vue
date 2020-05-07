@@ -1,9 +1,18 @@
-<template> </template>
+<template>
+  <div class="about">
+    Hello About
+  </div>
+</template>
 
 <script>
-export default {
-  name: 'about',
-};
+export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>

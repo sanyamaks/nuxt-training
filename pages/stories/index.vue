@@ -1,13 +1,11 @@
 <template>
-  <div class="div">
+  <div>
     all stories
   </div>
 </template>
 
 <script>
-export default {
-  name: 'index',
-};
+export default {};
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

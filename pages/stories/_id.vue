@@ -1,9 +1,11 @@
-<template> </template>
+<template>
+  <div>
+    storie
+  </div>
+</template>
 
 <script>
-export default {
-  name: '_id',
-};
+export default {};
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
