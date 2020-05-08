@@ -1,8 +1,6 @@
 <template>
   <div>
-    <description>
-      ЧО ЗДЕСЬ ПИСАТЬ НАДА ? -_-
-    </description>
+    <description> </description>
   </div>
 </template>
 

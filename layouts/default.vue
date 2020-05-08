@@ -1,18 +1,10 @@
 <template>
   <div>
-    <main-header />
     <nuxt />
   </div>
 </template>
 
-<script>
-import Header from '@/components/Header';
-export default {
-  components: {
-    'main-header': Header,
-  },
-};
-</script>
+<script></script>
 
 <style>
 html {
@@ -31,37 +23,5 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
-}
-
-body {
-  min-width: 320px;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-li {
-  line-height: 1.5;
-}
-
-@media screen and (max-width: 450px) {
-  html {
-    font-size: 14px;
-  }
-
-  ul {
-    padding-left: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 390px) {
-  html {
-    font-size: 12px;
-  }
 }
 </style>

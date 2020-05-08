@@ -1,10 +1,12 @@
 <template>
   <div class="description">
     <section-title class="description__section-title">
-      <slot>Text</slot>
+      Истории людей, победивших рак, но не свои привычки
     </section-title>
     <p class="description__section-subtitle">
-      <slot>Subtext</slot>
+      Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
+      страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с
+      их историями.
     </p>
   </div>
 </template>
