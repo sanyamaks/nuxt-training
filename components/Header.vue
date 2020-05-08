@@ -6,6 +6,7 @@
     <h1 class="header__logo" v-else>
       Проект Благотворительного Фонда Константина Хабенского
     </h1>
+
     <main-menu />
   </header>
 </template>
@@ -21,31 +22,29 @@ export default {
 
 <style scoped>
 .header {
-  min-height: 76px;
   display: flex;
   align-items: center;
-  background-color: black;
-  color: white;
+  background: #ffffff;
   justify-content: space-between;
-  padding: 0 40px;
-
   font-weight: 600;
   font-size: 16px;
-  line-height: 20px;
-}
-
-.header /deep/ a {
-  color: white;
 }
 
 .header__logo {
   text-decoration: none;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  max-width: 388px;
+  padding-top: 18px;
+  padding-left: 60px;
+  color: #000000;
+  letter-spacing: 0.85px;
 }
 
 @media screen and (max-width: 450px) {
   .header__logo {
-    font-size: 24px;
+    font-size: 14px;
   }
 }
 
@@ -54,7 +53,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
   }
 
   .header__logo {
