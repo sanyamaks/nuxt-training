@@ -3,7 +3,9 @@
     <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo"
       >Nuxt streams</nuxt-link
     >
-    <h1 class="header__logo" v-else>Nuxt streams</h1>
+    <h1 class="header__logo" v-else>
+      Проект Благотворительного Фонда Константина Хабенского
+    </h1>
     <main-menu />
   </header>
 </template>
@@ -19,13 +21,17 @@ export default {
 
 <style scoped>
 .header {
-  min-height: 80px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   background-color: black;
   color: white;
   justify-content: space-between;
   padding: 0 40px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .header /deep/ a {
