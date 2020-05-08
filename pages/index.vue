@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="container">
     <description></description>
   </div>
 </template>
 
 <script>
-import Description from '../components/ui/Description';
+import Description from '@/components/ui/Description';
 
 export default {
-  description: Description,
+  components: {
+    description: Description,
+  },
 };
 </script>
 

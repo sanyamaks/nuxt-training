@@ -21,4 +21,17 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.description {
+  display: inline-block;
+}
+
+.description__section-subtitle {
+  width: 342px;
+  height: 110px;
+  font-size: 18px;
+  line-height: 22px;
+  color: #666666;
+  margin-top: 32px;
+}
+</style>
