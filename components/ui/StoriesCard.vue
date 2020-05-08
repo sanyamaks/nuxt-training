@@ -25,7 +25,7 @@ export default {};
 .stories-card__photoes {
   max-width: 300px;
   min-height: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   background-color: gray;
 }
 
