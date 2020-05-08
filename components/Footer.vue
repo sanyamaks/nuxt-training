@@ -13,7 +13,11 @@
       </nav>
 
       <div class="footer__links">
-        <a href="/" class="footer__link">Мы в Фейсбуке, Инстаграме и Youtube</a>
+        <p class="footer__text">
+          Мы в <a href="/" class="footer__link" target="_blank">Фейсбуке</a>,
+          <a href="/" class="footer__link" target="_blank">Инстаграме</a> и
+          <a href="/" class="footer__link" target="_blank">Youtube</a>
+        </p>
         <a href="/" class="footer__link">Поделитесь ↗</a>
       </div>
 
@@ -39,6 +43,8 @@ export default {};
 
 .footer__container {
   width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
   display: grid;
   grid-template-areas:
     'gratitude  nav  links'
@@ -86,17 +92,19 @@ export default {};
   grid-area: made-by;
 }
 
+.footer__text {
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 44px;
+}
+
 .footer__link {
   font-size: 18px;
   line-height: 24px;
   color: #000000;
   text-decoration: none;
   cursor: pointer;
-  margin-bottom: 44px;
-}
-
-.footer__link:last-of-type {
-  margin-bottom: 0;
 }
 
 .footer__link:hover {
@@ -105,16 +113,17 @@ export default {};
   opacity: 0.8;
 }
 
-@media (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .footer {
     padding: 50px;
   }
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   /* поправить в соответсвии с мобильным макетом */
   .footer__container {
     display: flex;
+    flex-direction: column;
   }
 }
 </style>

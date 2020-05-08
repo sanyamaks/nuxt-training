@@ -19,16 +19,20 @@
       <h3 class="container__subheader">Задание</h3>
       <div class="container__text" v-html="lesson.hometask"></div>
     </panel>
+
+    <about-us />
   </div>
 </template>
 
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
+import AboutUs from '@/components/AboutUs';
 export default {
   components: {
     panel: Panel,
     'video-iframe': VideoIframe,
+    'about-us': AboutUs,
   },
   data() {
     return {
