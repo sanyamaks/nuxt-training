@@ -29,9 +29,9 @@ export default {
 .description__section-subtitle {
   width: 342px;
   height: 110px;
+  margin-top: 32px;
   font-size: 18px;
   line-height: 22px;
   color: #666666;
-  margin-top: 32px;
 }
 </style>
