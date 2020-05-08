@@ -1,10 +1,17 @@
 <template>
   <div>
     <nuxt />
+    <description></description>
   </div>
 </template>
 
-<script></script>
+<script>
+import Description from '../components/ui/Description';
+
+export default {
+  description: Description,
+};
+</script>
 
 <style>
 html {
