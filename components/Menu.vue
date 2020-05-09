@@ -19,8 +19,9 @@ export default {};
 }
 
 .menu__link:last-of-type {
-  padding-right: 60px;
+  padding-right: 0px;
 }
+
 .menu__link:first-of-type {
   text-decoration-line: underline;
 }
