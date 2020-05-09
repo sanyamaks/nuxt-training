@@ -1,14 +1,25 @@
 <template>
   <div>
     <nuxt />
+    <main-footer />
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import Description from '../components/ui/Description';
 
 export default {
   description: Description,
+=======
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+export default {
+  components: {
+    'main-header': Header,
+    'main-footer': Footer,
+  },
+>>>>>>> dev_rim
 };
 </script>
 
