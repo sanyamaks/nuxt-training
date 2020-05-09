@@ -1,12 +1,16 @@
-<template> </template>
+<template>
+  <about-us></about-us>
+</template>
 
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
 import AboutUs from '@/components/AboutUs';
 export default {
-  components: {},
-  
+  components: {
+    'about-us': AboutUs,
+  },
+};
 </script>
 
 <style>
