@@ -3,9 +3,10 @@
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
+import AboutUs from '@/components/AboutUs';
 export default {
   components: {},
-};
+  
 </script>
 
 <style>
