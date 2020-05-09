@@ -1,14 +1,19 @@
 <template>
-  <about-us></about-us>
+  <div>
+    <instagram></instagram>
+    <about-us></about-us>
+  </div>
 </template>
 
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
+import Instagram from '@/components/Instagram';
 import AboutUs from '@/components/AboutUs';
 export default {
   components: {
     'about-us': AboutUs,
+    instagram: Instagram,
   },
 };
 </script>
