@@ -1,6 +1,6 @@
 <template>
-  <button class="middle-button" type="button">
-    Поиск
+  <button class="middle-button" type="submit">
+    <slot>text</slot>
   </button>
 </template>
 

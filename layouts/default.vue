@@ -1,5 +1,6 @@
 <template>
   <div>
+    <main-header></main-header>
     <nuxt />
     <main-footer />
   </div>

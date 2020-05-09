@@ -1,9 +1,6 @@
 <template>
   <header class="header">
-    <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo"
-      >Nuxt streams</nuxt-link
-    >
-    <h1 class="header__logo" v-else>
+    <h1 class="header__logo">
       Проект Благотворительного Фонда Константина Хабенского
     </h1>
 
@@ -22,6 +19,8 @@ export default {
 
 <style scoped>
 .header {
+  max-width: 1320px;
+  margin: auto;
   display: flex;
   align-items: center;
   background: #ffffff;
@@ -37,7 +36,6 @@ export default {
   line-height: 23px;
   max-width: 388px;
   padding-top: 18px;
-  padding-left: 60px;
   color: #000000;
   letter-spacing: 0.85px;
 }
