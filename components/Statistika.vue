@@ -37,11 +37,13 @@
         <h3 class="stat-card__title">
           На 28% выросла доля выявления заболеваний на ранней стадии за 10 лет.
         </h3>
-        <progress-bar
-          :value="3"
-          :max-value="10"
+
+        <progress-bar-double
+          max-value="3"
+          new-value="2"
+          old-value="1"
           class="stat-card__progress-bar"
-        ></progress-bar>
+        ></progress-bar-double>
         <p class="stat-card__number">
           &uarr; 28%
         </p>
@@ -53,11 +55,12 @@
           На 25% снизилась смертность в течение первого года после постановки
           диагноза
         </h3>
-        <progress-bar
-          :value="3"
-          :max-value="10"
+        <progress-bar-double
+          max-value="3"
+          new-value="2"
+          old-value="1"
           class="stat-card__progress-bar"
-        ></progress-bar>
+        ></progress-bar-double>
         <p class="stat-card__number">
           &darr; 25%
         </p>
@@ -70,11 +73,13 @@
 <script>
 import SectionTitle from './ui/SectionTitle';
 import ProgressBar from './ui/ProgressBar';
+import ProgressBarDouble from './ui/ProgressBarDouble';
 
 export default {
   components: {
     'section-title': SectionTitle,
     'progress-bar': ProgressBar,
+    'progress-bar-double': ProgressBarDouble,
   },
 };
 </script>
@@ -124,5 +129,9 @@ export default {
 }
 .content__statistika {
   padding: 100px 0;
+}
+.statistika {
+  max-width: 1440px;
+  margin: auto;
 }
 </style>
