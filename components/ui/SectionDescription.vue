@@ -20,6 +20,9 @@ export default {};
 
 @media screen and (max-width: 1280px) {
   .section-description {
+    font-size: 16px;
+    line-height: 20px;
+
     max-width: 305px;
     font-size: 16px;
     line-height: 20px;
