@@ -1,6 +1,5 @@
 <template>
   <main>
-    <main-video></main-video>
     <banner>И В ОТЛИЧИЕ ОТ РАКА,</banner>
     <main-stories></main-stories>
     <banner>РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ</banner>

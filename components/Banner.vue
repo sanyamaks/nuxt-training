@@ -1,8 +1,11 @@
 <template>
   <section class="banner">
     <div class="banner__container">
-      <slot>Text<b class="banner__hashtag">#ЭТОНЕЛЕЧИТСЯ</b></slot>
-      <!-- <h2 class="banner__title">И В ОТЛИЧИЕ ОТ РАКА, <b class="banner__hashtag">#ЭТОНЕЛЕЧИТСЯ</b></h2> -->
+      <h2 class="banner__title">
+        <slot>Текст баннера</slot>
+        <b class="banner__hashtag">#ЭТОНЕЛЕЧИТСЯ</b>
+        <!-- Реализовать перенос на новую строку -->
+      </h2>
     </div>
   </section>
 </template>
@@ -81,6 +84,6 @@ export default {};
 }
 
 @media screen and (max-width: 320px) {
-  /*  Дополнить в соответсвии с макетом  */
+  /*  Дополнить в соответсвии с мобильным макетом  */
 }
 </style>
