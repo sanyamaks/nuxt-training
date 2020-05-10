@@ -2,7 +2,9 @@
   <section class="instagram">
     <div class="instagram__container">
       <div class="instagram__side">
-        <section-title class="instagram__section-title">Инстаграм</section-title>
+        <section-title class="instagram__section-title"
+          >Инстаграм</section-title
+        >
 
         <section-description class="instagram__section-description">
           Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
@@ -120,7 +122,6 @@ export default {
   }
 
   .instagram__section-title {
-
   }
 
   .instagram__section-description {
