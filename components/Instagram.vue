@@ -84,7 +84,6 @@ export default {
 
 .instagram__section-description {
   margin-top: 32px; /* PP */
-  max-width: 340px;
 }
 
 .instagram__items {
@@ -121,12 +120,8 @@ export default {
     padding: 90px 50px;
   }
 
-  .instagram__section-title {
-  }
-
   .instagram__section-description {
     margin-top: 30px; /* PP */
-    max-width: 305px;
   }
 
   .instagram__items {
@@ -142,7 +137,6 @@ export default {
   }
 
   .instagram__section-description {
-    max-width: unset;
     margin-bottom: 27px;
   }
 }
