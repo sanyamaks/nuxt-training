@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 import Instagram from '@/components/Instagram';
 import AboutUs from '@/components/AboutUs';
 import MainStories from '@/components/MainStories';
