@@ -2,15 +2,14 @@
   <section class="instagram">
     <div class="instagram__container">
       <div class="instagram__side">
-        <h2 class="insagram__title">Инстаграм</h2>
-        <!-- заменить на компоненту -->
+        <section-title class="instagram__section-title">Инстаграм</section-title>
 
-        <p class="instagram__text">
+        <section-description class="instagram__section-description">
           Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
           Все истории, где нет нецензурных выражений и запрещенного контента
           попадают сюда. Следите за правильным написанием хештега, чтобы мы не
           пропустили вашу историю.
-        </p>
+        </section-description>
       </div>
 
       <ul class="instagram__items">
@@ -46,7 +45,15 @@
 </template>
 
 <script>
-export default {};
+import SectionTitle from '@/components/ui/SectionTitle';
+import SectionDescription from '@/components/ui/SectionDescription';
+
+export default {
+  components: {
+    'section-title': SectionTitle,
+    'section-description': SectionDescription,
+  },
+};
 </script>
 
 <style scoped>
@@ -69,22 +76,13 @@ export default {};
   flex-direction: column;
 }
 
-.insagram__title {
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
+.instagram__section-title {
   text-decoration-line: underline;
-
-  color: #000000;
 }
 
-.instagram__text {
+.instagram__section-description {
   margin-top: 32px; /* PP */
-  font-size: 18px;
-  line-height: 22px;
   max-width: 340px;
-
-  color: #666666;
 }
 
 .instagram__items {
@@ -121,15 +119,12 @@ export default {};
     padding: 90px 50px;
   }
 
-  .insagram__title {
-    font-size: 28px;
-    line-height: 32px;
+  .instagram__section-title {
+
   }
 
-  .instagram__text {
+  .instagram__section-description {
     margin-top: 30px; /* PP */
-    font-size: 16px;
-    line-height: 20px;
     max-width: 305px;
   }
 
@@ -145,7 +140,7 @@ export default {};
     flex-direction: column;
   }
 
-  .instagram__text {
+  .instagram__section-description {
     max-width: unset;
     margin-bottom: 27px;
   }

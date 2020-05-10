@@ -10,7 +10,6 @@ export default {};
 
 <style scoped>
 .section-title {
-  max-width: 373px;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <main>
     <main-video></main-video>
     <main-stories></main-stories>
     <instagram></instagram>
     <about-us></about-us>
-  </div>
+  </main>
 </template>
 
 <script>
