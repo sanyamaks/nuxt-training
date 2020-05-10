@@ -1,14 +1,11 @@
 <template>
-       <p class="section-description">
-         <slot>Text</slot>
-    </p>
+  <p class="section-description">
+    <slot>Text</slot>
+  </p>
 </template>
 
 <script>
-
-export default {
-
-};
+export default {};
 </script>
 
 <style scoped>
