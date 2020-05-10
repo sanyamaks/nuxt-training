@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <main>
     <main-stories></main-stories>
     <instagram></instagram>
     <about-us></about-us>
-  </div>
+  </main>
 </template>
 
 <script>
