@@ -130,4 +130,38 @@ export default {
 .main-video__section-title {
   margin-bottom: 32px;
 }
+
+@media screen and (max-width: 1280px) {
+  .main-video__video {
+    width: 773px;
+    height: 400px;
+  }
+
+  .main-video__icon {
+    width: 76px;
+    height: 76px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-video__section-title {
+    margin-bottom: 20px;
+  }
+
+  .main-video__video {
+    width: 606px;
+    height: 314px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-video__section-title {
+    margin-bottom: 26px;
+  }
+
+  .main-video__video {
+    width: 580px;
+    height: 300px;
+  }
+}
 </style>

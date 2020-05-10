@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .all-stories {
-  max-width: 1320px;
+  width: 100%;
   margin: auto;
 }
 
@@ -61,9 +61,9 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, auto);
-  grid-column-gap: 40px;
+  grid-column-gap: 3.0303%;
   grid-row-gap: 70px;
-  margin-bottom: 70px;
+  margin-bottom: 140px;
 }
 
 .all-stories__section-title {
@@ -88,13 +88,80 @@ export default {
 }
 
 .all-stories__control {
-  width: 50px;
-  height: 50px;
+  width: 58px;
+  height: 58px;
+  padding: 0;
   border: none;
   font-size: 18px;
   font-weight: 500;
   color: #181818;
   cursor: pointer;
   background-color: #fbfbfb;
+}
+
+@media screen and (max-width: 1280px) {
+  .all-stories__container {
+    grid-row-gap: 60px;
+    margin-bottom: 130px;
+  }
+
+  .all-stories__section-title {
+    margin-bottom: 50px;
+  }
+
+  .all-stories__form {
+    margin-bottom: 60px;
+  }
+
+  .all-stories__search {
+    min-height: 48px;
+  }
+
+  .all-stories__control {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .all-stories__container {
+    grid-row-gap: 46px;
+    margin-bottom: 110px;
+  }
+
+  .all-stories__section-title {
+    margin-bottom: 40px;
+  }
+
+  .all-stories__form {
+    margin-bottom: 40px;
+  }
+
+  .all-stories__search {
+    min-height: 46px;
+  }
+
+  .all-stories__control {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .all-stories__container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 40px;
+    margin-bottom: 146px;
+  }
+
+  .all-stories__section-title {
+    margin: auto;
+    margin-bottom: 50px;
+  }
+
+  .all-stories__form {
+    margin-bottom: 60px;
+  }
 }
 </style>

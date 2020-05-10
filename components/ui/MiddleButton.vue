@@ -19,4 +19,16 @@ export default {};
   color: #ffffff;
   background-color: #613a93;
 }
+
+@media screen and (max-width: 1280px) {
+  .middle-button {
+    min-height: 48px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .middle-button {
+    min-height: 46px;
+  }
+}
 </style>

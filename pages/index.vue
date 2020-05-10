@@ -30,8 +30,8 @@ export default {
     instagram: Instagram,
     'tell-story': TellStory,
     'main-video': MainVideo,
-   // 'popup': Popup,
-   // 'last-popup': LastPopup,
+    // 'popup': Popup,
+    // 'last-popup': LastPopup,
   },
 };
 </script>

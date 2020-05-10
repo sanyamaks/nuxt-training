@@ -41,7 +41,7 @@ export default {
   components: {
     'section-title': SectionTitle,
     'section-description': SectionDescription,
-    'middle-button': MiddleButton
+    'middle-button': MiddleButton,
   },
   props: {},
   data() {

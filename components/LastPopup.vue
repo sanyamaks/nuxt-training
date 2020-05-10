@@ -3,7 +3,7 @@
     <div class="popup-content">
       <section-title>Шаг 1 из 12</section-title>
       <form class="popup__form">
-          <middle-button>Закрыть</middle-button>
+        <middle-button>Закрыть</middle-button>
       </form>
     </div>
   </div>
@@ -16,7 +16,7 @@ import MiddleButton from '@/components/ui/MiddleButton';
 export default {
   components: {
     'section-title': SectionTitle,
-    'middle-button': MiddleButton
+    'middle-button': MiddleButton,
   },
 };
 </script>
@@ -53,5 +53,4 @@ export default {
   justify-content: flex-end;
   align-items: center;
 }
-
 </style>

@@ -24,15 +24,24 @@ export default {};
     line-height: 20px;
 
     max-width: 305px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .section-description {
+    max-width: 260px;
     font-size: 13px;
     line-height: 16px;
+  }
+}
 
-    max-width: 260px;
+@media screen and (max-width: 768px) {
+  .section-description {
+    max-width: 380px;
+    font-size: 13px;
+    line-height: 16px;
   }
 }
 </style>

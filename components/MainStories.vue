@@ -33,13 +33,14 @@ export default {
 .main-stories {
   max-width: 1320px;
   margin: auto;
+  padding: 100px 0;
 }
 
 .main-stories__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto;
-  grid-column-gap: 40px;
+  grid-column-gap: 3.0303%;
   grid-row-gap: 70px;
   margin-bottom: 70px;
 }
@@ -55,5 +56,41 @@ export default {
   border: none;
   cursor: pointer;
   background-color: #fbfbfb;
+}
+
+@media screen and (max-width: 1280px) {
+  .main-stories__container {
+    grid-row-gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .main-stories__section-title {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-stories__container {
+    grid-row-gap: 46px;
+    margin-bottom: 46px;
+  }
+
+  .main-stories__section-title {
+    margin-bottom: 46px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-stories__container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .main-stories__section-title {
+    margin: auto;
+    margin-bottom: 60px;
+  }
 }
 </style>

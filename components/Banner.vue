@@ -16,8 +16,10 @@ export default {};
 
 <style scoped>
 .banner {
+  max-width: 1320px;
   min-height: 86px;
-  padding: 0 60px;
+  margin: auto;
+  /* padding: 0 60px; */
   display: flex;
 }
 
@@ -52,10 +54,6 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
-  .banner {
-    padding: 0 50px;
-  }
-
   .banner__title {
     font-size: 28px;
     line-height: 46px;
@@ -74,10 +72,6 @@ export default {};
 }
 
 @media screen and (max-width: 768px) {
-  .banner {
-    padding: 0 40px;
-  }
-
   .banner__title {
     font-size: 22px;
     line-height: 36px;
