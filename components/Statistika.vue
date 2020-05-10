@@ -86,7 +86,7 @@ export default {
 <style scoped>
 .statistika__card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 40px;
 }
 .statistika__card:first-of-type {
