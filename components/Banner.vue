@@ -40,6 +40,7 @@ export default {};
   line-height: 46px;
   text-align: center;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .banner__hashtag {
