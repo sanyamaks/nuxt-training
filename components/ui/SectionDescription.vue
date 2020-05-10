@@ -20,13 +20,19 @@ export default {};
 
 @media screen and (max-width: 1280px) {
   .section-description {
+    font-size: 16px;
+    line-height: 20px;
+
     max-width: 305px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .instagram__section-description {
-    max-width: unset;
+  .section-description {
+    font-size: 13px;
+    line-height: 16px;
+
+    max-width: 260px;
   }
 }
 </style>

@@ -12,9 +12,9 @@
 <script>
 import Banner from '@/components/Banner';
 import Instagram from '@/components/Instagram';
-import AboutUs from '@/components/AboutUs';
 import MainStories from '@/components/MainStories';
 import MainVideo from '@/components/MainVideo';
+import AboutUs from '@/components/AboutUs';
 
 export default {
   components: {
