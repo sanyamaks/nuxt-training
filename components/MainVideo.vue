@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import Description from '../components/ui/Description';
+import SectionDescription from '../components/ui/SectionDescription';
 
 export default {
   components: {
-    description: Description,
+    description: SectionDescription,
   },
 };
 </script>

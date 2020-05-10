@@ -14,7 +14,6 @@ import Banner from '@/components/Banner';
 import Instagram from '@/components/Instagram';
 import AboutUs from '@/components/AboutUs';
 import MainStories from '@/components/MainStories';
-import MainVideo from '@/components/MainVideo';
 
 export default {
   components: {
@@ -22,7 +21,6 @@ export default {
     'main-stories': MainStories,
     banner: Banner,
     instagram: Instagram,
-    'main-video': MainVideo,
   },
 };
 </script>
