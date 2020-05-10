@@ -18,19 +18,19 @@ export default {};
 
 <style scoped>
 .stories-card {
+  width: 100%;
   display: inline-block;
   cursor: pointer;
 }
 
 .stories-card__photoes {
-  max-width: 300px;
-  min-height: 300px;
+  width: 100%;
   margin-bottom: 12px;
   background-color: gray;
 }
 
 .stories-card__title {
-  max-width: 300px;
+  width: 100%;
   margin-bottom: 15px;
   font-weight: 600;
   font-size: 22px;
@@ -41,5 +41,25 @@ export default {};
   font-size: 14px;
   line-height: 18px;
   color: #666666;
+}
+
+@media screen and (max-width: 1024px) {
+  .stories-card__title {
+    font-size: 18px;
+  }
+
+  .stories-card__subtitle {
+    max-width: 190px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stories-card__subtitle {
+    max-width: 200px;
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
 </style>
