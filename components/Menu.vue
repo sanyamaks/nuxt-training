@@ -16,10 +16,16 @@ export default {};
   font-size: 18px;
   line-height: 24px;
   color: #000000;
+  text-decoration: none;
+  font-weight: normal;
+}
+.menu__link:hover {
+  color: #121212;
+  opacity: 0.8;
 }
 
 .menu__link:last-of-type {
-  padding-right: 0px;
+  padding-right: 0;
 }
 
 .menu__link:first-of-type {
