@@ -5,6 +5,7 @@
     <main-stories></main-stories>
     <banner>РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ</banner>
     <instagram></instagram>
+    <statistika></statistika>
     <tell-story class="main__tell-story"></tell-story>
     <about-us></about-us>
     <!--<popup></popup>-->
@@ -16,6 +17,7 @@
 import Banner from '@/components/Banner';
 import Instagram from '@/components/Instagram';
 import MainStories from '@/components/MainStories';
+import Statistika from '@/components/Statistika';
 import TellStory from '@/components/TellStory';
 import MainVideo from '@/components/MainVideo';
 import AboutUs from '@/components/AboutUs';
@@ -28,6 +30,7 @@ export default {
     'main-stories': MainStories,
     banner: Banner,
     instagram: Instagram,
+    statistika: Statistika,
     'tell-story': TellStory,
     'main-video': MainVideo,
     // 'popup': Popup,
