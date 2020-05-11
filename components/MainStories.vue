@@ -13,18 +13,22 @@
       <stories-card></stories-card>
       <stories-card></stories-card>
     </div>
-    <button class="main-stories__button">Больше статей</button>
+    <stories-button class="main-stories__stories-button">
+      Больше статей
+    </stories-button>
   </section>
 </template>
 
 <script>
 import StoriesCard from './ui/StoriesCard';
 import SectionTitle from './ui/SectionTitle';
+import StoriesButton from './ui/StoriesButton.vue';
 
 export default {
   components: {
     'stories-card': StoriesCard,
     'section-title': SectionTitle,
+    'stories-button': StoriesButton,
   },
 };
 </script>
@@ -47,15 +51,6 @@ export default {
 
 .main-stories__section-title {
   margin-bottom: 70px;
-}
-
-.main-stories__button {
-  width: 100%;
-  min-height: 82px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  background-color: #fbfbfb;
 }
 
 @media screen and (max-width: 1280px) {
