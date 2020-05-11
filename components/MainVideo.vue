@@ -55,9 +55,9 @@ export default {
 
 <style scoped>
 .main-video {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: auto;
-  padding: 100px 0 75px 0;
+  padding: 100px 60px 75px 60px;
 }
 
 .main-video__container {
@@ -67,6 +67,7 @@ export default {
 }
 
 .main-video__video-box {
+  width: 65.681818182%;
   position: relative;
 }
 
@@ -101,7 +102,7 @@ export default {
 }
 
 .main-video__video {
-  width: 867px;
+  width: 100%;
   height: 450px;
   border: none;
 }
@@ -132,8 +133,11 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
+  .main-video {
+    padding: 100px 50px 75px 50px;
+  }
+
   .main-video__video {
-    width: 773px;
     height: 400px;
   }
 
@@ -149,19 +153,48 @@ export default {
   }
 
   .main-video__video {
-    width: 606px;
     height: 314px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .main-video {
+    padding: 100px 50px 75px 50px;
+  }
+
+  .main-video__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .main-video__section-title {
+    margin: auto;
+    text-align: center;
     margin-bottom: 26px;
   }
 
+  .main-video__section-description {
+    margin: auto;
+  }
+
+  .main-video__video-box {
+    margin: auto;
+    width: 84.302325581%;
+  }
+
   .main-video__video {
-    width: 580px;
     height: 300px;
+  }
+
+  .main-video__controls {
+    width: 100%;
+    display: flex;
+    top: 170px;
+    margin-bottom: 0;
+    position: relative;
+    justify-content: space-between;
   }
 }
 </style>

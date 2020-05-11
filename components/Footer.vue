@@ -34,17 +34,17 @@ export default {};
 
 <style scoped>
 .footer {
-  background: #fbfbfb;
+  max-width: 1440px;
+  margin: auto;
   min-height: 356px;
   padding: 60px;
   display: flex;
   align-items: stretch;
+  background: #fbfbfb;
 }
 
 .footer__container {
   width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
   display: grid;
   grid-template-areas:
     'gratitude  nav  links'

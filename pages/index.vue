@@ -5,7 +5,7 @@
     <main-stories></main-stories>
     <banner>РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ</banner>
     <instagram></instagram>
-    <tell-story class="main__tell-story"></tell-story>
+    <!-- <tell-story class="main__tell-story"></tell-story> -->
     <about-us></about-us>
     <!--<popup></popup>-->
     <!--<last-popup></last-popup>-->
