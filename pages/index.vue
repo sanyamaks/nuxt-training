@@ -1,5 +1,6 @@
 <template>
   <main>
+    <cover></cover>
     <main-video></main-video>
     <banner>И В ОТЛИЧИЕ ОТ РАКА,</banner>
     <main-stories></main-stories>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import Cover from '@/components/Cover';
 import Banner from '@/components/Banner';
 import Instagram from '@/components/Instagram';
 import MainStories from '@/components/MainStories';
@@ -26,6 +28,7 @@ import AboutUs from '@/components/AboutUs';
 
 export default {
   components: {
+    cover: Cover,
     'about-us': AboutUs,
     'main-stories': MainStories,
     banner: Banner,
