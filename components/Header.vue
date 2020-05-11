@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .header {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -27,6 +27,7 @@ export default {
   justify-content: space-between;
   font-weight: 600;
   font-size: 16px;
+  padding: 0 60px;
 }
 
 .header__logo {
@@ -38,6 +39,18 @@ export default {
   padding-top: 18px;
   color: #000000;
   letter-spacing: 0.85px;
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 40px;
+  }
 }
 
 @media screen and (max-width: 450px) {

@@ -60,14 +60,13 @@ export default {
 
 <style scoped>
 .instagram {
+  margin: auto;
+  max-width: 1440px;
   padding: 100px 60px;
 }
 
 .instagram__container {
-  margin: 0 auto;
   width: 100%;
-  max-width: 1320px;
-
   display: grid;
   grid-template-columns: 1fr 65%;
 }
