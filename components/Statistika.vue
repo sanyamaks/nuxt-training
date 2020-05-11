@@ -39,9 +39,9 @@
         </h3>
 
         <progress-bar-double
-          max-value="3"
-          new-value="2"
-          old-value="1"
+          :max-value="5"
+          :new-value="3"
+          :old-value="2"
           class="stat-card__progress-bar"
         ></progress-bar-double>
         <p class="stat-card__number">
@@ -56,9 +56,9 @@
           диагноза
         </h3>
         <progress-bar-double
-          max-value="3"
-          new-value="2"
-          old-value="1"
+          :max-value="5"
+          :new-value="2"
+          :old-value="3"
           class="stat-card__progress-bar"
         ></progress-bar-double>
         <p class="stat-card__number">
@@ -98,6 +98,15 @@ export default {
   padding: 20px;
 }
 
+.stat-card:nth-of-type(2) .stat-card__title {
+  padding-bottom: 108px;
+}
+.stat-card:nth-of-type(3) .stat-card__title {
+  padding-bottom: 92px;
+}
+.stat-card:nth-of-type(4) .stat-card__title {
+  padding-bottom: 92px;
+}
 .stat-card__title {
   font-weight: normal;
   font-size: 12px;

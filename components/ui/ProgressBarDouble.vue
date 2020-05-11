@@ -34,7 +34,7 @@ export default {
 .progress-bar-double {
   max-width: 260px;
   height: 40px;
-  background: #f4f4f4;
+  background: #ffffff;
   position: relative;
 }
 
@@ -43,13 +43,17 @@ export default {
   left: 0;
   top: 0;
   height: 100%;
-  background: #613a93;
+  background: #f4f4f4;
 }
 .progress-bar-double__fill_violet {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: violet;
+  background: #613a93;
+}
+.progress-bar-double__old {
+  height: 50%;
+  position: relative;
+}
+.progress-bar-double__new {
+  height: 50%;
+  position: relative;
 }
 </style>
