@@ -3,11 +3,11 @@
     <h2 class="about-us__title">#РАКЛЕЧИТСЯ</h2>
 
     <div class="about-us__container">
-      <h3 class="about-us__subtitle">О проекте</h3>
+      <section-title class="about-us__subtitle">О проекте</section-title>
 
-      <p class="about-us__foundaition">
+      <section-description class="about-us__foundaition">
         Этот проект был создан благотворительным фондом Константина Хабенского.
-      </p>
+      </section-description>
 
       <div class="about-us__toggle-links">
         <!-- заменить на компоненту -->
@@ -18,27 +18,37 @@
       </div>
 
       <div class="about-us__text-container">
-        <p class="about-us__text">
+        <section-text class="about-us__text">
           Есть вещи, которые не лечатся. Особенности характера, страстные
           увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
           приобрели в детстве. Список можно продолжать до бесконечности, но одна
           болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и
           лучшее доказательство — люди с их неизлечимыми особенностями, которые
           сумели победить рак.
-        </p>
-        <p class="about-us__text">
+        </section-text>
+        <section-text class="about-us__text">
           Рак лечится — проект Благотворительного Фонда Константина Хабенского и
           Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей
           к раку и заставить каждого поверить: онкологическое заболевание — это
           не приговор.
-        </p>
+        </section-text>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import SectionTitle from '@/components/ui/SectionTitle';
+import SectionDescription from '@/components/ui/SectionDescription';
+import SectionText from '@/components/ui/SectionText';
+
+export default {
+  components: {
+    'section-title': SectionTitle,
+    'section-description': SectionDescription,
+    'section-text': SectionText,
+  },
+};
 </script>
 
 <style scoped>
@@ -82,18 +92,11 @@ export default {};
 .about-us__subtitle {
   grid-area: subtitle;
 
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 36px;
-
   color: #ffffff;
 }
 
 .about-us__foundaition {
   grid-area: foundation;
-
-  font-size: 18px;
-  line-height: 22px;
 
   color: #dedede;
 }
@@ -109,7 +112,7 @@ export default {};
   text-align: right;
   font-size: 18px;
   line-height: 22px;
-
+  text-decoration: none;
   color: #c9c9c9;
 
   margin-bottom: 10px;
@@ -125,10 +128,84 @@ export default {};
 
 .about-us__text-container {
   grid-area: text-container;
+}
 
-  font-size: 18px;
-  line-height: 22px;
+.about-us__text {
+  margin-bottom: 20px;
 
   color: #dedede;
+}
+
+.about-us__text:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .about-us {
+    padding: 0 50px;
+    padding-top: 80px;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .about-us {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .about-us__container {
+    grid-column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-us {
+    padding-top: 80px;
+  }
+
+  .about-us__container {
+    margin-top: 0;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-us__title {
+    display: none;
+  }
+
+  .about-us__foundaition {
+    margin-top: 26px;
+    align-self: center;
+  }
+
+  .about-us__toggle-links {
+    align-self: flex-start;
+    flex-direction: row;
+  }
+
+  .about-us__toggle-link {
+    margin-top: 80px;
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+
+  .about-us__toggle-link:last-of-type {
+    margin-right: 0;
+  }
+
+  .about-us__text-container {
+    margin-top: 30px;
+  }
+
+  .about-us__toggle-link {
+    text-align: unset;
+  }
+
+  .about-us__toggle-link_active {
+    border-bottom: 2px solid #fff;
+  }
 }
 </style>

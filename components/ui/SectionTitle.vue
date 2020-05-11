@@ -10,10 +10,33 @@ export default {};
 
 <style scoped>
 .section-title {
+  max-width: 373px;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
   color: #000000;
+}
+
+@media screen and (max-width: 1280px) {
+  .section-title {
+    max-width: 335px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .section-title {
+    max-width: 288px;
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-title {
+    max-width: 380px;
+    font-size: 24px;
+    text-align: center;
+  }
 }
 </style>

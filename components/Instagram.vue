@@ -65,7 +65,6 @@ export default {
 
 .instagram__container {
   margin: 0 auto;
-  margin-top: 70px;
   width: 100%;
   max-width: 1320px;
 
@@ -84,7 +83,6 @@ export default {
 
 .instagram__section-description {
   margin-top: 32px; /* PP */
-  max-width: 340px;
 }
 
 .instagram__items {
@@ -102,10 +100,15 @@ export default {
   padding: 0;
   margin: 0;
   width: 100%;
-  padding-top: 100%;
   position: relative;
 
   background-color: #ededed;
+}
+
+.instagram__item:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
 }
 
 .instagram__link {
@@ -121,12 +124,9 @@ export default {
     padding: 90px 50px;
   }
 
-  .instagram__section-title {
-  }
-
   .instagram__section-description {
     margin-top: 30px; /* PP */
-    max-width: 305px;
+    margin-right: 27px;
   }
 
   .instagram__items {
@@ -135,15 +135,41 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  /* поправить в соответсвии с мобильным макетом */
+  .instagram__section-description {
+    margin-right: 20px;
+  }
+
+  .instagram__items {
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .instagram {
+    padding: 80px 40px;
+  }
+
   .instagram__container {
     display: flex;
     flex-direction: column;
   }
 
-  .instagram__section-description {
+  .instagram__side {
+    margin: 0 auto;
+    max-width: 380px;
+  }
+
+  .instagram__section-title {
     max-width: unset;
-    margin-bottom: 27px;
+    align-self: center;
+  }
+
+  .instagram__section-description {
+    margin-bottom: 60px;
+  }
+
+  .instagram__items {
+    grid-gap: 20px;
   }
 }
 </style>

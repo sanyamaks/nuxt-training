@@ -2,7 +2,16 @@
   <section class="main-video">
     <div class="main-video__container">
       <div class="main-video__desc-box">
-        <description></description>
+        <div class="main-video__description">
+          <section-title class="main-video__section-title">
+            Истории людей, победивших рак, но не свои привычки
+          </section-title>
+          <section-description class="main-video__section-description">
+            Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
+            фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
+            доказательство — люди с их историями.
+          </section-description>
+        </div>
         <div class="main-video__controls">
           <button class="main-video__control main-video__control_left"></button>
           <button
@@ -14,7 +23,7 @@
         <iframe class="main-video__video" src=""> </iframe>
         <img
           class="main-video__icon"
-          src="../static/images/play_icon.png"
+          src="../static/images/icon_play.png"
           alt="Play icon"
         />
         <p class="main-video__desc">
@@ -33,11 +42,13 @@
 </template>
 
 <script>
+import SectionTitle from '../components/ui/SectionTitle';
 import SectionDescription from '../components/ui/SectionDescription';
 
 export default {
   components: {
-    description: SectionDescription,
+    'section-title': SectionTitle,
+    'section-description': SectionDescription,
   },
 };
 </script>
@@ -114,5 +125,43 @@ export default {
 
 .main-video__link {
   color: inherit;
+}
+
+.main-video__section-title {
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 1280px) {
+  .main-video__video {
+    width: 773px;
+    height: 400px;
+  }
+
+  .main-video__icon {
+    width: 76px;
+    height: 76px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-video__section-title {
+    margin-bottom: 20px;
+  }
+
+  .main-video__video {
+    width: 606px;
+    height: 314px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-video__section-title {
+    margin-bottom: 26px;
+  }
+
+  .main-video__video {
+    width: 580px;
+    height: 300px;
+  }
 }
 </style>
