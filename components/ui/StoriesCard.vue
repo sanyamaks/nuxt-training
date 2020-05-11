@@ -2,7 +2,7 @@
   <div class="stories-card">
     <img
       class="stories-card__photoes"
-      src="https://pbs.twimg.com/profile_images/837175195769135104/tQcPpy_m_400x400.jpg"
+      src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
       alt=""
     />
     <h3 class="stories-card__title">Владимир Тен</h3>
