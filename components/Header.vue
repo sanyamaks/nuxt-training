@@ -37,6 +37,7 @@ export default {
   line-height: 23px;
   max-width: 388px;
   padding-top: 18px;
+  padding-bottom: 18px;
   color: #000000;
   letter-spacing: 0.85px;
 }
