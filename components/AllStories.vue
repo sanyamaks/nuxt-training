@@ -5,7 +5,7 @@
     </section-title>
     <form class="all-stories__form">
       <input class="all-stories__search" type="text" name="" id="" />
-      <middle-button>Поиск</middle-button>
+      <middle-button text="Поиск"></middle-button>
     </form>
     <div class="all-stories__container">
       <stories-card
