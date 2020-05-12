@@ -5,15 +5,23 @@
       src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
       alt=""
     />
-    <h3 class="stories-card__title">Владимир Тен</h3>
+    <h3 class="stories-card__title">
+      {{ person.name }}
+    </h3>
     <p class="stories-card__subtitle">
-      Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.
+      {{ person.quote }}
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['person'],
+
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>

@@ -4,14 +4,12 @@
       Истории неизлечимых привычек
     </section-title>
     <div class="main-stories__container">
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
+      <stories-card
+        v-bind:person="item"
+        v-bind:key="item.id"
+        v-for="item in showPersons"
+      >
+      </stories-card>
     </div>
     <stories-button class="main-stories__stories-button">
       Больше статей
@@ -29,6 +27,34 @@ export default {
     'stories-card': StoriesCard,
     'section-title': SectionTitle,
     'stories-button': StoriesButton,
+  },
+
+  computed: {
+    showPersons() {
+      if (process.browser) {
+        if (window.innerWidth <= 768) {
+          return this.persons.filter((item, index) => index < 9);
+        } else {
+          return this.persons.filter((item, index) => index < 8);
+        }
+      }
+    },
+  },
+
+  data() {
+    return {
+      persons: [
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+      ],
+    };
   },
 };
 </script>
