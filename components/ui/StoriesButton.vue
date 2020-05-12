@@ -1,7 +1,7 @@
 <template>
-  <button class="stories-button">
+  <a class="stories-button" href="/stories">
     <slot>Button name</slot>
-  </button>
+  </a>
 </template>
 
 <script>
@@ -13,8 +13,12 @@ export default {};
   width: 100%;
   min-height: 78px;
   font-size: 16px;
-  border: none;
   cursor: pointer;
+  display: flex;
+  color: #000000;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
   background-color: #fbfbfb;
 }
 

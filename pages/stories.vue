@@ -1,6 +1,6 @@
 <template>
   <main class="content">
-    <all-stories class="content__all-stories all-stories"></all-stories>
+    <all-stories class="content__all-stories"></all-stories>
   </main>
 </template>
 
