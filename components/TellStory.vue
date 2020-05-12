@@ -1,13 +1,13 @@
 <template>
   <section class="tell-story">
     <div class="tell-story__heading">
-      <section-title class="tell-story__section-title"
-        >Расскажите свою историю</section-title
+      <SectionTitle class="tell-story__section-title"
+        >Расскажите свою историю</SectionTitle
       >
-      <section-description class="tell-story__section-description"
+      <SectionDescription class="tell-story__section-description"
         >Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
         поделиться своей историей неизлечимых привычек, навязчивых идей и
-        болезненных привязанностей.</section-description
+        болезненных привязанностей.</SectionDescription
       >
     </div>
     <div class="tell-story__container">
@@ -23,9 +23,11 @@
           после проверки. Пожалуйста, заполняйте все пункты корректно, если вы
           испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
         </p>
-        <middle-button class="tell-story__middle-button"
-          >Заполнить форму</middle-button
-        >
+        <MiddleButton
+          class="tell-story__middle-button"
+          @click="showPopup"
+          text="Заполнить форму"
+        ></MiddleButton>
       </div>
     </div>
   </section>
@@ -35,15 +37,16 @@
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
 import MiddleButton from '@/components/ui/MiddleButton';
-
 export default {
   name: 'tell-story',
   components: {
-    'section-title': SectionTitle,
-    'section-description': SectionDescription,
-    'middle-button': MiddleButton,
+    SectionTitle,
+    SectionDescription,
+    MiddleButton,
   },
-  props: {},
+  props: {
+    showPopup: Function,
+  },
   data() {
     return {};
   },

@@ -1,11 +1,26 @@
 <template>
-  <button class="middle-button" type="submit">
-    <slot>text</slot>
+  <button class="middle-button" @click="handleClick" :type="type">
+    {{text}}
   </button>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "middle-button",
+  props: {
+    text: String,
+    type: {
+      default: "button",
+      type: String
+    }
+  },
+  methods: {
+    handleClick (event) {
+      event.preventDefault();
+      this.$emit("click");
+    }
+  }
+};
 </script>
 
 <style scoped>
