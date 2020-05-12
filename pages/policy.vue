@@ -8,7 +8,7 @@
       <li class="policy__section" v-for="section in policy" :key="section.id">
         <h2 class="policy__section-title">{{ section.title }}</h2>
 
-        <p class="policy__section-description" v-if="section.description">
+        <p class="policy__section-text" v-if="section.description">
           {{ section.description }}
         </p>
 
@@ -18,7 +18,9 @@
             v-for="clause in section.clauses"
             :key="clause.id"
           >
-            {{ clause.text }}
+            <p class="policy__section-text">
+              {{ clause.text }}
+            </p>
           </li>
         </ol>
       </li>
@@ -338,7 +340,7 @@ export default {
   min-width: 40px; /* PP */
 }
 
-.policy__section-description {
+.policy__section-text {
   font-weight: normal;
   margin-bottom: 30px;
 }
@@ -352,8 +354,6 @@ export default {
 }
 
 .policy__clause {
-  font-weight: normal;
-  margin-bottom: 30px;
   display: flex;
 }
 
