@@ -1,11 +1,20 @@
 <template>
-  <button class="return-button" type="submit">
+  <button class="return-button" @click="handleClick" type="button">
     <slot>text</slot>
   </button>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "",
+  props: "",
+  methods: {
+    handleClick (event) {
+      event.preventDefault();
+      this.$emit("click");
+    }
+  }
+};
 </script>
 
 <style scoped>
