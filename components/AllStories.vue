@@ -1,5 +1,5 @@
 <template>
-  <section class="all-stories">
+  <section class="all-stories" ref="allStories">
     <section-title class="all-stories__section-title">
       Истории неизлечимых привычек
     </section-title>
@@ -8,22 +8,12 @@
       <middle-button>Поиск</middle-button>
     </form>
     <div class="all-stories__container">
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
+      <stories-card
+        v-bind:person="item"
+        v-bind:key="item.id"
+        v-for="item in persons"
+      >
+      </stories-card>
     </div>
     <div class="all-stories__controls">
       <button class="all-stories__control">1</button>
@@ -47,6 +37,29 @@ export default {
     'stories-card': StoriesCard,
     'section-title': SectionTitle,
     'middle-button': MiddleButton,
+  },
+
+  data() {
+    return {
+      persons: [
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+      ],
+    };
   },
 };
 </script>

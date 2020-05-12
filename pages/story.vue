@@ -63,10 +63,12 @@
       </button>
     </article>
     <div class="story__container">
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
-      <stories-card></stories-card>
+      <stories-card
+        v-bind:person="item"
+        v-bind:key="item.id"
+        v-for="item in persons"
+      >
+      </stories-card>
     </div>
     <stories-button class="story__stories-button">
       Больше статей
@@ -82,6 +84,17 @@ export default {
   components: {
     'stories-card': StoriesCard,
     'stories-button': StoriesButton,
+  },
+
+  data() {
+    return {
+      persons: [
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека' },
+      ],
+    };
   },
 };
 </script>
