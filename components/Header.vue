@@ -4,7 +4,8 @@
       Проект Благотворительного Фонда Константина Хабенского
     </h1>
 
-    <main-menu />
+    <main-menu :isLastButtonShown="true" />
+    <!-- Гамбургер при 768px -->
   </header>
 </template>
 

@@ -1,40 +1,51 @@
 <template>
   <footer class="footer">
     <section class="footer__container">
-      <p class="footer__gratitude">
-        Спасибо всем, кто помог состояться этому проекту
-      </p>
-      <!-- заменить на компоненту -->
+      <div class="footer__half">
+        <section-title class="footer__title">
+          Спасибо всем, кто помог состояться этому проекту
+        </section-title>
 
-      <nav class="nav footer__nav">
-        <!-- заменить на компоненту -->
-        <a href="/" class="footer__link">Главная</a>
-        <a href="/" class="footer__link">Истории</a>
-      </nav>
+        <main-menu class="footer__nav" :isLastButtonShown="false" />
 
-      <div class="footer__links">
-        <p class="footer__text">
-          Мы в <a href="/" class="footer__link" target="_blank">Фейсбуке</a>,
-          <a href="/" class="footer__link" target="_blank">Инстаграме</a> и
-          <a href="/" class="footer__link" target="_blank">Youtube</a>
-        </p>
-        <a href="/" class="footer__link">Поделитесь ↗</a>
+        <div class="footer__links">
+          <p class="footer__text footer__text_type_link">
+            Мы в
+            <nuxt-link to="/" class="footer__link" target="_blank"
+              >Инстаграме</nuxt-link
+            >
+            и
+            <nuxt-link to="/" class="footer__link" target="_blank"
+              >Youtube</nuxt-link
+            >
+          </p>
+          <nuxt-link to="/" class="footer__link">Поделитесь &#8599;</nuxt-link>
+        </div>
       </div>
 
-      <small class="footer__copyright">Рак Лечится 2020</small>
+      <div class="footer__half">
+        <small class="footer__text">Рак Лечится 2020</small>
 
-      <p class="footer__made-by">Сделано студентами Яндекс Практикум</p>
+        <p class="footer__text">Сделано студентами Яндекс Практикум</p>
+      </div>
     </section>
   </footer>
 </template>
 
 <script>
-export default {};
+import SectionTitle from '@/components/ui/SectionTitle';
+import Menu from '@/components/Menu';
+
+export default {
+  components: {
+    'section-title': SectionTitle,
+    'main-menu': Menu,
+  },
+};
 </script>
 
 <style scoped>
 .footer {
-  max-width: 1440px;
   margin: auto;
   min-height: 356px;
   padding: 60px;
@@ -44,65 +55,51 @@ export default {};
 }
 
 .footer__container {
+  max-width: 1320px;
   width: 100%;
-  display: grid;
-  grid-template-areas:
-    'gratitude  nav  links'
-    'copyright  .    made-by';
-  grid-template-rows: 1fr 18px;
-  grid-template-columns: 340px 1fr 365px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.footer__gratitude {
-  font-size: 32px;
-  line-height: 36px;
-  font-weight: 600;
+.footer__half {
+  display: flex;
+  justify-content: space-between;
+}
 
-  grid-area: gratitude;
+.footer__title {
+  max-width: 265px;
 }
 
 .footer__nav {
-  grid-area: nav;
+  margin-left: 113px; /* PP */
+  margin-right: auto;
 }
 
 .footer__links {
   max-width: 300px;
   width: 100%;
 
-  grid-area: links;
-  justify-self: end;
-
   display: flex;
   flex-direction: column;
 }
 
-.footer__copyright {
-  font-size: 18px;
-  line-height: 18px;
-  color: #898989;
-
-  grid-area: copyright;
-}
-
-.footer__made-by {
-  font-size: 18px;
-  line-height: 18px;
-  color: #898989;
-
-  grid-area: made-by;
-}
-
 .footer__text {
   font-size: 18px;
+  line-height: 18px;
+  color: #898989;
+}
+
+.footer__text_type_link {
   line-height: 24px;
   color: #000000;
   margin-bottom: 44px;
 }
 
 .footer__link {
-  font-size: 18px;
-  line-height: 24px;
-  color: #000000;
+  line-height: inherit;
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
 }
@@ -117,13 +114,59 @@ export default {};
   .footer {
     padding: 50px;
   }
+
+  .footer__nav {
+    margin-left: 102px; /* PP */
+  }
 }
 
 @media screen and (max-width: 1024px) {
-  /* поправить в соответсвии с мобильным макетом */
-  .footer__container {
-    display: flex;
-    flex-direction: column;
+  .footer__nav {
+    margin-left: 0px; /* PP */
+  }
+
+  .footer__links {
+    max-width: 225px;
+  }
+
+  .footer__text {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .footer__text_type_link {
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__title {
+    text-align: left;
+  }
+
+  .footer__nav {
+    margin-left: 30px; /* PP */
+  }
+
+  .footer__text {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .footer__links {
+    max-width: 225px;
+  }
+
+  .footer__text_type_link {
+    line-height: 24px;
+    margin-bottom: 14px; /* PP */
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 12px;
   }
 }
 </style>

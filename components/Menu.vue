@@ -2,12 +2,18 @@
   <nav class="menu">
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/stories" class="menu__link">Истории</nuxt-link>
-    <nuxt-link to="#" class="menu__link">Рассказать историю</nuxt-link>
+    <nuxt-link to="#" class="menu__link" v-if="isLastButtonShown"
+      >Рассказать историю</nuxt-link
+    >
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    isLastButtonShown: Boolean,
+  },
+};
 </script>
 
 <style scoped>
@@ -19,6 +25,11 @@ export default {};
   text-decoration: none;
   font-weight: normal;
 }
+
+.menu__link_disabled {
+  display: none;
+}
+
 .menu__link:hover {
   color: #121212;
   opacity: 0.8;
@@ -32,6 +43,13 @@ export default {};
   text-decoration-line: underline;
 }
 
+@media screen and (max-width: 1024px) {
+  .menu__link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .menu {
     display: flex;
@@ -39,8 +57,15 @@ export default {};
   }
 
   .menu__link {
-    line-height: 2;
     padding-right: 0;
+
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 14px;
+  }
+
+  .menu__link:last-of-type {
+    margin-bottom: 0;
   }
 }
 
