@@ -7,7 +7,7 @@
       <stories-card
         v-bind:person="item"
         v-bind:key="item.id"
-        v-for="item in persons"
+        v-for="item in showPersons"
       >
       </stories-card>
     </div>
@@ -29,9 +29,22 @@ export default {
     'stories-button': StoriesButton,
   },
 
+  computed: {
+    showPersons() {
+      if (process.browser) {
+        if (window.innerWidth <= 768) {
+          return this.persons.filter((item, index) => index < 9);
+        } else {
+          return this.persons.filter((item, index) => index < 8);
+        }
+      }
+    },
+  },
+
   data() {
     return {
       persons: [
+        { name: 'Человек', quote: 'Цитата Человека' },
         { name: 'Человек', quote: 'Цитата Человека' },
         { name: 'Человек', quote: 'Цитата Человека' },
         { name: 'Человек', quote: 'Цитата Человека' },
