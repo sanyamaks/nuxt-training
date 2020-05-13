@@ -10,27 +10,31 @@
       </section-description>
 
       <div class="about-us__toggle-links">
-        <!-- заменить на компоненту -->
-        <a href="/" class="about-us__toggle-link about-us__toggle-link_active"
-          >Рак Лечится</a
+        <toggle-link
+          v-for="toggleButton in toggleButtons"
+          :key="toggleButton.id"
+          name="options"
+          :label="toggleButton.id"
+          :id="`radio-${toggleButton.id}`"
+          :value="1"
+          @change="changeValue"
+          class="about-us__toggle-link"
+          >{{ toggleButton.title }}</toggle-link
         >
-        <a href="/" class="about-us__toggle-link">Фонд Хабенского</a>
       </div>
 
-      <div class="about-us__text-container">
-        <section-text class="about-us__text">
-          Есть вещи, которые не лечатся. Особенности характера, страстные
-          увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
-          приобрели в детстве. Список можно продолжать до бесконечности, но одна
-          болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и
-          лучшее доказательство — люди с их неизлечимыми особенностями, которые
-          сумели победить рак.
-        </section-text>
-        <section-text class="about-us__text">
-          Рак лечится — проект Благотворительного Фонда Константина Хабенского и
-          Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей
-          к раку и заставить каждого поверить: онкологическое заболевание — это
-          не приговор.
+      <div
+        class="about-us__text-container"
+        v-for="item in content"
+        :key="item.id"
+        v-if="item.shown"
+      >
+        <section-text
+          class="about-us__text"
+          v-for="paragraph in item.paragraphs"
+          :key="paragraph.id"
+        >
+          {{ paragraph.text }}
         </section-text>
       </div>
     </div>
@@ -38,15 +42,83 @@
 </template>
 
 <script>
+import ToggleLink from '@/components/ui/ToggleLink';
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
 import SectionText from '@/components/ui/SectionText';
 
 export default {
   components: {
+    'toggle-link': ToggleLink,
     'section-title': SectionTitle,
     'section-description': SectionDescription,
     'section-text': SectionText,
+  },
+  data() {
+    return {
+      toggleButtons: [
+        {
+          id: 1,
+          title: 'Рак Лечится',
+          selectedValue: '1',
+        },
+        {
+          id: 2,
+          title: 'Фонд Хабенского',
+          selectedValue: '1',
+        },
+      ],
+      content: [
+        {
+          id: 1,
+          shown: true,
+          paragraphs: [
+            {
+              id: 1,
+              text: `Есть вещи, которые не лечатся. Особенности характера, страстные
+          увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
+          приобрели в детстве. Список можно продолжать до бесконечности, но одна
+          болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и
+          лучшее доказательство — люди с их неизлечимыми особенностями, которые
+          сумели победить рак.`,
+            },
+            {
+              id: 2,
+              text: `Рак лечится — проект Благотворительного Фонда Константина Хабенского и
+          Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей
+          к раку и заставить каждого поверить: онкологическое заболевание — это
+          не приговор.`,
+            },
+          ],
+        },
+        {
+          id: 2,
+          shown: false,
+          paragraphs: [
+            {
+              id: 1,
+              text: `Благотворительный Фонд Константина Хабенского с 2008 года помогает 
+            детям с онкологическими и другими тяжелыми заболеваниями головного мозга. 
+            Фонд не только поддерживает семью заболевшего ребенка в самый сложный момент, 
+            оплачивая обследования, лечение и медицинские препараты, но и в целом меняет 
+            систему оказания помощи детям с опухолями мозга в России.`,
+            },
+          ],
+        },
+      ],
+    };
+  },
+  methods: {
+    changeValue(newValue) {
+      this.selectedValue = newValue;
+      this.hideAll();
+      this.content[newValue - 1].shown = true;
+    },
+    hideAll() {
+      this.content.forEach((item) => {
+        item.shown = false;
+      });
+    },
   },
 };
 </script>
