@@ -1,25 +1,25 @@
 <template>
   <button class="middle-button" @click="handleClick" :type="type">
-    {{text}}
+    {{ text }}
   </button>
 </template>
 
 <script>
 export default {
-  name: "middle-button",
+  name: 'middle-button',
   props: {
     text: String,
     type: {
-      default: "button",
-      type: String
-    }
+      default: 'button',
+      type: String,
+    },
   },
   methods: {
-    handleClick (event) {
+    handleClick(event) {
       event.preventDefault();
-      this.$emit("click");
-    }
-  }
+      this.$emit('click');
+    },
+  },
 };
 </script>
 
