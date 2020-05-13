@@ -25,7 +25,9 @@ export default {
   text-decoration: none;
   font-weight: normal;
 }
-
+.menu__link.nuxt-link-exact-active {
+  text-decoration-line: underline;
+}
 .menu__link_disabled {
   display: none;
 }
@@ -37,10 +39,6 @@ export default {
 
 .menu__link:last-of-type {
   padding-right: 0;
-}
-
-.menu__link:first-of-type {
-  text-decoration-line: underline;
 }
 
 @media screen and (max-width: 1024px) {
