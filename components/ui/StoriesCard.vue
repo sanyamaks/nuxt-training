@@ -1,5 +1,5 @@
 <template>
-  <div class="stories-card">
+  <div class="stories-card" @click="$emit('cardClick')">
     <img
       class="stories-card__photoes"
       src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"

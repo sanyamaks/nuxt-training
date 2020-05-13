@@ -6,14 +6,14 @@
 
 <script>
 export default {
-  name: "",
-  props: "",
+  name: '',
+  props: '',
   methods: {
-    handleClick (event) {
+    handleClick(event) {
       event.preventDefault();
-      this.$emit("click");
-    }
-  }
+      this.$emit('click');
+    },
+  },
 };
 </script>
 

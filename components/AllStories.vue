@@ -12,17 +12,9 @@
         v-bind:person="item"
         v-bind:key="item.id"
         v-for="item in showPersons"
+        @cardClick="goToDetail(item.id)"
       >
       </stories-card>
-    </div>
-    <div class="all-stories__controls">
-      <button class="all-stories__control">1</button>
-      <button class="all-stories__control">2</button>
-      <button class="all-stories__control">3</button>
-      <button class="all-stories__control">4</button>
-      <button class="all-stories__control">5</button>
-      <button class="all-stories__control">6</button>
-      <button class="all-stories__control">7</button>
     </div>
   </section>
 </template>
@@ -38,7 +30,12 @@ export default {
     'section-title': SectionTitle,
     'middle-button': MiddleButton,
   },
-
+  methods: {
+    goToDetail(id) {
+      console.log(id);
+      this.$router.push(`/stories/${id}`);
+    },
+  },
   computed: {
     showPersons() {
       if (process.browser) {
@@ -54,22 +51,22 @@ export default {
   data() {
     return {
       persons: [
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
+        { name: 'Человек', quote: 'Цитата Человека', id: 1 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 2 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 3 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 4 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 5 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 6 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 7 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 8 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 9 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 10 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 11 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 12 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 13 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 14 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 15 },
+        { name: 'Человек', quote: 'Цитата Человека', id: 16 },
       ],
     };
   },
