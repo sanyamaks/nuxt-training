@@ -25,7 +25,7 @@ export default {
     dataQuiz: Array,
     currentQuestion: Number,
     nextQuestion: Function,
-    prevQuestion: Function
+    prevQuestion: Function,
   },
   methods: {
     handleClose(e) {
