@@ -47,11 +47,10 @@ export default {
   },
   methods: {
     showPopup() {
-      this.isShowPopup = true;
+      this.$store.commit("popupShow/openPopup");
     },
     closePopup() {
-      this.isShowPopup = false;
-      this.currentQuestion = 1;
+      this.$store.commit("popupShow/closePopup");
     },
     nextQuestion() {
       if (this.currentQuestion > this.dataQuiz.length - 1) {
@@ -68,10 +67,14 @@ export default {
       }
     },
   },
+  computed: {
+    isShowPopup () {
+      return this.$store.getters["popupShow/getPopupShown"];
+    }
+  },
   data() {
     return {
       currentQuestion: 1,
-      isShowPopup: false,
       dataQuiz: [
         {
           title: 'Шаг 1 из 12',
