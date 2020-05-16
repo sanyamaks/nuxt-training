@@ -1,12 +1,9 @@
 <template>
   <section class="banner">
-    <div class="banner__container">
-      <h2 class="banner__title">
-        <slot>Текст баннера</slot>
-        <b class="banner__hashtag">#ЭТОНЕЛЕЧИТСЯ</b>
-        <!-- Реализовать перенос на новую строку -->
-      </h2>
-    </div>
+    <h2 class="banner__title">
+      <slot>Текст баннера</slot>
+      <span class="banner__hashtag">#этонелечится</span>
+    </h2>
   </section>
 </template>
 
@@ -19,34 +16,27 @@ export default {};
   max-width: 1440px;
   min-height: 86px;
   margin: auto;
-  padding: 0 60px;
+  padding: 20px 0;
   display: flex;
-}
-
-.banner__container {
-  background: #613a93;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  max-width: 1320px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 30px; /*  PP padding top/bottom  */
+  justify-content: center;
+  background-color: #613a93;
 }
 
 .banner__title {
-  padding: 0;
-  margin: 0;
-  font-weight: normal;
+  max-width: 750px;
+  color: #ffffff;
   font-size: 30px;
   line-height: 46px;
+  font-weight: normal;
   text-align: center;
-  color: #ffffff;
   text-transform: uppercase;
 }
 
 .banner__hashtag {
+  margin: 0;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .banner__hashtag_type_new-line {

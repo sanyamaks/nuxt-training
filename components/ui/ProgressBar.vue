@@ -25,6 +25,7 @@ export default {
   background: #f4f4f4;
   position: relative;
 }
+
 .progress-bar__fill {
   position: absolute;
   left: 0;

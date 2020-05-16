@@ -39,8 +39,7 @@ export default {};
 
 @media screen and (max-width: 768px) {
   .section-description {
-    max-width: 381px;
-    line-height: 16px;
+    max-width: 390px;
   }
 }
 </style>

@@ -2,7 +2,11 @@
   <nav class="menu">
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/stories" class="menu__link">Истории</nuxt-link>
-    <nuxt-link to="#" class="menu__link" v-if="isLastButtonShown" @click.native="showPopup"
+    <nuxt-link
+      to="#"
+      class="menu__link"
+      v-if="isLastButtonShown"
+      @click.native="showPopup"
       >Рассказать историю</nuxt-link
     >
   </nav>
@@ -16,9 +20,9 @@ export default {
   methods: {
     showPopup(event) {
       event.preventDefault();
-      this.$store.commit("popupShow/openPopup");
+      this.$store.commit('popupShow/openPopup');
     },
-  }
+  },
 };
 </script>
 

@@ -22,6 +22,7 @@ export default {};
   .section-title {
     max-width: 335px;
     font-size: 28px;
+    line-height: 32px;
   }
 }
 
@@ -29,6 +30,7 @@ export default {};
   .section-title {
     max-width: 288px;
     font-size: 24px;
+    line-height: 28px;
   }
 }
 
