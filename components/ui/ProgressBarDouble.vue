@@ -59,4 +59,21 @@ export default {
   height: 50%;
   position: relative;
 }
+
+@media screen and (max-width: 1280px) {
+  .progress-bar-double {
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .progress-bar-double {
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .progress-bar-double {
+  }
+}
 </style>
