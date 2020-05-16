@@ -283,8 +283,7 @@ export default {
 
 <style scoped>
 .policy {
-  width: 100%;
-  max-width: 780px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 130px 60px 230px; /* PP */
 }
@@ -365,5 +364,47 @@ export default {
 
 .policy__clause:last-of-type {
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .policy {
+    max-width: 800px;
+    padding: 130px 50px 230px; /* PP */
+  }
+
+  .policy__title {
+    font-size: 34px;
+    line-height: 44px;
+    margin-bottom: 120px;
+  }
+
+  .policy__section {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .policy {
+    max-width: 740px;
+    padding: 130px 50px 230px; /* PP */
+  }
+
+  .policy__title {
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 110px;
+  }
+
+  .policy__section {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .policy {
+    padding: 130px 40px 230px; /* PP */
+  }
 }
 </style>
