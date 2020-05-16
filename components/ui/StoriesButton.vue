@@ -11,7 +11,7 @@ export default {};
 <style scoped>
 .stories-button {
   width: 100%;
-  min-height: 78px;
+  min-height: 82px;
   font-size: 16px;
   cursor: pointer;
   display: flex;
@@ -20,6 +20,12 @@ export default {};
   align-items: center;
   justify-content: center;
   background-color: #fbfbfb;
+}
+
+@media screen and (max-width: 1280px) {
+  .stories-button {
+    min-height: 78px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
