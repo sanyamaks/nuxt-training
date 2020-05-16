@@ -8,8 +8,8 @@
       />
       <div class="story__box">
         <h1 class="story__title">
-          Александр Тарханов: «Я не могу победить свою пунктуальность в отличии
-          от рака»
+          <span class="story__person-name">Александр Тарханов:</span>
+          «Я не могу победить свою пунктуальность в отличии от рака»
         </h1>
         <div class="story__copyright">
           <button type="button" class="story__share">Поделитесь ↗</button>
@@ -143,6 +143,10 @@ export default {
   line-height: 48px;
 }
 
+.story__person-name {
+  font-weight: bold;
+}
+
 .story__copyright {
   width: 100%;
   display: flex;
@@ -181,7 +185,7 @@ export default {
 }
 
 .story__text:last-of-type {
-  margin-bottom: 70px;
+  margin-bottom: 100px;
 }
 
 .story__text_style_bold {
@@ -204,6 +208,29 @@ export default {
   .story__container {
     margin-bottom: 60px;
   }
+
+  .story__person {
+    margin-bottom: 120px;
+  }
+
+  .story__article {
+    max-width: 720px;
+    margin-bottom: 180px;
+  }
+
+  .story__title {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .story__text {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .story__text:last-of-type {
+    margin-bottom: 90px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -214,6 +241,33 @@ export default {
   .story__container {
     margin-bottom: 46px;
   }
+
+  .story__article {
+    max-width: 640px;
+    margin-bottom: 144px;
+  }
+
+  .story__title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .story__text {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .story__share {
+    font-size: 16px;
+  }
+
+  .story__date {
+    font-size: 16px;
+  }
+
+  .story__text:last-of-type {
+    margin-bottom: 70px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -222,7 +276,37 @@ export default {
   }
 
   .story__container {
+    grid-template-columns: repeat(3, 1fr);
     margin-bottom: 60px;
+  }
+
+  .story__person {
+    align-items: center;
+    margin-bottom: 195px;
+    flex-direction: column-reverse;
+  }
+
+  .story__box {
+    width: 100%;
+  }
+
+  .story__title {
+    /* max-width: 640px; */
+    margin: auto;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .story__photo {
+    width: 61.046511628%;
+  }
+
+  .story__copyright {
+    top: 500px;
+    margin: auto;
+    max-width: 640px;
+    position: relative;
+    margin-bottom: 0;
   }
 }
 </style>
