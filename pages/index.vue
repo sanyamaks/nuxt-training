@@ -2,9 +2,9 @@
   <main class="content">
     <cover></cover>
     <main-video></main-video>
-    <banner>И В ОТЛИЧИЕ ОТ РАКА,</banner>
+    <banner>И в отличие от рака,</banner>
     <main-stories></main-stories>
-    <banner>РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ</banner>
+    <banner>Рассказывайте ваши истории в Инстаграм</banner>
     <instagram></instagram>
     <tell-story class="content__tell-story" :showPopup="showPopup"></tell-story>
     <statistika></statistika>
@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     showPopup() {
-      this.$store.commit("popupShow/openPopup");
+      this.$store.commit('popupShow/openPopup');
     },
     closePopup() {
-      this.$store.commit("popupShow/closePopup");
+      this.$store.commit('popupShow/closePopup');
     },
     nextQuestion() {
       if (this.currentQuestion > this.dataQuiz.length - 1) {
@@ -68,9 +68,9 @@ export default {
     },
   },
   computed: {
-    isShowPopup () {
-      return this.$store.getters["popupShow/getPopupShown"];
-    }
+    isShowPopup() {
+      return this.$store.getters['popupShow/getPopupShown'];
+    },
   },
   data() {
     return {

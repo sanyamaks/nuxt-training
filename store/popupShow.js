@@ -1,18 +1,18 @@
 export const state = () => ({
-  isShow: false
+  isShow: false,
 });
 
 export const mutations = {
-  openPopup (state) {
+  openPopup(state) {
     state.isShow = true;
   },
-  closePopup (state) {
+  closePopup(state) {
     state.isShow = false;
-  }
+  },
 };
 
 export const getters = {
   getPopupShown(state) {
-    return state.isShow
-  }
+    return state.isShow;
+  },
 };
