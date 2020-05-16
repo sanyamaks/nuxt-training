@@ -116,6 +116,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: #00000070;
 }
 
 @media screen and (max-width: 1280px) {
@@ -155,7 +156,6 @@ export default {
 
   .instagram__side {
     margin: 0 auto;
-    max-width: 380px;
   }
 
   .instagram__section-title {
@@ -164,6 +164,7 @@ export default {
   }
 
   .instagram__section-description {
+    margin-right: 0;
     margin-bottom: 60px;
   }
 
