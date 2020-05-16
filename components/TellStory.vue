@@ -71,9 +71,6 @@ export default {
   padding: 100px 60px;
 }
 
-.tell-story__heading {
-}
-
 .tell-story__section-title {
   width: 413px;
 }
@@ -103,9 +100,6 @@ export default {
 }
 .tell-story__variant_active {
   color: #000000;
-}
-
-.tell-story__container-info {
 }
 
 .tell-story__description {

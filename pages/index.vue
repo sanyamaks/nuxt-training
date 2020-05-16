@@ -7,7 +7,7 @@
     <banner>Рассказывайте ваши истории в Инстаграм</banner>
     <instagram></instagram>
     <tell-story class="content__tell-story" :showPopup="showPopup"></tell-story>
-    <statistika></statistika>
+    <statistika class="content__statistika"></statistika>
     <about-us></about-us>
     <Popup
       v-if="isShowPopup"
@@ -151,4 +151,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.content__statistika {
+  margin: auto;
+}
+</style>

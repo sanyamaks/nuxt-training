@@ -89,42 +89,34 @@ export default {
   grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 40px;
 }
-.statistika__card:first-of-type {
-  margin-left: 60px;
-}
 
 .stat-card {
-  border: 1px solid #efefef;
   padding: 20px;
+  border: 1px solid #efefef;
 }
 
-.stat-card:nth-of-type(2) .stat-card__title {
-  padding-bottom: 108px;
-}
-.stat-card:nth-of-type(3) .stat-card__title {
-  padding-bottom: 92px;
-}
-.stat-card:nth-of-type(4) .stat-card__title {
-  padding-bottom: 92px;
-}
 .stat-card__title {
+  max-width: 260px;
+  min-height: 48px;
+  margin: 0 auto;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  margin: 0 auto;
-  padding-bottom: 76px;
-  max-width: 260px;
+  margin-bottom: 76px;
 }
-.stat-card__progress-bar {
+
+/* .stat-card__progress-bar {
   margin: 0 auto 20px;
-}
+} */
+
 .stat-card__number {
   font-weight: 600;
   font-size: 38px;
   line-height: 40px;
   text-align: right;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
+
 .stat-card__logo {
   font-size: 12px;
   line-height: 16px;
@@ -132,15 +124,12 @@ export default {
 }
 
 .statistika__section-title {
-  padding-left: 60px;
-  padding-bottom: 70px;
   max-width: 370px;
+  margin-bottom: 90px;
 }
-.content__statistika {
-  padding: 100px 0;
-}
+
 .statistika {
   max-width: 1440px;
-  margin: auto;
+  padding: 100px 60px;
 }
 </style>
