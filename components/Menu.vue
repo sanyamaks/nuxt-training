@@ -22,7 +22,7 @@ export default {
   methods: {
     showPopup(event) {
       event.preventDefault();
-      this.$store.commit('popupShow/openPopup');
+      this.$store.commit('popup/openPopup');
     },
   },
 };

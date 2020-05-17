@@ -1,15 +1,10 @@
 <template>
   <div class="popup">
     <div class="popup-content">
-      <button class="popup__close-button" @click="handleClose">
+      <button class="popup__close-button" @click="closePopup">
         <img src="./../assets/icon-close-button.svg" alt="close" />
       </button>
-      <Quiz
-        :dataQuiz="dataQuiz"
-        :currentQuestion="currentQuestion"
-        :nextQuestion="nextQuestion"
-        :prevQuestion="prevQuestion"
-      ></Quiz>
+      <Quiz></Quiz>
     </div>
   </div>
 </template>
@@ -21,16 +16,11 @@ export default {
   components: {
     Quiz,
   },
-  props: {
-    dataQuiz: Array,
-    currentQuestion: Number,
-    nextQuestion: Function,
-    prevQuestion: Function,
-  },
+  props: {},
   methods: {
-    handleClose(e) {
+    closePopup(e) {
       e.preventDefault();
-      this.$emit('closePopup');
+      this.$store.commit('popup/closePopup');
     },
   },
 };

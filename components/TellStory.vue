@@ -50,12 +50,15 @@ export default {
     MiddleButton,
   },
   props: {
-    showPopup: Function,
   },
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    showPopup() {
+      this.$store.commit('popup/openPopup');
+    },
+  },
 };
 </script>
 
