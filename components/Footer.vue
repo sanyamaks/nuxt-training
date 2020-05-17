@@ -26,7 +26,9 @@
               Youtube
             </nuxt-link>
           </p>
-          <nuxt-link to="/" class="footer__link">Поделитесь &#8599;</nuxt-link>
+          <nuxt-link to="/" class="footer__link" @click.native="showSocialMedia"
+            >Поделитесь &#8599;</nuxt-link
+          >
         </div>
       </div>
 
@@ -47,6 +49,11 @@ export default {
   components: {
     'section-title': SectionTitle,
     'main-menu': Menu,
+  },
+  methods: {
+    showSocialMedia() {
+      this.$store.commit('SocialMedia/toggleSocialMedia');
+    },
   },
 };
 </script>
