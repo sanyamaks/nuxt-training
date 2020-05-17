@@ -1,5 +1,5 @@
 export const state = () => ({
-  socialMediaShown: false,
+  isShowSocialMedia: false,
   links: [
     {
       id: 1,
@@ -40,16 +40,25 @@ export const state = () => ({
 });
 
 export const mutations = {
-  toggleSocialMedia(state) {
-    return (state.socialMediaShown = !state.socialMediaShown);
+  setStateShown(state, value) {
+    state.isShowSocialMedia = value;
+  },
+};
+
+export const actions = {
+  showSocialMedia({ commit }) {
+    commit('setStateShown', true);
+  },
+  hideSocialMedia({ commit }) {
+    commit('setStateShown', false);
   },
 };
 
 export const getters = {
+  getStateShown(state) {
+    return state.isShowSocialMedia;
+  },
   getSocialMediaLinks(state) {
     return state.links;
-  },
-  getSocialMediaShown(state) {
-    return state.socialMediaShown;
   },
 };

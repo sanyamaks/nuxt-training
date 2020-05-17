@@ -11,25 +11,35 @@
         болезненных привязанностей.
       </SectionDescription>
 
-      <div class="tell-story__container-variants">
-        <ul class="tell-story__variants">
-          <li class="tell-story__variant tell-story__variant_active">
+      <div class="tell-story__container-options">
+        <ul class="tell-story__options">
+          <li
+            :class="[
+              'tell-story__option',
+              option === 1 ? 'tell-story__option_active' : '',
+            ]"
+            @click="firstOption"
+          >
             1-й вариант
           </li>
-          <li class="tell-story__variant">
+          <li
+            :class="[
+              'tell-story__option',
+              option === 2 ? 'tell-story__option_active' : '',
+            ]"
+            @click="secondOption"
+          >
             2-й вариант
           </li>
         </ul>
         <div class="tell-story__container-info">
           <p class="tell-story__description">
-            Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-            историю после проверки. Пожалуйста, заполняйте все пункты корректно,
-            если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
+            {{ optionText }}
           </p>
           <MiddleButton
             class="tell-story__middle-button"
-            @click="showPopup"
-            text="Заполнить форму"
+            @click="option === 1 ? showPopupQuiz() : showPopupContactMe()"
+            :text="option === 1 ? 'Заполнить форму' : 'Оставить контакт'"
           >
           </MiddleButton>
         </div>
@@ -49,14 +59,34 @@ export default {
     SectionDescription,
     MiddleButton,
   },
-  props: {
-  },
+  props: {},
   data() {
     return {};
   },
   methods: {
-    showPopup() {
+    showPopupQuiz() {
       this.$store.commit('popup/openPopup');
+      this.$store.dispatch('quiz/showQuiz');
+    },
+    showPopupContactMe() {
+      this.$store.commit('popup/openPopup');
+      this.$store.dispatch('contactMe/showContactMe');
+    },
+    firstOption(event) {
+      event.preventDefault();
+      this.$store.dispatch('tellStory/chooseFirstOption');
+    },
+    secondOption(event) {
+      event.preventDefault();
+      this.$store.dispatch('tellStory/chooseSecondOption');
+    },
+  },
+  computed: {
+    option() {
+      return this.$store.getters['tellStory/getStateOption'];
+    },
+    optionText() {
+      return this.$store.getters['tellStory/getStateOptionText'];
     },
   },
 };
@@ -77,28 +107,29 @@ export default {
   justify-content: space-between;
 }
 
-.tell-story__container-variants {
+.tell-story__container-options {
   max-width: 59.46969716%;
   display: flex;
   justify-content: space-between;
 }
 
-.tell-story__variants {
+.tell-story__options {
   padding: 0;
   margin-right: 35px;
   list-style-type: none;
 }
 
-.tell-story__variant {
+.tell-story__option {
   min-width: 110px;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   color: #a2a2a2;
+  cursor: pointer;
 }
 
-.tell-story__variant_active {
+.tell-story__option_active {
   color: #000000;
 }
 
@@ -121,7 +152,7 @@ export default {
     padding: 90px 0;
   }
 
-  .tell-story__container-variants {
+  .tell-story__container-options {
     max-width: 60.593220339%;
   }
 }
@@ -131,16 +162,16 @@ export default {
     padding: 80px 0;
   }
 
-  .tell-story__container-variants {
+  .tell-story__container-options {
     max-width: 61.255411255%;
   }
 
-  .tell-story__variants {
+  .tell-story__options {
     font-size: 15px;
     margin-right: 30px;
   }
 
-  .tell-story__variant {
+  .tell-story__option {
     min-width: 90px;
     font-size: 15px;
     line-height: 19px;
@@ -163,7 +194,7 @@ export default {
     flex-direction: column;
   }
 
-  .tell-story__container-variants {
+  .tell-story__container-options {
     max-width: 382px;
     margin: auto;
     flex-direction: column;
@@ -174,7 +205,7 @@ export default {
     margin-bottom: 80px;
   }
 
-  .tell-story__variants {
+  .tell-story__options {
     max-width: 210px;
     display: flex;
     margin-bottom: 24px;
@@ -195,7 +226,7 @@ export default {
     margin-bottom: 40px;
   }
 
-  .tell-story__variant {
+  .tell-story__option {
     font-size: 13px;
   }
 

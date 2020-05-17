@@ -23,6 +23,7 @@ export default {
     showPopup(event) {
       event.preventDefault();
       this.$store.commit('popup/openPopup');
+      this.$store.dispatch('quiz/showQuiz');
     },
   },
 };

@@ -1,4 +1,5 @@
 export const state = () => ({
+  isShowQuiz: false,
   numberCurrentQuestion: 1,
   dataQuestion: [
     {
@@ -74,8 +75,10 @@ export const state = () => ({
 
 export const mutations = {
   setStateCurrentQuestion(state, { numberCurrentQuestion }) {
-    console.log(state.numberCurrentQuestion);
     state.numberCurrentQuestion = numberCurrentQuestion;
+  },
+  setStateShown(state, value) {
+    state.isShowQuiz = value;
   },
 };
 
@@ -100,9 +103,23 @@ export const actions = {
       });
     }
   },
+  resetNumberCurrentQuestion({ state, commit }) {
+    commit('setStateCurrentQuestion', {
+      numberCurrentQuestion: 1,
+    });
+  },
+  showQuiz({ commit }) {
+    commit('setStateShown', true);
+  },
+  hideQuiz({ commit }) {
+    commit('setStateShown', false);
+  },
 };
 
 export const getters = {
+  getStateShown(state) {
+    return state.isShowQuiz;
+  },
   getNumberCurrentQuestion(state) {
     return state.numberCurrentQuestion;
   },

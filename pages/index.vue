@@ -11,7 +11,7 @@
       <statistika class="content__statistika"></statistika>
     </container>
     <about-us></about-us>
-    <Popup v-if="isShowPopup"> </Popup>
+    <popup v-if="isShowPopup"> </popup>
     <!--<last-popup></last-popup НУЖНО ПЕРЕРАБОТАТЬ ДАННЫЙ ПОПАП>-->
   </main>
 </template>
@@ -40,7 +40,7 @@ export default {
     statistika: Statistika,
     'tell-story': TellStory,
     'main-video': MainVideo,
-    Popup,
+    "popup": Popup
   },
   methods: {},
   computed: {

@@ -3,25 +3,17 @@
     <main-header></main-header>
     <nuxt />
     <main-footer></main-footer>
-    <main-social-media v-if="getSocialMediaShown"></main-social-media>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SocialMedia from '@/components/SocialMedia';
 
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
-    'main-social-media': SocialMedia,
-  },
-  computed: {
-    getSocialMediaShown() {
-      return this.$store.getters['SocialMedia/getSocialMediaShown'];
-    },
   },
 };
 </script>

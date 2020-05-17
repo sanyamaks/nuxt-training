@@ -1,26 +1,58 @@
 <template>
   <div class="popup">
-    <div class="popup-content">
-      <button class="popup__close-button" @click="closePopup">
-        <img src="./../assets/icon-close-button.svg" alt="close" />
-      </button>
-      <Quiz></Quiz>
+    <div
+      :class="['popup-content', isShowSocialMedia ? 'popup-content_share' : '']"
+    >
+      <close-button
+        class="popup__close-button"
+        v-if="!isShowThanksSlide"
+        @click="closePopup"
+      ></close-button>
+      <quiz v-if="isShowQuiz"></quiz>
+      <social-media v-if="isShowSocialMedia"></social-media>
+      <thanks-slide v-if="isShowThanksSlide"></thanks-slide>
+      <contact-me v-if="isShowContactMe"></contact-me>
     </div>
   </div>
 </template>
 
 <script>
 import Quiz from '@/components/Quiz';
+import CloseButton from '@/components/ui/CloseButton';
+import SocialMedia from '@/components/SocialMedia';
+import ThanksSlide from '@/components/ThanksSlide';
+import ContactMe from '@/components/ContactMe';
 
 export default {
   components: {
-    Quiz,
+    'close-button': CloseButton,
+    quiz: Quiz,
+    'social-media': SocialMedia,
+    'thanks-slide': ThanksSlide,
+    'contact-me': ContactMe,
   },
   props: {},
   methods: {
-    closePopup(e) {
-      e.preventDefault();
+    closePopup() {
       this.$store.commit('popup/closePopup');
+      this.$store.dispatch('SocialMedia/hideSocialMedia');
+      this.$store.dispatch('quiz/hideQuiz');
+      this.$store.dispatch('quiz/resetNumberCurrentQuestion');
+      this.$store.dispatch('contactMe/hideContactMe');
+    },
+  },
+  computed: {
+    isShowQuiz() {
+      return this.$store.getters['quiz/getStateShown'];
+    },
+    isShowSocialMedia() {
+      return this.$store.getters['SocialMedia/getStateShown'];
+    },
+    isShowThanksSlide() {
+      return this.$store.getters['thanksSlide/getStateShown'];
+    },
+    isShowContactMe() {
+      return this.$store.getters['contactMe/getStateShown'];
     },
   },
 };
@@ -50,15 +82,19 @@ export default {
   padding: 40px;
 }
 
+.popup-content_share {
+  height: 324px;
+}
+
 .popup__close-button {
-  padding: 0;
+  /*padding: 0;*/
   position: absolute;
   top: 35px;
   right: 35px;
-  border: none;
-  background: unset;
-  outline: none;
-  cursor: pointer;
+  /*border: none;*/
+  /*background: unset;*/
+  /*outline: none;*/
+  /*cursor: pointer;*/
   z-index: 2;
 }
 

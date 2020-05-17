@@ -1,6 +1,6 @@
 <template>
   <div class="quiz">
-    <SectionTitle>{{ question.title }}</SectionTitle>
+    <h2 class="quiz__title">{{ question.title }}</h2>
     <p class="quiz__question">
       {{ question.question }}
       <span class="quiz__explanation-question">{{
@@ -11,13 +11,13 @@
       <input class="quiz__answer" placeholder="Напишите тут" />
       <!--Заменить на компонент Input-->
       <div class="quiz__button-container">
-        <ReturnButton @click="prevQuestion">Назад</ReturnButton>
-        <MiddleButton
+        <return-button @click="prevQuestion">Назад</return-button>
+        <middle-button
           class="quiz__middle-button"
           @click="nextQuestion"
           :text="dataQuestionLength !== numberQuestion ? 'Далее' : 'Отправить'"
           type="submit"
-        ></MiddleButton>
+        ></middle-button>
         <p
           v-if="dataQuestionLength === numberQuestion"
           class="quiz__personal-data-processing"
@@ -39,14 +39,20 @@ import ReturnButton from '@/components/ui/ReturnButton';
 
 export default {
   components: {
-    SectionTitle,
-    MiddleButton,
-    ReturnButton,
+    "section-title": SectionTitle,
+    "middle-button": MiddleButton,
+    "return-button": ReturnButton
   },
   props: {},
   methods: {
     nextQuestion() {
-      this.$store.dispatch('quiz/incrementNumberCurrentQuestion');
+      if (this.dataQuestionLength !== this.numberQuestion) {
+        this.$store.dispatch('quiz/incrementNumberCurrentQuestion');
+      } else {
+        this.$store.dispatch('quiz/hideQuiz');
+        this.$store.dispatch('quiz/resetNumberCurrentQuestion');
+        this.$store.dispatch('thanksSlide/showThanksSlide');
+      }
     },
     prevQuestion() {
       this.$store.dispatch('quiz/decrementNumberCurrentQuestion');
@@ -72,6 +78,13 @@ export default {
   height: 100%;
   width: 100%;
 }
+
+.quiz__title{
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+}
+
 .quiz__question {
   position: absolute;
   top: 76px;
