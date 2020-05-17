@@ -1,10 +1,10 @@
 <template>
   <div class="quiz">
-    <SectionTitle>{{ dataQuiz[currentQuestion - 1].title }}</SectionTitle>
+    <SectionTitle>{{ question.title }}</SectionTitle>
     <p class="quiz__question">
-      {{ dataQuiz[currentQuestion - 1].question }}
+      {{ question.question }}
       <span class="quiz__explanation-question">{{
-        dataQuiz[currentQuestion - 1].explanationQuestion
+        question.explanationQuestion
       }}</span>
     </p>
     <form class="quiz__form">
@@ -15,11 +15,11 @@
         <MiddleButton
           class="quiz__middle-button"
           @click="nextQuestion"
-          :text="dataQuiz.length !== currentQuestion ? 'Далее' : 'Отправить'"
+          :text="dataQuestionLength !== numberQuestion ? 'Далее' : 'Отправить'"
           type="submit"
         ></MiddleButton>
         <p
-          v-if="dataQuiz.length === currentQuestion"
+          v-if="dataQuestionLength === numberQuestion"
           class="quiz__personal-data-processing"
         >
           Нажимая на кнопку «отправить», вы даете согласие на
@@ -43,13 +43,26 @@ export default {
     MiddleButton,
     ReturnButton,
   },
-  props: {
-    dataQuiz: Array,
-    currentQuestion: Number,
-    nextQuestion: Function,
-    prevQuestion: Function,
+  props: {},
+  methods: {
+    nextQuestion() {
+      this.$store.dispatch('quiz/incrementNumberCurrentQuestion');
+    },
+    prevQuestion() {
+      this.$store.dispatch('quiz/decrementNumberCurrentQuestion');
+    },
   },
-  methods: {},
+  computed: {
+    question() {
+      return this.$store.getters['quiz/getQuestion'];
+    },
+    dataQuestionLength() {
+      return this.$store.getters['quiz/getLengthDataQuestion'];
+    },
+    numberQuestion() {
+      return this.$store.getters['quiz/getNumberCurrentQuestion'];
+    },
+  },
 };
 </script>
 
