@@ -1,14 +1,16 @@
 <template>
   <nav class="menu">
-    <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
+    <nuxt-link to="/" class="menu__link menu__link_active">Главная</nuxt-link>
     <nuxt-link to="/stories" class="menu__link">Истории</nuxt-link>
     <nuxt-link
       to="#"
       class="menu__link"
       v-if="isLastButtonShown"
       @click.native="showPopup"
-      >Рассказать историю</nuxt-link
     >
+      Рассказать историю
+    </nuxt-link>
+    <button class="menu__bar"></button>
   </nav>
 </template>
 
@@ -27,65 +29,61 @@ export default {
 </script>
 
 <style scoped>
+.menu {
+  width: 410px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .menu__link {
-  padding-right: 40px;
-  font-size: 18px;
-  line-height: 24px;
   color: #000000;
-  text-decoration: none;
+  font-size: 18px;
   font-weight: normal;
+  text-decoration: none;
 }
-.menu__link.nuxt-link-exact-active {
-  text-decoration-line: underline;
+
+.menu__link_active {
+  border-bottom: solid 2px black;
 }
-.menu__link_disabled {
+
+.menu__bar {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: none;
   display: none;
+  cursor: pointer;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='612' height='612'%3E%3Cpath d='M604.267 194.727c4.257 0 7.733-3.644 7.733-7.733v-40.169c0-4.256-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.644-7.733 7.733v40.169c0 4.256 3.283 7.733 7.733 7.733h596.534zM0 326.084c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.284-3.283-7.733-7.733-7.733H7.733c-4.256 0-7.733 3.645-7.733 7.733v40.169zM0 465.175c0 4.256 3.283 7.733 7.733 7.733h596.533c4.256 0 7.733-3.645 7.733-7.733v-40.169c0-4.256-3.283-7.732-7.733-7.732H7.733c-4.256 0-7.733 3.644-7.733 7.732v40.169z'/%3E%3C/svg%3E");
 }
 
-.menu__link:hover {
-  color: #121212;
-  opacity: 0.8;
-}
+@media screen and (max-width: 1280px) {
+  .menu {
+    width: 374px;
+  }
 
-.menu__link:last-of-type {
-  padding-right: 0;
+  .menu__link {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-  .menu__link {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }
 
 @media screen and (max-width: 768px) {
   .menu {
-    display: flex;
-    flex-direction: column;
+    width: auto;
+    justify-content: flex-end;
   }
 
   .menu__link {
-    padding-right: 0;
-
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 14px;
+    display: none;
   }
-
-  .menu__link:last-of-type {
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (max-width: 390px) {
-  .menu {
-    flex-direction: row;
-    padding-top: 20px;
-  }
-
-  .menu__link {
-    line-height: 2;
-    padding-right: 20px;
+  .menu__bar {
+    display: inline-block;
   }
 }
 </style>

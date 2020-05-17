@@ -125,7 +125,6 @@ export default {
 
 .story {
   width: 100%;
-  padding: 100px 0;
 }
 
 .story__person {
