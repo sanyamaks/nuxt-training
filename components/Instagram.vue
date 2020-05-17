@@ -150,7 +150,6 @@ export default {
 
   .instagram__section-title {
     max-width: unset;
-    align-self: center;
   }
 
   .instagram__section-description {
@@ -160,6 +159,19 @@ export default {
 
   .instagram__items {
     grid-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .instagram__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .instagram__section-description {
+    margin-bottom: 15px;
+    margin-bottom: 40px;
   }
 }
 </style>

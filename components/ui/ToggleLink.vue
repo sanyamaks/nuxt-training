@@ -42,14 +42,19 @@ export default {
   font-size: 18px;
   line-height: 22px;
   text-align: right;
-
   cursor: pointer;
-
   color: #a2a2a2;
 }
 
 .toggle__radio:checked + .toggle__label {
   font-weight: 500;
   color: #ffffff;
+}
+
+@media screen and (max-width: 320px) {
+  .toggle__label {
+    font-size: 13px;
+    line-height: 19px;
+  }
 }
 </style>

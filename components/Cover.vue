@@ -34,7 +34,7 @@ export default {};
 .cover__arrow {
   position: absolute;
   bottom: 40px;
-  left: 50%;
+  left: calc(50% - 13px);
   width: 36px;
   height: 14px;
   background-repeat: no-repeat;

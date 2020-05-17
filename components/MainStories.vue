@@ -112,4 +112,20 @@ export default {
     margin-bottom: 60px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .main-stories__container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .main-stories__section-title {
+    margin-bottom: 40px;
+  }
+
+  .main-stories__stories-button {
+    font-size: 13px;
+  }
+}
 </style>

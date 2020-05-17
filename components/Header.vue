@@ -56,4 +56,18 @@ export default {
     padding: 0 40px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .header {
+    min-height: 64px;
+    padding: 0 15px;
+  }
+
+  .header__logo {
+    max-width: 220px;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0;
+  }
+}
 </style>
