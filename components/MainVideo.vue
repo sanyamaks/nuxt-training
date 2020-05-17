@@ -55,9 +55,7 @@ export default {
 
 <style scoped>
 .main-video {
-  max-width: 1440px;
-  margin: auto;
-  padding: 100px 60px 75px 60px;
+  width: 100%;
 }
 
 .main-video__container {
@@ -133,10 +131,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .main-video {
-    padding: 100px 50px 75px 50px;
-  }
-
   .main-video__video {
     height: 400px;
   }
@@ -158,10 +152,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .main-video {
-    padding: 100px 50px 75px 50px;
-  }
-
   .main-video__container {
     width: 100%;
     display: flex;

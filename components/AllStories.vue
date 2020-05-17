@@ -76,7 +76,6 @@ export default {
 <style scoped>
 .all-stories {
   width: 100%;
-  margin: auto;
 }
 
 .all-stories__container {

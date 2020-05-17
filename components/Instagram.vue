@@ -60,9 +60,7 @@ export default {
 
 <style scoped>
 .instagram {
-  margin: auto;
-  max-width: 1440px;
-  padding: 100px 60px;
+  width: 100%;
 }
 
 .instagram__container {
@@ -120,10 +118,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .instagram {
-    padding: 90px 50px;
-  }
-
   .instagram__section-description {
     margin-top: 30px; /* PP */
     margin-right: 27px;
@@ -145,10 +139,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .instagram {
-    padding: 80px 40px;
-  }
-
   .instagram__container {
     display: flex;
     flex-direction: column;

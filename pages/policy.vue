@@ -1,35 +1,49 @@
 <template>
-  <section class="policy">
-    <h1 class="policy__title">
-      Политика проекта в отношении обработки персональных данных.
-    </h1>
+  <main class="content">
+    <container>
+      <section class="policy">
+        <h1 class="policy__title">
+          Политика проекта в отношении обработки персональных данных.
+        </h1>
 
-    <ol class="policy__items">
-      <li class="policy__section" v-for="section in policy" :key="section.id">
-        <h2 class="policy__section-title">{{ section.title }}</h2>
-
-        <p class="policy__section-text" v-if="section.description">
-          {{ section.description }}
-        </p>
-
-        <ol class="policy__clauses">
+        <ol class="policy__items">
           <li
-            class="policy__clause"
-            v-for="clause in section.clauses"
-            :key="clause.id"
+            class="policy__section"
+            v-for="section in policy"
+            :key="section.id"
           >
-            <p class="policy__section-text">
-              {{ clause.text }}
+            <h2 class="policy__section-title">{{ section.title }}</h2>
+
+            <p class="policy__section-text" v-if="section.description">
+              {{ section.description }}
             </p>
+
+            <ol class="policy__clauses">
+              <li
+                class="policy__clause"
+                v-for="clause in section.clauses"
+                :key="clause.id"
+              >
+                <p class="policy__section-text">
+                  {{ clause.text }}
+                </p>
+              </li>
+            </ol>
           </li>
         </ol>
-      </li>
-    </ol>
-  </section>
+      </section>
+    </container>
+  </main>
 </template>
 
 <script>
+import Container from '../components/Container';
+
 export default {
+  components: {
+    container: Container,
+  },
+
   data() {
     return {
       policy: [
@@ -282,10 +296,13 @@ export default {
 </script>
 
 <style scoped>
+.content {
+  padding: 130px 0 230px;
+}
+
 .policy {
-  max-width: 900px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 130px 60px 230px; /* PP */
 }
 
 .policy__title {
@@ -368,8 +385,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .policy {
-    max-width: 800px;
-    padding: 130px 50px 230px; /* PP */
+    max-width: 700px;
   }
 
   .policy__title {
@@ -386,8 +402,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .policy {
-    max-width: 740px;
-    padding: 130px 50px 230px; /* PP */
+    max-width: 640px;
   }
 
   .policy__title {
@@ -399,12 +414,6 @@ export default {
   .policy__section {
     font-size: 18px;
     line-height: 27px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .policy {
-    padding: 130px 40px 230px; /* PP */
   }
 }
 </style>

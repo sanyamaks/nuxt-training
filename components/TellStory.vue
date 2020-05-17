@@ -61,10 +61,8 @@ export default {
 
 <style scoped>
 .tell-story {
-  max-width: 1440px;
-  padding: 0 60px;
-  margin: 0 auto;
-  background-color: #f7f7f7;
+  width: 100%;
+  padding: 100px 0;
 }
 
 .tell-story__section-title {
@@ -117,7 +115,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .tell-story {
-    padding: 90px 50px;
+    padding: 90px 0;
   }
 
   .tell-story__container-variants {
@@ -127,7 +125,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .tell-story {
-    padding: 80px 50px;
+    padding: 80px 0;
   }
 
   .tell-story__container-variants {
@@ -152,10 +150,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .tell-story {
-    padding: 80px 40px;
-  }
-
   .tell-story__section-title {
     margin: auto;
     margin-bottom: 26px;

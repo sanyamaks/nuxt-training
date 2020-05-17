@@ -84,10 +84,10 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .statistika {
-  max-width: 1440px;
-  padding: 100px 60px;
+  width: 100%;
 }
 
 .statistika__card {
@@ -130,10 +130,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .statistika {
-    padding: 90px 50px;
-  }
-
   .stat-card {
     padding: 18px;
   }
@@ -155,10 +151,6 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-  .statistika {
-    padding: 80px 50px 90px 50;
-  }
-
   .stat-card {
     padding: 10px;
   }
