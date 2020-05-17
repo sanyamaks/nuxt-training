@@ -70,4 +70,11 @@ export default {
     line-height: 16px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .stories-card__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
 </style>

@@ -197,4 +197,10 @@ export default {
     margin: auto;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .section-title.statistika__section-title {
+    margin-bottom: 40px;
+  }
+}
 </style>

@@ -35,6 +35,7 @@ export default {};
 
 .banner__hashtag {
   margin: 0;
+  font-size: 40px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -52,6 +53,10 @@ export default {};
     font-size: 28px;
     line-height: 46px;
   }
+
+  .banner__hashtag {
+    font-size: 38px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -62,6 +67,10 @@ export default {};
   .banner__title {
     font-size: 24px;
     line-height: 40px;
+  }
+
+  .banner__hashtag {
+    font-size: 34px;
   }
 }
 
@@ -74,9 +83,20 @@ export default {};
     font-size: 22px;
     line-height: 36px;
   }
+
+  .banner__hashtag {
+    font-size: 32px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-  /*  Дополнить в соответсвии с мобильным макетом  */
+  .banner__title {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .banner__hashtag {
+    font-size: 22px;
+  }
 }
 </style>

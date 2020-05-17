@@ -86,4 +86,11 @@ export default {
     display: inline-block;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .menu__bar {
+    width: 26px;
+    height: 26px;
+  }
+}
 </style>

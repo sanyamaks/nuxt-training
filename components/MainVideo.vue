@@ -20,12 +20,14 @@
         </div>
       </div>
       <div class="main-video__video-box">
-        <iframe class="main-video__video" src=""> </iframe>
-        <img
-          class="main-video__icon"
-          src="../static/images/icon_play.png"
-          alt="Play icon"
-        />
+        <div class="main-video__video-wrapper">
+          <iframe class="main-video__video" src=""> </iframe>
+          <img
+            class="main-video__icon"
+            src="../static/images/icon_play.png"
+            alt="Play icon"
+          />
+        </div>
         <p class="main-video__desc">
           Все видео вы можете найте на нашем
           <a
@@ -66,6 +68,9 @@ export default {
 
 .main-video__video-box {
   width: 65.681818182%;
+}
+
+.main-video__video-wrapper {
   position: relative;
 }
 
@@ -161,7 +166,6 @@ export default {
 
   .main-video__section-title {
     margin: auto;
-    text-align: center;
     margin-bottom: 26px;
   }
 
@@ -185,6 +189,35 @@ export default {
     margin-bottom: 0;
     position: relative;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main-video__section-title {
+    margin-bottom: 16px;
+  }
+
+  .main-video__video-box {
+    width: 100%;
+  }
+
+  .main-video__video {
+    height: 150px;
+  }
+
+  .main-video__icon {
+    width: 38px;
+    height: 38px;
+    top: calc(50% - 19px);
+    left: calc(50% - 19px);
+  }
+
+  .main-video__controls {
+    top: 95px;
+  }
+
+  .main-video__desc {
+    font-size: 10px;
   }
 }
 </style>
