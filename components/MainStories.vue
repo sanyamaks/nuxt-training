@@ -61,9 +61,7 @@ export default {
 
 <style scoped>
 .main-stories {
-  max-width: 1440px;
-  margin: auto;
-  padding: 100px 60px;
+  width: 100%;
 }
 
 .main-stories__container {
@@ -80,10 +78,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .main-stories {
-    padding: 100px 50px;
-  }
-
   .main-stories__container {
     grid-row-gap: 60px;
     margin-bottom: 60px;
@@ -106,10 +100,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .main-stories {
-    padding: 100px 40px;
-  }
-
   .main-stories__container {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto auto;

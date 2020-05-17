@@ -46,8 +46,9 @@ export default {
 
 <style scoped>
 .footer {
-  margin: auto;
+  max-width: 1440px;
   min-height: 356px;
+  margin: auto;
   padding: 60px;
   display: flex;
   align-items: stretch;
@@ -55,7 +56,6 @@ export default {
 }
 
 .footer__container {
-  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   display: flex;
