@@ -1,5 +1,5 @@
 <template>
-  <div class="toggle about-us__toggle">
+  <div class="toggle">
     <input
       type="radio"
       class="toggle__radio"
