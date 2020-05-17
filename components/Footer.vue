@@ -2,22 +2,29 @@
   <footer class="footer">
     <section class="footer__container">
       <div class="footer__half">
-        <section-title class="footer__title">
-          Спасибо всем, кто помог состояться этому проекту
-        </section-title>
-
-        <main-menu class="footer__nav" :isLastButtonShown="false" />
-
+        <div class="footer__box">
+          <h2 class="footer__title">
+            Спасибо всем, кто помог состояться этому проекту
+          </h2>
+          <div class="footer__navigation">
+            <nuxt-link to="/" class="footer__link menu__link_active">
+              Главная
+            </nuxt-link>
+            <nuxt-link to="/stories" class="footer__link">
+              Истории
+            </nuxt-link>
+          </div>
+        </div>
         <div class="footer__links">
           <p class="footer__text footer__text_type_link">
             Мы в
-            <nuxt-link to="/" class="footer__link" target="_blank"
-              >Инстаграме</nuxt-link
-            >
+            <nuxt-link to="/" class="footer__link" target="_blank">
+              Инстаграме
+            </nuxt-link>
             и
-            <nuxt-link to="/" class="footer__link" target="_blank"
-              >Youtube</nuxt-link
-            >
+            <nuxt-link to="/" class="footer__link" target="_blank">
+              Youtube
+            </nuxt-link>
           </p>
           <nuxt-link to="/" class="footer__link">Поделитесь &#8599;</nuxt-link>
         </div>
@@ -68,105 +75,133 @@ export default {
   justify-content: space-between;
 }
 
-.footer__title {
-  max-width: 265px;
+.footer__box {
+  display: flex;
 }
 
-.footer__nav {
-  margin-left: 113px; /* PP */
-  margin-right: auto;
+.footer__navigation {
+  display: flex;
+}
+
+.footer__navigation .footer__link:first-child {
+  margin-right: 40px;
+}
+
+.footer__title {
+  max-width: 310px;
+  min-width: 228px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  margin-right: 143px;
+}
+
+.footer__link {
+  color: #000000;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  opacity: 0.8;
 }
 
 .footer__links {
   max-width: 300px;
-  width: 100%;
-
   display: flex;
   flex-direction: column;
 }
 
 .footer__text {
   font-size: 18px;
-  line-height: 18px;
   color: #898989;
 }
 
 .footer__text_type_link {
-  line-height: 24px;
   color: #000000;
   margin-bottom: 44px;
-}
-
-.footer__link {
-  line-height: inherit;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.footer__link:hover {
-  color: #121212;
-
-  opacity: 0.8;
 }
 
 @media screen and (max-width: 1280px) {
   .footer {
     padding: 50px;
+    min-height: 316px;
   }
 
-  .footer__nav {
-    margin-left: 102px; /* PP */
+  .footer__title {
+    max-width: 280px;
+    font-size: 28px;
+    line-height: 32px;
+    margin-right: 137px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .footer__nav {
-    margin-left: 0px; /* PP */
+  .footer {
+    min-height: 292px;
+  }
+
+  .footer__title {
+    max-width: 230px;
+    font-size: 24px;
+    line-height: 28px;
+    margin-right: 90px;
   }
 
   .footer__links {
     max-width: 225px;
   }
 
+  .footer__link {
+    font-size: 16px;
+  }
+
+  .footer__navigation .footer__link:first-child {
+    margin-right: 30px;
+  }
+
   .footer__text {
     font-size: 16px;
-    line-height: 18px;
   }
 
   .footer__text_type_link {
-    line-height: 24px;
     margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer__title {
+    margin-right: 30px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .footer__title {
-    text-align: left;
-  }
-
-  .footer__nav {
-    margin-left: 30px; /* PP */
-  }
-
-  .footer__text {
-    font-size: 16px;
-    line-height: 18px;
-  }
-
-  .footer__links {
-    max-width: 225px;
+    margin-right: 62px;
   }
 
   .footer__text_type_link {
-    line-height: 24px;
-    margin-bottom: 14px; /* PP */
+    margin-bottom: 14px;
+  }
+
+  .footer__navigation {
+    flex-direction: column;
+  }
+
+  .footer__navigation .footer__link:first-child {
+    margin-bottom: 14px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .footer {
     padding: 12px;
+  }
+
+  .footer__half {
+    flex-direction: column;
   }
 }
 </style>
