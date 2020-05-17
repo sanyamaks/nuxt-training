@@ -182,4 +182,23 @@ export default {
     margin-bottom: 50px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .tell-story__section-title {
+    margin-bottom: 16px;
+  }
+
+  .tell-story__section-description {
+    margin-bottom: 40px;
+  }
+
+  .tell-story__variant {
+    font-size: 13px;
+  }
+
+  .tell-story__description {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
 </style>

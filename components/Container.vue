@@ -26,4 +26,10 @@ export default {};
     padding: 0 40px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 0 15px;
+  }
+}
 </style>

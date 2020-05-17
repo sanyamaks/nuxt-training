@@ -202,6 +202,35 @@ export default {
   }
 }
 
+@media screen and (max-width: 640px) {
+  .footer__title {
+    max-width: 290px;
+    margin: 0;
+    margin-bottom: 50px;
+  }
+
+  .footer__link {
+    margin-bottom: 14px;
+  }
+
+  .footer__text {
+    margin-bottom: 14px;
+  }
+
+  .footer__half {
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .footer__half:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .footer__box {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .footer {
     padding: 12px;

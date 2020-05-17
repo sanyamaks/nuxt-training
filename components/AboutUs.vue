@@ -86,14 +86,7 @@ export default {
 .about-us__container {
   margin: 0 auto;
   margin-top: 70px;
-  width: 100%;
   max-width: 1320px;
-
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-
   display: grid;
   grid-template-areas:
     'subtitle     .             .'
@@ -105,7 +98,6 @@ export default {
 
 .about-us__subtitle {
   grid-area: subtitle;
-
   color: #ffffff;
 }
 
@@ -123,12 +115,8 @@ export default {
 }
 
 .about-us__toggle-link {
-  text-align: right;
-  font-size: 18px;
-  line-height: 22px;
   text-decoration: none;
   color: #c9c9c9;
-
   margin-bottom: 10px;
 }
 
@@ -175,7 +163,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .about-us {
-    padding-top: 80px;
+    padding: 80px 40px;
   }
 
   .about-us__container {
@@ -220,6 +208,25 @@ export default {
 
   .about-us__toggle-link_active {
     border-bottom: 2px solid #fff;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-us {
+    padding: 80px 15px;
+  }
+
+  .about-us__foundaition {
+    letter-spacing: -0.5px;
+    margin-top: 16px;
+  }
+
+  .about-us__toggle-link {
+    margin-top: 40px;
+  }
+
+  .about-us__text-container {
+    margin-top: 20px;
   }
 }
 </style>

@@ -41,4 +41,13 @@ export default {};
     text-align: center;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .section-title {
+    max-width: 290px;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: left;
+  }
+}
 </style>
