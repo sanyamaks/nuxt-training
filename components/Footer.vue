@@ -214,7 +214,15 @@ export default {
     margin-bottom: 14px;
   }
 
-  .footer__text {
+  .footer__link:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .footer__navigation {
+    margin-bottom: 14px;
+  }
+
+  .footer__half .footer__text:first-child {
     margin-bottom: 14px;
   }
 
@@ -234,7 +242,7 @@ export default {
 
 @media screen and (max-width: 320px) {
   .footer {
-    padding: 50px 12px 36px;
+    padding: 50px 12px;
   }
 
   .footer__title {
