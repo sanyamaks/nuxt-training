@@ -33,7 +33,7 @@ export default {
 
 .stories-card__photoes {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   background-color: gray;
 }
 

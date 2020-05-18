@@ -44,12 +44,7 @@ export default {
 @media screen and (max-width: 1024px) {
   .middle-button {
     min-height: 46px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .middle-button {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 </style>
