@@ -234,7 +234,20 @@ export default {
 
 @media screen and (max-width: 320px) {
   .footer {
-    padding: 12px;
+    padding: 50px 12px 36px;
+  }
+
+  .footer__title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .footer__link {
+    font-size: 13px;
+  }
+
+  .footer__text {
+    font-size: 13px;
   }
 
   .footer__half {

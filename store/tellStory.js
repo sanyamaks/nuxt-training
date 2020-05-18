@@ -6,7 +6,8 @@ export const state = () => ({
         'Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.',
     },
     2: {
-      text: "Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории."
+      text:
+        'Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории.',
     },
   },
 });
@@ -14,11 +15,11 @@ export const state = () => ({
 export const mutations = {
   setStateOption(state, value) {
     state.option = value;
-  }
+  },
 };
 
 export const actions = {
-  chooseFirstOption({ commit}) {
+  chooseFirstOption({ commit }) {
     commit('setStateOption', 1);
   },
   chooseSecondOption({ commit }) {

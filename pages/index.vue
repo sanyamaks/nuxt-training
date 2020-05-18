@@ -40,7 +40,7 @@ export default {
     statistika: Statistika,
     'tell-story': TellStory,
     'main-video': MainVideo,
-    "popup": Popup
+    popup: Popup,
   },
   methods: {},
   computed: {
