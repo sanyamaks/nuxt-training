@@ -7,11 +7,11 @@
 <script>
 export default {
   methods: {
-    click(event){
+    click(event) {
       event.preventDefault();
       this.$emit('click');
-    }
-  }
+    },
+  },
 };
 </script>
 

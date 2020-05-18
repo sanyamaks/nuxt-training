@@ -39,9 +39,9 @@ import ReturnButton from '@/components/ui/ReturnButton';
 
 export default {
   components: {
-    "section-title": SectionTitle,
-    "middle-button": MiddleButton,
-    "return-button": ReturnButton
+    'section-title': SectionTitle,
+    'middle-button': MiddleButton,
+    'return-button': ReturnButton,
   },
   props: {},
   methods: {
@@ -79,7 +79,7 @@ export default {
   width: 100%;
 }
 
-.quiz__title{
+.quiz__title {
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;

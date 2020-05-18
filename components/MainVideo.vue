@@ -192,6 +192,27 @@ export default {
   }
 }
 
+@media screen and (max-width: 640px) {
+  .main-video__video-box {
+    width: 80%;
+  }
+
+  .main-video__video {
+    height: 250px;
+  }
+
+  .main-video__icon {
+    width: 38px;
+    height: 38px;
+    top: calc(50% - 19px);
+    left: calc(50% - 19px);
+  }
+
+  .main-video__controls {
+    top: 150px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .main-video__section-title {
     margin-bottom: 16px;
