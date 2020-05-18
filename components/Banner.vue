@@ -89,7 +89,7 @@ export default {};
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 460px) {
   .banner__title {
     font-size: 16px;
     line-height: 18px;

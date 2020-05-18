@@ -167,6 +167,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .footer {
+    padding: 40px;
+  }
+
   .footer__navigation {
     flex-direction: column;
   }
@@ -214,15 +218,9 @@ export default {
   }
 }
 
-@media screen and (max-width: 420px) {
-  .footer__text {
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .footer {
-    padding: 50px 12px;
+    padding: 40px 25px;
   }
 
   .footer__half {
@@ -236,6 +234,16 @@ export default {
 
   .footer__link {
     font-size: 13px;
+  }
+
+  .footer__text {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 40px 15px;
   }
 }
 </style>

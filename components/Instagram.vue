@@ -162,13 +162,15 @@ export default {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .instagram__items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
   }
+}
 
+@media screen and (max-width: 320px) {
   .instagram__section-description {
     margin-bottom: 15px;
     margin-bottom: 40px;

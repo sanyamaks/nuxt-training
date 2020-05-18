@@ -27,6 +27,12 @@ export default {};
   }
 }
 
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 0 25px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .container {
     padding: 0 15px;
