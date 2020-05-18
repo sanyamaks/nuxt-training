@@ -12,7 +12,7 @@
             доказательство — люди с их историями.
           </section-description>
         </div>
-        <div class="main-video__controls">
+        <div class="main-video__controls main-video__controls_big">
           <button class="main-video__control main-video__control_left"></button>
           <button
             class="main-video__control main-video__control_right"
@@ -27,6 +27,14 @@
             src="../static/images/icon_play.png"
             alt="Play icon"
           />
+          <div class="main-video__controls_small">
+            <button
+              class="main-video__control main-video__control_left"
+            ></button>
+            <button
+              class="main-video__control main-video__control_right"
+            ></button>
+          </div>
         </div>
         <p class="main-video__desc">
           Все видео вы можете найте на нашем
@@ -60,6 +68,12 @@ export default {
   width: 100%;
 }
 
+.main-video__video {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
 .main-video__container {
   width: 100%;
   display: flex;
@@ -71,6 +85,8 @@ export default {
 }
 
 .main-video__video-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
   position: relative;
 }
 
@@ -78,6 +94,15 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.main-video__icon {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 45px);
+  left: calc(50% - 45px);
 }
 
 .main-video__controls {
@@ -96,6 +121,10 @@ export default {
   background-color: transparent;
 }
 
+.main-video__controls_small {
+  display: none;
+}
+
 .main-video__control_left {
   background-image: url("data:image/svg+xml, %3Csvg height='128' width='128' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232f3435' stroke-width='12' stroke-linecap='square' stroke-miterlimit='10'%3E%3Cpath d='M87.5 111l-47-47M40.5 64l47-47'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -104,19 +133,12 @@ export default {
   background-image: url("data:image/svg+xml, %3Csvg height='128' width='128' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232f3435' stroke-width='12' stroke-linecap='square' stroke-miterlimit='10'%3E%3Cpath d='M40.5 17l47 47M87.5 64l-47 47'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-.main-video__video {
-  width: 100%;
-  height: 450px;
-  border: none;
+.main-video__section-title {
+  margin-bottom: 32px;
 }
 
-.main-video__icon {
-  width: 90px;
-  height: 90px;
-  cursor: pointer;
-  position: absolute;
-  top: calc(50% - 45px);
-  left: calc(50% - 45px);
+.main-video__description {
+  margin-bottom: 20px;
 }
 
 .main-video__desc {
@@ -131,10 +153,6 @@ export default {
   color: inherit;
 }
 
-.main-video__section-title {
-  margin-bottom: 32px;
-}
-
 @media screen and (max-width: 1280px) {
   .main-video__video {
     height: 400px;
@@ -143,6 +161,8 @@ export default {
   .main-video__icon {
     width: 76px;
     height: 76px;
+    top: calc(50% - 38px);
+    left: calc(50% - 38px);
   }
 }
 
@@ -151,8 +171,15 @@ export default {
     margin-bottom: 20px;
   }
 
+  .main-video__video-wrapper {
+    padding-bottom: 55%;
+  }
+
   .main-video__video {
-    height: 314px;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
   }
 }
 
@@ -173,32 +200,32 @@ export default {
     margin: auto;
   }
 
+  .main-video__description {
+    margin-bottom: 40px;
+  }
+
   .main-video__video-box {
     margin: auto;
     width: 84.302325581%;
   }
 
-  .main-video__video {
-    height: 300px;
-  }
-
-  .main-video__controls {
+  .main-video__controls_small {
     width: 100%;
     display: flex;
-    top: 170px;
-    margin-bottom: 0;
-    position: relative;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: 0;
     justify-content: space-between;
+  }
+
+  .main-video__controls_big {
+    display: none;
   }
 }
 
 @media screen and (max-width: 640px) {
   .main-video__video-box {
-    width: 80%;
-  }
-
-  .main-video__video {
-    height: 250px;
+    width: 100%;
   }
 
   .main-video__icon {
@@ -206,10 +233,6 @@ export default {
     height: 38px;
     top: calc(50% - 19px);
     left: calc(50% - 19px);
-  }
-
-  .main-video__controls {
-    top: 150px;
   }
 }
 
@@ -218,27 +241,8 @@ export default {
     margin-bottom: 16px;
   }
 
-  .main-video__video-box {
-    width: 100%;
-  }
-
-  .main-video__video {
-    height: 150px;
-  }
-
-  .main-video__icon {
-    width: 38px;
-    height: 38px;
-    top: calc(50% - 19px);
-    left: calc(50% - 19px);
-  }
-
-  .main-video__controls {
-    top: 95px;
-  }
-
   .main-video__desc {
-    font-size: 10px;
+    display: none;
   }
 }
 </style>

@@ -32,7 +32,7 @@ export default {
   computed: {
     showPersons() {
       if (process.browser) {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth > 425 && window.innerWidth <= 768) {
           return this.persons.filter((item, index) => index < 9);
         } else {
           return this.persons.filter((item, index) => index < 8);
@@ -109,6 +109,14 @@ export default {
 
   .main-stories__section-title {
     margin: auto;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main-stories__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
     margin-bottom: 60px;
   }
 }
