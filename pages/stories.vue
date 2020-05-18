@@ -34,4 +34,10 @@ export default {
     padding: 80px 0;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .content {
+    padding: 50px 0;
+  }
+}
 </style>
