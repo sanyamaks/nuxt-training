@@ -3,6 +3,10 @@
     <container>
       <section class="story">
         <div class="story__person">
+          <div class="story__copyright story__copyright_mobile">
+            <button type="button" class="story__share">Поделитесь ↗</button>
+            <time class="story__date">20 апреля 2018</time>
+          </div>
           <img
             class="story__photo"
             src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
@@ -13,9 +17,9 @@
               <span class="story__person-name">Александр Тарханов:</span>
               «Я не могу победить свою пунктуальность в отличии от рака»
             </h1>
-            <div class="story__copyright">
+            <div class="story__copyright story__copyright_desctop">
               <button type="button" class="story__share">Поделитесь ↗</button>
-              <span class="story__date">20 апреля 2018</span>
+              <time class="story__date">20 апреля 2018</time>
             </div>
           </div>
         </div>
@@ -62,7 +66,7 @@
             пунктуальность уже не лечится».
           </p>
           <button type="button" class="story__share story__share_long">
-            Поделитесь этой статьей в своих социальных сетях ↗
+            Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
           </button>
         </article>
         <div class="story__container">
@@ -96,7 +100,9 @@ export default {
   computed: {
     showPersons() {
       if (process.browser) {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 570) {
+          return this.persons.filter((item, index) => index < 2);
+        } else if (window.innerWidth <= 768) {
           return this.persons.filter((item, index) => index < 3);
         } else {
           return this.persons.filter((item, index) => index < 4);
@@ -150,6 +156,7 @@ export default {
   font-weight: 500;
   font-size: 38px;
   line-height: 48px;
+  letter-spacing: -0.5px;
 }
 
 .story__person-name {
@@ -162,6 +169,10 @@ export default {
   color: #121212;
   margin-bottom: 30px;
   justify-content: space-between;
+}
+
+.story__copyright_mobile {
+  display: none;
 }
 
 .story__share {
@@ -287,7 +298,7 @@ export default {
 
   .story__person {
     align-items: center;
-    margin-bottom: 195px;
+    margin-bottom: 120px;
     flex-direction: column-reverse;
   }
 
@@ -296,7 +307,6 @@ export default {
   }
 
   .story__title {
-    /* max-width: 640px; */
     margin: auto;
     margin-bottom: 40px;
     text-align: center;
@@ -304,14 +314,75 @@ export default {
 
   .story__photo {
     width: 61.046511628%;
+    margin-bottom: 60px;
   }
 
-  .story__copyright {
-    top: 500px;
-    margin: auto;
+  .story__copyright_desctop {
+    display: none;
+  }
+
+  .story__copyright_mobile {
     max-width: 640px;
-    position: relative;
+    display: flex;
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .story__photo {
+    width: 100%;
+  }
+
+  .story__article {
+    margin-bottom: 120px;
+  }
+
+  .story__title {
+    font-size: 25px;
+    line-height: 28px;
+    margin-bottom: 28px;
+  }
+
+  .story__share {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .story__date {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .story__text {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 15px;
+  }
+
+  .story__text:last-of-type {
+    margin-bottom: 60px;
+  }
+
+  .story__person {
+    margin-bottom: 60px;
+  }
+
+  .story__container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 30px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .content {
+    padding: 70px 0 50px 0;
+  }
+
+  .story__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 30px;
   }
 }
 </style>
