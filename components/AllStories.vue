@@ -11,14 +11,15 @@
     </form>
     <div class="all-stories__container">
       <stories-card
-        v-bind:person="item"
-        v-bind:key="item.id"
+        class="all-stories__stories-card"
         v-for="item in showPersons"
+        :key="item.id"
+        :person="item"
         @cardClick="goToDetail(item.id)"
       >
       </stories-card>
     </div>
-    <div class="all-stories__controls">
+    <!-- <div class="all-stories__controls">
       <button class="all-stories__control">1</button>
       <button class="all-stories__control">2</button>
       <button class="all-stories__control">3</button>
@@ -32,7 +33,14 @@
       <button class="all-stories__control all-stories__control_display_none">
         7
       </button>
-    </div>
+    </div> -->
+
+    <pagination
+      class="all-stories__pagination"
+      :totalItems="this.$store.state.allStories.persons.length"
+      :itemsPerPage="this.$store.state.allStories.itemsPerPage"
+      @onPageChanged="changeStartIndex"
+    />
   </section>
 </template>
 
@@ -40,52 +48,47 @@
 import StoriesCard from './ui/StoriesCard';
 import SectionTitle from './ui/SectionTitle';
 import MiddleButton from './ui/MiddleButton';
+import Pagination from '@/components/ui/Pagination';
 
 export default {
   components: {
     'stories-card': StoriesCard,
     'section-title': SectionTitle,
     'middle-button': MiddleButton,
+    pagination: Pagination,
   },
+
   methods: {
     goToDetail(id) {
       console.log(id);
       this.$router.push(`/stories/${id}`);
     },
-  },
-  computed: {
-    showPersons() {
-      if (process.browser) {
-        if (window.innerWidth <= 768) {
-          return this.persons.filter((item, index) => index < 12);
-        } else {
-          return this.persons.filter((item, index) => index < 16);
-        }
-      }
+
+    changeStartIndex(index) {
+      this.$store.dispatch('allStories/changeStartIndex', { index });
     },
   },
 
-  data() {
-    return {
-      persons: [
-        { name: 'Человек', quote: 'Цитата Человека', id: 1 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 2 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 3 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 4 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 5 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 6 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 7 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 8 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 9 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 10 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 11 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 12 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 13 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 14 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 15 },
-        { name: 'Человек', quote: 'Цитата Человека', id: 16 },
-      ],
-    };
+  mounted() {
+    this.$store.dispatch('allStories/changeItemsPerPage');
+    this.$store.dispatch('allStories/determineStoriesToShow'); // вот это наверное надо делать в store
+  },
+
+  computed: {
+    showPersons() {
+      return this.$store.getters['allStories/getStories'];
+    },
+
+    storiesToRender() {
+      const { allStories } = this.$store.state;
+      const filteredStories = allStories.persons.filter(
+        (item, index) =>
+          index >= this.startIndex &&
+          index <= this.startIndex + this.itemsPerPage - 1
+      );
+
+      return filteredStories;
+    },
   },
 };
 </script>
@@ -132,6 +135,10 @@ export default {
 .all-stories__search {
   width: calc(100% - 226px - 20px);
   min-height: 52px;
+}
+
+.all-stories__pagination {
+  margin: 0 auto;
 }
 
 .all-stories__controls {
