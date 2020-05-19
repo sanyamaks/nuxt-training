@@ -33,4 +33,14 @@ export default {};
     min-height: 50px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .stories-button {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
 </style>
