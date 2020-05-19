@@ -8,9 +8,9 @@
     <h3 class="stories-card__title">
       {{ person.name }}
     </h3>
-    <p class="stories-card__subtitle">
+    <blockquote class="stories-card__subtitle">
       {{ person.quote }}
-    </p>
+    </blockquote>
   </div>
 </template>
 
