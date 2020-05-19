@@ -3,9 +3,9 @@
     <h2 class="about-us__title">#РАКЛЕЧИТСЯ</h2>
 
     <div class="about-us__container">
-      <section-title class="about-us__subtitle">О проекте</section-title>
+      <section-title class="about-us__section-title">О проекте</section-title>
 
-      <section-description class="about-us__foundaition">
+      <section-description class="about-us__section-description">
         Этот проект был создан благотворительным фондом Константина Хабенского.
       </section-description>
 
@@ -89,21 +89,20 @@ export default {
   max-width: 1320px;
   display: grid;
   grid-template-areas:
-    'subtitle     .             .'
-    'foundation  toggle-links  text-container';
+    'section-title     .             .'
+    'section-description  toggle-links  text-container';
   grid-template-columns: 1fr 20% 50%;
   grid-column-gap: 40px;
   grid-row-gap: 32px;
 }
 
-.about-us__subtitle {
-  grid-area: subtitle;
+.about-us__section-title {
+  grid-area: section-title;
   color: #ffffff;
 }
 
-.about-us__foundaition {
-  grid-area: foundation;
-
+.about-us__section-description {
+  grid-area: section-description;
   color: #dedede;
 }
 
@@ -174,11 +173,16 @@ export default {
     align-items: center;
   }
 
+  .about-us__section-title {
+    width: 100%;
+    grid-area: unset;
+  }
+
   .about-us__title {
     display: none;
   }
 
-  .about-us__foundaition {
+  .about-us__section-description {
     margin-top: 26px;
     align-self: center;
   }
@@ -211,18 +215,24 @@ export default {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .about-us__toggle-link {
+    margin-top: 40px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .about-us {
     padding: 80px 15px;
   }
 
-  .about-us__foundaition {
-    letter-spacing: -0.5px;
-    margin-top: 16px;
+  .about-us__section-title {
+    text-align: left;
   }
 
-  .about-us__toggle-link {
-    margin-top: 40px;
+  .about-us__section-description {
+    letter-spacing: -0.5px;
+    margin-top: 16px;
   }
 
   .about-us__text-container {

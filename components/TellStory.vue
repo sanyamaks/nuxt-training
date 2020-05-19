@@ -215,6 +215,11 @@ export default {
   .tell-story__description {
     margin-bottom: 50px;
   }
+
+  .tell-story__middle-button {
+    margin: auto;
+    display: block;
+  }
 }
 
 @media screen and (max-width: 320px) {
