@@ -83,6 +83,9 @@ export const actions = {
   },
 
   changeItemsPerPage({ state, commit }) {
+    // if (window.innerWidth <= 320) {   //почему-то не срабатывает Math.max
+    //   commit('setItemsPerPage', 9);
+
     if (window.innerWidth <= 768) {
       commit('setItemsPerPage', 12);
     } else {
