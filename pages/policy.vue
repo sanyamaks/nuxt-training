@@ -416,4 +416,43 @@ export default {
     line-height: 27px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 110px 0 230px;
+  }
+
+  .policy__section {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .content {
+    padding: 70px 0;
+  }
+
+  .policy__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 60px;
+  }
+
+  .policy__section-title {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+
+  .policy__section-text {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+
+  .policy__clause {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
 </style>
