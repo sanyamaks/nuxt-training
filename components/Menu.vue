@@ -1,6 +1,6 @@
 <template>
   <nav class="menu">
-    <nuxt-link to="/" class="menu__link menu__link_active">Главная</nuxt-link>
+    <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/stories" class="menu__link">Истории</nuxt-link>
     <nuxt-link
       to="#"
@@ -43,7 +43,7 @@ export default {
   text-decoration: none;
 }
 
-.menu__link_active {
+.menu__link.nuxt-link-exact-active {
   border-bottom: solid 2px black;
 }
 
