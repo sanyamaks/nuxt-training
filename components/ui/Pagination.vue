@@ -18,7 +18,7 @@
       ></button>
 
       <ul class="pagination__items">
-        <li v-for="item in pagesCount" :key="item" class="pagination__item">
+        <li v-for="item in numberOfPages" :key="item" class="pagination__item">
           <button
             @click="setActive(item)"
             :class="[
@@ -43,7 +43,7 @@
       :class="[
         'pagination__link',
         {
-          pagination__link_inactive: active === maxPage,
+          pagination__link_inactive: active === lastPage,
         },
       ]"
       @click="jumpToPage(false)"
@@ -58,7 +58,8 @@ export default {
   data() {
     return {
       active: 1,
-      maxPage: 1,
+      maxPage: 5,
+      lastPage: 1,
     };
   },
 
@@ -81,7 +82,7 @@ export default {
 
     changeActivePage(increasing) {
       if (increasing) {
-        if (this.active != this.maxPage) this.active++;
+        if (this.active != this.lastPage) this.active++;
       } else {
         if (this.active != 1) this.active--;
       }
@@ -90,15 +91,20 @@ export default {
     },
 
     jumpToPage(First) {
-      First ? (this.active = 1) : (this.active = this.maxPage);
+      First ? (this.active = 1) : (this.active = this.lastPage);
       this.$emit('onPageChanged', this.active);
     },
+
+    // limitPages() {
+    //   if (this.lastPage > this.maxPage) return this.maxPage
+    //   return this.Page
+    // }
   },
 
   computed: {
-    pagesCount() {
-      this.maxPage = Math.max(this.totalItems / this.itemsPerPage);
-      return this.maxPage;
+    numberOfPages() {
+      this.lastPage = this.$store.getters['allStories/getNumberOfPages'];
+      return this.lastPage;
     },
   },
 };

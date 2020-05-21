@@ -37,8 +37,8 @@
 
     <pagination
       class="all-stories__pagination"
-      :totalItems="this.$store.state.allStories.persons.length"
-      :itemsPerPage="this.$store.state.allStories.itemsPerPage"
+      :totalItems="getTotalItems"
+      :itemsPerPage="getItemsPerPage"
       @onPageChanged="changeStartIndex"
     />
   </section>
@@ -77,6 +77,14 @@ export default {
   computed: {
     showPersons() {
       return this.$store.getters['allStories/getStories'];
+    },
+
+    getTotalItems() {
+      return this.$store.getters['allStories/getTotalItems'];
+    },
+
+    getItemsPerPage() {
+      return this.$store.getters['allStories/getItemsPerPage'];
     },
 
     storiesToRender() {
