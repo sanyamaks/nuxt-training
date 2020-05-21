@@ -53,6 +53,7 @@ export const state = () => ({
   ],
   startIndex: 0,
   itemsPerPage: 16,
+  numberOfPages: 0,
   storiesToShow: [],
 });
 
@@ -68,6 +69,10 @@ export const mutations = {
   setStartIndex(state, value) {
     state.startIndex = value;
   },
+
+  setNumberOfPages(state, value) {
+    state.numberOfPages = value;
+  },
 };
 
 export const actions = {
@@ -82,17 +87,27 @@ export const actions = {
     commit('setStoriesToShow', stroriesToShow);
   },
 
-  changeItemsPerPage({ state, commit }) {
-    // if (window.innerWidth <= 320) {   //почему-то не срабатывает Math.max
-    //   commit('setItemsPerPage', 9);
+  calcNumberOfPages({ state, commit }) {
+    const numperOfPages = Math.ceil(state.persons.length / state.itemsPerPage);
+    commit('setNumberOfPages', numperOfPages);
+  },
+
+  changeItemsPerPage({ state, commit, dispatch }) {
+    if (window.innerWidth <= 320) {
+      commit('setItemsPerPage', 9);
+      dispatch('calcNumberOfPages');
+      return state.itemsPerPage;
+    }
 
     if (window.innerWidth <= 768) {
       commit('setItemsPerPage', 12);
-    } else {
-      commit('setItemsPerPage', 16);
+      dispatch('calcNumberOfPages');
+      return state.itemsPerPage;
     }
+
+    commit('setItemsPerPage', 16);
+    dispatch('calcNumberOfPages');
     return state.itemsPerPage;
-    //dispatch('determineStoriesToShow');
   },
 
   changeStartIndex({ state, dispatch, commit }, { index }) {
@@ -107,5 +122,17 @@ export const actions = {
 export const getters = {
   getStories(state) {
     return state.storiesToShow;
+  },
+
+  getNumberOfPages(state) {
+    return state.numberOfPages;
+  },
+
+  getItemsPerPage(state) {
+    return state.itemsPerPage;
+  },
+
+  getTotalItems(state) {
+    return state.persons.length;
   },
 };
