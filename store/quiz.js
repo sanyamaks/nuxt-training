@@ -1,6 +1,7 @@
 export const state = () => ({
   isShowQuiz: false,
   numberCurrentQuestion: 1,
+  answer: {},
   dataQuestion: [
     {
       title: 'Шаг 1 из 12',
@@ -80,10 +81,16 @@ export const mutations = {
   setStateShown(state, value) {
     state.isShowQuiz = value;
   },
+  saveAnswer(state, { answer, numberCurrentQuestion }) {
+    state.answer[numberCurrentQuestion] = answer;
+  },
+  setInitialStateAnswers(state) {
+    state.answer = {};
+  },
 };
 
 export const actions = {
-  incrementNumberCurrentQuestion({ state, commit }) {
+  incrementNumberCurrentQuestion({ state, commit }, { answer }) {
     const { numberCurrentQuestion, dataQuestion } = state;
     if (numberCurrentQuestion > dataQuestion.length - 1) {
       return null;
@@ -91,6 +98,7 @@ export const actions = {
       commit('setStateCurrentQuestion', {
         numberCurrentQuestion: numberCurrentQuestion + 1,
       });
+      commit('saveAnswer', { answer, numberCurrentQuestion });
     }
   },
   decrementNumberCurrentQuestion({ state, commit }) {
@@ -107,6 +115,9 @@ export const actions = {
     commit('setStateCurrentQuestion', {
       numberCurrentQuestion: 1,
     });
+  },
+  resetAnswers({ commit }) {
+    commit('setInitialStateAnswers');
   },
   showQuiz({ commit }) {
     commit('setStateShown', true);
@@ -128,5 +139,8 @@ export const getters = {
   },
   getLengthDataQuestion(state) {
     return state.dataQuestion.length;
+  },
+  getAnswer(state) {
+    return state.answer[state.numberCurrentQuestion];
   },
 };

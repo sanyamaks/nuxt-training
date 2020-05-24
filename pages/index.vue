@@ -11,7 +11,7 @@
       <statistika class="content__statistika"></statistika>
     </container>
     <about-us></about-us>
-    <popup v-if="isShowPopup"> </popup>
+
     <!--<last-popup></last-popup НУЖНО ПЕРЕРАБОТАТЬ ДАННЫЙ ПОПАП>-->
   </main>
 </template>
@@ -25,7 +25,6 @@ import Statistika from '@/components/Statistika';
 import TellStory from '@/components/TellStory';
 import MainVideo from '@/components/MainVideo';
 import AboutUs from '@/components/AboutUs';
-import Popup from '@/components/Popup';
 import Container from '../components/Container';
 
 export default {
@@ -40,14 +39,8 @@ export default {
     statistika: Statistika,
     'tell-story': TellStory,
     'main-video': MainVideo,
-    popup: Popup,
   },
   methods: {},
-  computed: {
-    isShowPopup() {
-      return this.$store.getters['popup/getPopupShown'];
-    },
-  },
   data() {
     return {};
   },

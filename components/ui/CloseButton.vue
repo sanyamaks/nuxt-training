@@ -1,6 +1,6 @@
 <template>
   <button class="close-button" @click="click">
-    <img src="@/assets/icon-close-button.svg" alt="close" />
+    <img class="close-button__image" src="@/assets/icon-close-button.svg" alt="close" />
   </button>
 </template>
 
@@ -18,12 +18,21 @@ export default {
 <style scoped>
 .close-button {
   padding: 0;
-  /*top: 35px;*/
-  /*right: 35px;*/
   border: none;
   background: unset;
   outline: none;
   cursor: pointer;
-  /*z-index: 2;*/
+  object-fit: contain;
+}
+.close-button__image {
+  height: 28px;
+  width: 28px;
+}
+
+@media screen and (max-width: 1280px) {
+  .close-button__image {
+    height: 24px;
+    width: 24px;
+  }
 }
 </style>

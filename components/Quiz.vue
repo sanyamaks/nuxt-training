@@ -8,7 +8,12 @@
       }}</span>
     </p>
     <form class="quiz__form">
-      <input class="quiz__answer" placeholder="Напишите тут" />
+      <input
+        class="quiz__answer"
+        placeholder="Напишите тут"
+        @input="handleInput"
+        v-model="answer"
+      />
       <!--Заменить на компонент Input-->
       <div class="quiz__button-container">
         <return-button @click="prevQuestion">Назад</return-button>
@@ -23,8 +28,8 @@
           class="quiz__personal-data-processing"
         >
           Нажимая на кнопку «отправить», вы даете согласие на
-          <a class="quiz__personal-data-processing-url" href="#">
-            обработку персональных данных</a
+          <nuxt-link to="/privacy" class="quiz__personal-data-processing-url"
+            >обработку персональных данных</nuxt-link
           >
         </p>
       </div>
@@ -45,17 +50,33 @@ export default {
   },
   props: {},
   methods: {
+    handleInput() {
+      this.$emit('input', this.answer);
+    },
     nextQuestion() {
       if (this.dataQuestionLength !== this.numberQuestion) {
-        this.$store.dispatch('quiz/incrementNumberCurrentQuestion');
+        if (this.answer === '') {
+          return null;
+        } else {
+          this.$store.dispatch('quiz/incrementNumberCurrentQuestion', {
+            answer: this.answer,
+          });
+          this.answer = this.initialAnswer || '';
+        }
       } else {
         this.$store.dispatch('quiz/hideQuiz');
         this.$store.dispatch('quiz/resetNumberCurrentQuestion');
         this.$store.dispatch('thanksSlide/showThanksSlide');
+        this.sendAnswer();
       }
+    },
+    sendAnswer() {
+      //Вызвать метод из store, который будет отправлять данные
+      this.$store.dispatch('quiz/resetAnswers');
     },
     prevQuestion() {
       this.$store.dispatch('quiz/decrementNumberCurrentQuestion');
+      this.answer = this.initialAnswer || '';
     },
   },
   computed: {
@@ -68,13 +89,22 @@ export default {
     numberQuestion() {
       return this.$store.getters['quiz/getNumberCurrentQuestion'];
     },
+    initialAnswer() {
+      return this.$store.getters['quiz/getAnswer'];
+    },
+  },
+  data() {
+    return {
+      answer: '',
+    };
   },
 };
 </script>
 
 <style scoped>
 .quiz {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
@@ -86,8 +116,7 @@ export default {
 }
 
 .quiz__question {
-  position: absolute;
-  top: 76px;
+  margin-top: 40px;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -99,12 +128,11 @@ export default {
   color: #666666;
 }
 .quiz__form {
-  position: absolute;
-  top: 234px;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: space-between;
+  margin-top: 100px;
 }
 
 .quiz__answer {
@@ -123,15 +151,16 @@ export default {
   color: #666666;
 }
 .quiz__button-container {
-  margin-top: 200px;
   display: flex;
+  flex-wrap: wrap;
 }
+
 .quiz__middle-button {
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 .quiz__personal-data-processing {
-  margin-left: 30px;
   width: 380px;
   font-style: normal;
   font-weight: normal;
@@ -143,5 +172,61 @@ export default {
 .quiz__personal-data-processing-url {
   text-decoration: underline;
   color: inherit;
+}
+
+@media screen and (max-width: 1440px) {
+  .quiz__title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .quiz__question {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .quiz__form {
+    margin-top: 134px;
+  }
+
+  .quiz__answer {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .quiz__title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .quiz__question {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .quiz__answer {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quiz__title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .quiz__question {
+    margin-top: 30px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .quiz__answer {
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
 </style>

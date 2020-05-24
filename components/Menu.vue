@@ -2,14 +2,9 @@
   <nav class="menu">
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/stories" class="menu__link">Истории</nuxt-link>
-    <nuxt-link
-      to="#"
-      class="menu__link"
-      v-if="isLastButtonShown"
-      @click.native="showPopup"
-    >
+    <button class="menu__button" v-if="isLastButtonShown" @click="showPopup">
       Рассказать историю
-    </nuxt-link>
+    </button>
     <button class="menu__bar"></button>
   </nav>
 </template>
@@ -41,6 +36,16 @@ export default {
   font-size: 18px;
   font-weight: normal;
   text-decoration: none;
+}
+
+.menu__button {
+  color: #000000;
+  font-size: 18px;
+  font-weight: normal;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: none;
 }
 
 .menu__link.nuxt-link-exact-active {

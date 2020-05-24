@@ -2,6 +2,7 @@
   <div class="layout">
     <main-header></main-header>
     <nuxt />
+    <popup v-if="isShowPopup"> </popup>
     <main-footer></main-footer>
   </div>
 </template>
@@ -9,11 +10,18 @@
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Popup from '@/components/Popup';
 
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
+    popup: Popup,
+  },
+  computed: {
+    isShowPopup() {
+      return this.$store.getters['popup/getPopupShown'];
+    },
   },
 };
 </script>

@@ -25,7 +25,6 @@ export default {
 
 <style scoped>
 .thanks-slide {
-  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
@@ -34,17 +33,29 @@ export default {
   justify-content: space-between;
 }
 .thanks-slide__title {
+  text-align: center;
   font-weight: 600;
   font-size: 32px;
   line-height: 36px;
 }
-
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1440px) {
+  .thanks-slide__title {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1280px) {
+  .thanks-slide__title {
+    font-size: 26px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .thanks-slide__title {
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 </style>

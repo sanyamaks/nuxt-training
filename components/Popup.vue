@@ -39,6 +39,7 @@ export default {
       this.$store.dispatch('quiz/hideQuiz');
       this.$store.dispatch('quiz/resetNumberCurrentQuestion');
       this.$store.dispatch('contactMe/hideContactMe');
+      this.$store.dispatch('quiz/resetAnswers');
     },
   },
   computed: {
@@ -75,7 +76,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 920px;
+  width: 63.88%;
   height: 600px;
   background-color: #ffffff;
   position: relative;
@@ -87,23 +88,54 @@ export default {
 }
 
 .popup__close-button {
-  /*padding: 0;*/
   position: absolute;
   top: 35px;
   right: 35px;
-  /*border: none;*/
-  /*background: unset;*/
-  /*outline: none;*/
-  /*cursor: pointer;*/
   z-index: 2;
 }
 
 @media screen and (max-width: 1280px) {
+  .popup-content {
+    width: 62.5%;
+    height: 520px;
+  }
+
+  .popup__close-button {
+    top: 31px;
+    right: 31px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
 }
 
+@media screen and (max-width: 928px) {
+  .popup-content {
+    width: 580px;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .popup-content {
+    width: 75.52%;
+    padding: 4.68%;
+  }
+  .popup__close-button {
+    top: 13px;
+    right: 13px;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .popup-content {
+    width: 290px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup-content {
+    min-width: 290px;
+    padding: 15px;
+  }
 }
 </style>
