@@ -129,8 +129,19 @@ export default {
   cursor: pointer;
 }
 
+.tell-story__option:not(:first-child) {
+  margin-top: 10px;
+}
+
 .tell-story__option_active {
   color: #000000;
+}
+
+.tell-story__container-info {
+  height: 218px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tell-story__description {
@@ -140,7 +151,6 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #666666;
-  margin-bottom: 78px;
 }
 
 .tell-story__middle-button {
@@ -154,6 +164,10 @@ export default {
 
   .tell-story__container-options {
     max-width: 60.593220339%;
+  }
+
+  .tell-story__container-info {
+    height: 214px;
   }
 }
 
@@ -175,6 +189,14 @@ export default {
     min-width: 90px;
     font-size: 15px;
     line-height: 19px;
+  }
+
+  .tell-story__option:not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .tell-story__container-info {
+    height: 200px;
   }
 
   .tell-story__description {
@@ -212,13 +234,20 @@ export default {
     justify-content: space-between;
   }
 
+  .tell-story__option:not(:first-child) {
+    margin: 0;
+  }
+
+  .tell-story__container-info {
+    align-items: center;
+    height: 191px;
+  }
+
   .tell-story__description {
-    margin-bottom: 50px;
   }
 
   .tell-story__middle-button {
-    margin: auto;
-    display: block;
+
   }
 }
 
@@ -233,6 +262,10 @@ export default {
 
   .tell-story__option {
     font-size: 13px;
+  }
+
+  .tell-story__container-info {
+    height: 166px;
   }
 
   .tell-story__description {
