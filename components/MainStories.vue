@@ -5,9 +5,9 @@
     </section-title>
     <div class="main-stories__container">
       <stories-card
-        v-bind:person="item"
+        v-bind:story="item"
         v-bind:key="item.id"
-        v-for="item in showPersons"
+        v-for="item in showStories"
       >
       </stories-card>
     </div>
@@ -30,12 +30,12 @@ export default {
   },
 
   computed: {
-    showPersons() {
+    showStories() {
       if (process.browser) {
         if (window.innerWidth > 425 && window.innerWidth <= 768) {
-          return this.persons.filter((item, index) => index < 9);
+          return this.stories.filter((item, index) => index < 9);
         } else {
-          return this.persons.filter((item, index) => index < 8);
+          return this.stories.filter((item, index) => index < 8);
         }
       }
     },
@@ -43,16 +43,16 @@ export default {
 
   data() {
     return {
-      persons: [
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
+      stories: [
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
+        { author: 'Человек', title: 'Цитата Человека' },
       ],
     };
   },

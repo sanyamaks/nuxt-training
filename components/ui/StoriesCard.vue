@@ -1,23 +1,30 @@
 <template>
-  <div class="stories-card" @click="$emit('cardClick')">
+  <div class="stories-card" @click="handleClick">
     <img
-      class="stories-card__photoes"
+      class="stories-card__photos"
       src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
       alt=""
     />
     <h3 class="stories-card__title">
-      {{ person.name }}
+      {{ story.author }}
     </h3>
     <blockquote class="stories-card__subtitle">
-      {{ person.quote }}
+      {{ story.title }}
     </blockquote>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['person'],
-
+  props: {
+    story: Object
+  },
+  methods:{
+    handleClick(event){
+      event.preventDefault();
+      this.$emit("click");
+    }
+  },
   data() {
     return {};
   },
@@ -31,7 +38,7 @@ export default {
   cursor: pointer;
 }
 
-.stories-card__photoes {
+.stories-card__photos {
   width: 100%;
   margin-bottom: 15px;
   background-color: gray;

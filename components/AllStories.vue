@@ -12,34 +12,18 @@
     <div class="all-stories__container">
       <stories-card
         class="all-stories__stories-card"
-        v-for="item in showPersons"
+        v-for="item in showStories"
         :key="item.id"
-        :person="item"
-        @cardClick="goToDetail(item.id)"
+        :story="item"
+        @click="goToDetail(item.id)"
       >
       </stories-card>
     </div>
-    <!-- <div class="all-stories__controls">
-      <button class="all-stories__control">1</button>
-      <button class="all-stories__control">2</button>
-      <button class="all-stories__control">3</button>
-      <button class="all-stories__control">4</button>
-      <button class="all-stories__control all-stories__control_display_none">
-        5
-      </button>
-      <button class="all-stories__control all-stories__control_display_none">
-        6
-      </button>
-      <button class="all-stories__control all-stories__control_display_none">
-        7
-      </button>
-    </div> -->
-
     <pagination
       class="all-stories__pagination"
       :totalItems="getTotalItems"
       :itemsPerPage="getItemsPerPage"
-      @onPageChanged="changeStartIndex"
+      @onPageChanged="changeCurrentIndex"
     />
   </section>
 </template>
@@ -60,22 +44,16 @@ export default {
 
   methods: {
     goToDetail(id) {
-      console.log(id);
       this.$router.push(`/stories/${id}`);
     },
 
-    changeStartIndex(index) {
-      this.$store.dispatch('allStories/changeStartIndex', { index });
+    changeCurrentIndex(index) {
+      this.$store.dispatch('allStories/changeCurrentIndex', { index });
     },
   },
 
-  mounted() {
-    this.$store.dispatch('allStories/changeItemsPerPage');
-    this.$store.dispatch('allStories/determineStoriesToShow'); // вот это наверное надо делать в store
-  },
-
   computed: {
-    showPersons() {
+    showStories() {
       return this.$store.getters['allStories/getStories'];
     },
 
@@ -86,18 +64,15 @@ export default {
     getItemsPerPage() {
       return this.$store.getters['allStories/getItemsPerPage'];
     },
-
-    storiesToRender() {
-      const { allStories } = this.$store.state;
-      const filteredStories = allStories.persons.filter(
-        (item, index) =>
-          index >= this.startIndex &&
-          index <= this.startIndex + this.itemsPerPage - 1
-      );
-
-      return filteredStories;
-    },
   },
+  async fetch() {
+    await this.$store.dispatch('allStories/fetchStories');
+    this.$store.dispatch('allStories/determineStoriesToShow');
+  },
+  // mounted() {
+  //   this.$store.dispatch('allStories/changeItemsPerPage');
+  //   this.$store.dispatch('allStories/determineStoriesToShow'); // вот это наверное надо делать в store
+  // }
 };
 </script>
 
