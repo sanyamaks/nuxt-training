@@ -1,6 +1,10 @@
 <template>
   <button class="close-button" @click="click">
-    <img class="close-button__image" src="@/assets/icon-close-button.svg" alt="close" />
+    <img
+      class="close-button__image"
+      src="@/assets/icon-close-button.svg"
+      alt="close"
+    />
   </button>
 </template>
 

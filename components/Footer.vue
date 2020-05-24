@@ -6,7 +6,7 @@
           Спасибо всем, кто помог состояться этому проекту
         </h2>
         <div class="footer__navigation">
-          <nuxt-link to="/" class="footer__link menu__link_active">
+          <nuxt-link to="/" class="footer__link">
             Главная
           </nuxt-link>
           <nuxt-link to="/stories" class="footer__link">
@@ -16,13 +16,21 @@
         <div class="footer__links">
           <p class="footer__text footer__text_type_link">
             Мы в
-            <nuxt-link to="/" class="footer__link" target="_blank">
+            <a
+              href="https://www.instagram.com/raklechi"
+              class="footer__link"
+              target="_blank"
+            >
               Инстаграме
-            </nuxt-link>
+            </a>
             и
-            <nuxt-link to="/" class="footer__link" target="_blank">
+            <a
+              href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+              class="footer__link"
+              target="_blank"
+            >
               Youtube
-            </nuxt-link>
+            </a>
           </p>
           <nuxt-link to="/" class="footer__link" @click.native="showPopup">
             Поделитесь &#8599;
@@ -105,6 +113,9 @@ export default {
   font-size: 18px;
   font-weight: normal;
   text-decoration: none;
+}
+.footer__text:nth-child(1) .footer__link {
+  border-bottom: solid 2px black;
 }
 
 .footer__link:hover {

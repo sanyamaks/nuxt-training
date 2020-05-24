@@ -247,7 +247,6 @@ export default {
   }
 
   .tell-story__middle-button {
-
   }
 }
 
