@@ -23,18 +23,18 @@
       class="all-stories__pagination"
       :totalItems="getTotalItems"
       :itemsPerPage="getItemsPerPage"
-      :numberOfPages="numberOfPages"
+      :numberOfPages="getNumberOfPages"
       @onPageChanged="changeCurrentIndex"
     />
   </section>
 </template>
 
 <script>
-import StoriesCard from './ui/StoriesCard';
-import SectionTitle from './ui/SectionTitle';
-import MiddleButton from './ui/MiddleButton';
+import StoriesCard from '@/components/ui/StoriesCard';
+import SectionTitle from '@/components/ui/SectionTitle';
+import MiddleButton from '@/components/ui/MiddleButton';
 import Pagination from '@/components/ui/Pagination';
-import SearchInput from './ui/SearchInput';
+import SearchInput from '@/components/ui/SearchInput';
 
 export default {
   components: {
@@ -57,7 +57,8 @@ export default {
 
   computed: {
     showStories() {
-      return this.$store.getters['allStories/getStories'];
+      this.$store.dispatch('allStories/defineStoriesToShow');
+      return this.$store.getters['allStories/getStoriesToShow'];
     },
 
     getTotalItems() {
@@ -68,20 +69,16 @@ export default {
       return this.$store.getters['allStories/getItemsPerPage'];
     },
 
-    numberOfPages() {
-      this.lastPage = this.$store.getters['allStories/getNumberOfPages'];
-      return this.lastPage;
+    getNumberOfPages() {
+      this.numberOfPages = this.$store.getters['allStories/getNumberOfPages'];
+      return this.numberOfPages;
     },
   },
 
   async fetch() {
     await this.$store.dispatch('allStories/fetchStories');
-    this.$store.dispatch('allStories/defineStoriesToShow');
+    this.$store.dispatch('allStories/countNumberOfItems');
   },
-
-  // beforeMount() {
-  //   this.$store.dispatch('allStories/changeItemsPerPage');
-  // }
 };
 </script>
 

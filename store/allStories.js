@@ -4,6 +4,7 @@ export const state = () => ({
   stories: [],
   CurrentIndex: 0,
   itemsPerPage: 16,
+  numberOfItems: 0,
   numberOfPages: 0,
   storiesToShow: [],
 });
@@ -24,13 +25,24 @@ export const mutations = {
   setNumberOfPages(state, value) {
     state.numberOfPages = value;
   },
-  setstories(state, stories) {
+
+  setStories(state, stories) {
     state.stories = stories;
+  },
+
+  setNumberOfItems(state, value) {
+    state.numberOfItems = value;
   },
 };
 
 export const actions = {
+  countNumberOfItems({ state, commit }) {
+    const numberOfItems = state.stories.length + 1;
+    commit('setNumberOfItems', numberOfItems);
+  },
+
   defineStoriesToShow({ state, commit, dispatch }) {
+    console.dir(state);
     dispatch('changeItemsPerPage');
 
     const { stories } = state;
@@ -44,7 +56,7 @@ export const actions = {
   },
 
   calcNumberOfPages({ state, commit }) {
-    const numberOfPages = Math.ceil(state.stories.length / state.itemsPerPage);
+    const numberOfPages = Math.ceil(state.numberOfItems / state.itemsPerPage);
     commit('setNumberOfPages', numberOfPages);
   },
 
@@ -78,16 +90,16 @@ export const actions = {
 
   fetchStories({ state, commit, dispatch }) {
     return axios
-      .get('https://strapi.kruzhok.io/stories')
+      .get('https://strapi.kruzhok.io/stories') // надо будет убрать хардкод
       .then((response) => {
-        return commit('setstories', response.data);
+        return commit('setStories', response.data);
       })
       .catch((error) => console.log(error));
   },
 };
 
 export const getters = {
-  getStories(state) {
+  getStoriesToShow(state) {
     return state.storiesToShow;
   },
 
