@@ -96,6 +96,7 @@ export default {
 .tell-story {
   width: 100%;
   padding: 100px 0;
+  background-color: #f7f7f7;
 }
 
 .tell-story__section-title {
@@ -241,12 +242,6 @@ export default {
   .tell-story__container-info {
     align-items: center;
     height: 191px;
-  }
-
-  .tell-story__description {
-  }
-
-  .tell-story__middle-button {
   }
 }
 

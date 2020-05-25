@@ -114,6 +114,7 @@ export default {
 }
 
 .about-us__toggle-link {
+  text-align: right;
   text-decoration: none;
   color: #c9c9c9;
   margin-bottom: 10px;
