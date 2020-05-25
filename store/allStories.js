@@ -42,7 +42,6 @@ export const actions = {
   },
 
   defineStoriesToShow({ state, commit, dispatch }) {
-    console.dir(state);
     dispatch('changeItemsPerPage');
 
     const { stories } = state;

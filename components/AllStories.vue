@@ -15,8 +15,10 @@
         v-for="item in showStories"
         :key="item.id"
         :story="item"
+        :url="`https://strapi.kruzhok.io${item.ImageUrl[0].url}`"
         @click="goToDetail(item.id)"
       >
+        <!-- поправить хардкод в :url -->
       </stories-card>
     </div>
     <pagination
