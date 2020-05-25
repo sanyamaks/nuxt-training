@@ -82,7 +82,7 @@ export const mutations = {
 };
 
 export const actions = {
-  determineStoriesToShow({ state, commit }) {
+  defineStoriesToShow({ state, commit }) {
     const { stories } = state;
     const storiesToShow = stories.filter(
       (item, index) =>
@@ -99,21 +99,23 @@ export const actions = {
   },
 
   changeItemsPerPage({ state, commit, dispatch }) {
-    if (window.innerWidth <= 320) {
-      commit('setItemsPerPage', 9);
+    if (process.browser) {
+      if (window.innerWidth <= 320) {
+        commit('setItemsPerPage', 9);
+        dispatch('calcNumberOfPages');
+        return state.itemsPerPage;
+      }
+
+      if (window.innerWidth <= 768) {
+        commit('setItemsPerPage', 12);
+        dispatch('calcNumberOfPages');
+        return state.itemsPerPage;
+      }
+
+      commit('setItemsPerPage', 16);
       dispatch('calcNumberOfPages');
       return state.itemsPerPage;
     }
-
-    if (window.innerWidth <= 768) {
-      commit('setItemsPerPage', 12);
-      dispatch('calcNumberOfPages');
-      return state.itemsPerPage;
-    }
-
-    commit('setItemsPerPage', 16);
-    dispatch('calcNumberOfPages');
-    return state.itemsPerPage;
   },
 
   changeCurrentIndex({ state, dispatch, commit }, { index }) {
@@ -121,8 +123,7 @@ export const actions = {
     const newCurrentIndex = (index - 1) * itemsPerPage;
 
     commit('setCurrentIndex', newCurrentIndex);
-    dispatch('determineStoriesToShow');
-    dispatch('determineStoriesToShow');
+    dispatch('defineStoriesToShow');
   },
   fetchStories({ state, commit }) {
     return axios
