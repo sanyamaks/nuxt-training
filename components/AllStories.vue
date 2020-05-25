@@ -64,16 +64,18 @@ export default {
     },
 
     getItemsPerPage() {
+      this.$store.dispatch('allStories/changeItemsPerPage');
       return this.$store.getters['allStories/getItemsPerPage'];
     },
   },
+
   async fetch() {
     await this.$store.dispatch('allStories/fetchStories');
-    this.$store.dispatch('allStories/determineStoriesToShow');
+    this.$store.dispatch('allStories/defineStoriesToShow');
   },
-  // mounted() {
+
+  // beforeMount() {
   //   this.$store.dispatch('allStories/changeItemsPerPage');
-  //   this.$store.dispatch('allStories/determineStoriesToShow'); // вот это наверное надо делать в store
   // }
 };
 </script>
