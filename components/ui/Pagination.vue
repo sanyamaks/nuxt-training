@@ -43,7 +43,7 @@
       :class="[
         'pagination__link',
         {
-          pagination__link_inactive: active === lastPage,
+          pagination__link_inactive: active === numberOfPages,
         },
       ]"
       @click="jumpToPage(false)"
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       active: 1,
-      lastPage: 1,
+      //numberOfPages: 1,
     };
   },
 
@@ -73,7 +73,7 @@ export default {
     },
     numberOfPages: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     maxPageToRender: {
       type: Number,
@@ -89,7 +89,7 @@ export default {
 
     changeActivePage(increasing) {
       if (increasing) {
-        if (this.active != this.lastPage) this.active++;
+        if (this.active != this.numberOfPages) this.active++;
       } else {
         if (this.active != 1) this.active--;
       }
@@ -98,7 +98,7 @@ export default {
     },
 
     jumpToPage(First) {
-      First ? (this.active = 1) : (this.active = this.lastPage);
+      First ? (this.active = 1) : (this.active = this.numberOfPages);
       this.$emit('onPageChanged', this.active);
     },
   },

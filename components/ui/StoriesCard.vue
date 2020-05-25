@@ -1,10 +1,13 @@
 <template>
   <div class="stories-card" @click="handleClick">
-    <img
-      class="stories-card__photos"
-      src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
-      alt=""
-    />
+    <div class="stories-card__photo-container">
+      <img
+        class="stories-card__photo"
+        :src="url"
+        :alt="`Фото ${story.author}`"
+      />
+    </div>
+
     <h3 class="stories-card__title">
       {{ story.author }}
     </h3>
@@ -18,6 +21,7 @@
 export default {
   props: {
     story: Object,
+    url: String,
   },
   methods: {
     handleClick(event) {
@@ -38,9 +42,26 @@ export default {
   cursor: pointer;
 }
 
-.stories-card__photos {
-  width: 100%;
+.stories-card__photo-container {
+  position: relative;
   margin-bottom: 15px;
+  width: 100%;
+}
+
+.stories-card__photo-container::before {
+  content: '';
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.stories-card__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
   background-color: gray;
 }
 
