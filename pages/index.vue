@@ -25,7 +25,7 @@ import Statistika from '@/components/Statistika';
 import TellStory from '@/components/TellStory';
 import MainVideo from '@/components/MainVideo';
 import AboutUs from '@/components/AboutUs';
-import Container from '../components/Container';
+import Container from '@/components/Container';
 
 export default {
   props: {},

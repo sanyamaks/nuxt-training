@@ -17,13 +17,13 @@
 <script>
 export default {
   props: {
-    story: Object
+    story: Object,
   },
-  methods:{
-    handleClick(event){
+  methods: {
+    handleClick(event) {
       event.preventDefault();
-      this.$emit("click");
-    }
+      this.$emit('click');
+    },
   },
   data() {
     return {};

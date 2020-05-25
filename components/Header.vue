@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <h1 class="header__logo">
+    <nuxt-link to="/" class="header__logo">
       Проект Благотворительного Фонда Константина Хабенского
-    </h1>
+    </nuxt-link>
     <main-menu :isLastButtonShown="true" />
   </header>
 </template>

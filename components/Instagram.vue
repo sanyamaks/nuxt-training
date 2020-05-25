@@ -17,29 +17,61 @@
       <ul class="instagram__items">
         <!-- сделать v-for для элементов li -->
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <!-- вставить ссылки nuxt -->
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
         <li class="instagram__item">
-          <a href="/" class="instagram__link" target="_blank"></a>
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
         </li>
       </ul>
     </div>

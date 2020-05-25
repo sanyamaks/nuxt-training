@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
-    <main-header></main-header>
+    <main-header />
     <nuxt />
     <popup v-if="isShowPopup"> </popup>
-    <main-footer></main-footer>
+    <main-footer />
   </div>
 </template>
 
