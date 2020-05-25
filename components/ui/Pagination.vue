@@ -58,7 +58,6 @@ export default {
   data() {
     return {
       active: 1,
-      maxPage: 5,
       lastPage: 1,
     };
   },
@@ -71,6 +70,14 @@ export default {
     itemsPerPage: {
       type: Number,
       default: 0,
+    },
+    numberOfPages: {
+      type: Number,
+      default: 0,
+    },
+    maxPageToRender: {
+      type: Number,
+      default: 5,
     },
   },
 
@@ -93,18 +100,6 @@ export default {
     jumpToPage(First) {
       First ? (this.active = 1) : (this.active = this.lastPage);
       this.$emit('onPageChanged', this.active);
-    },
-
-    // limitPages() {
-    //   if (this.lastPage > this.maxPage) return this.maxPage
-    //   return this.Page
-    // }
-  },
-
-  computed: {
-    numberOfPages() {
-      this.lastPage = this.$store.getters['allStories/getNumberOfPages'];
-      return this.lastPage;
     },
   },
 };

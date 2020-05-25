@@ -23,6 +23,7 @@
       class="all-stories__pagination"
       :totalItems="getTotalItems"
       :itemsPerPage="getItemsPerPage"
+      :numberOfPages="numberOfPages"
       @onPageChanged="changeCurrentIndex"
     />
   </section>
@@ -64,8 +65,12 @@ export default {
     },
 
     getItemsPerPage() {
-      this.$store.dispatch('allStories/changeItemsPerPage');
       return this.$store.getters['allStories/getItemsPerPage'];
+    },
+
+    numberOfPages() {
+      this.lastPage = this.$store.getters['allStories/getNumberOfPages'];
+      return this.lastPage;
     },
   },
 
