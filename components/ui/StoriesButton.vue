@@ -1,7 +1,7 @@
 <template>
-  <a class="stories-button" href="/stories">
+  <nuxt-link class="stories-button" to="/stories">
     <slot>Button name</slot>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>

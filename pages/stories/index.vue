@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Container from '../components/Container';
+import Container from '@/components/Container';
 import AllStories from '@/components/AllStories';
 
 export default {
