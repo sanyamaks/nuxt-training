@@ -1,8 +1,9 @@
 <template>
   <main class="content">
-    <cover></cover>
+    <cover @scrollToNextBlock="scrollToNextBlock"></cover>
     <container>
-      <main-video class="content__main-video"></main-video>
+      <main-video ref="scroll-to-here" class="content__main-video"></main-video>
+      <!-- текст скроллится впритык к верхней границе экрана потому что заданы марджины -->
       <banner>И в отличие от рака,</banner>
       <main-stories class="content__main-stories"></main-stories>
       <banner>Рассказывайте ваши истории в Инстаграм</banner>
@@ -40,7 +41,14 @@ export default {
     'tell-story': TellStory,
     'main-video': MainVideo,
   },
-  methods: {},
+  methods: {
+    scrollToNextBlock() {
+      this.$refs['scroll-to-here'].$el.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+      });
+    },
+  },
   data() {
     return {};
   },
