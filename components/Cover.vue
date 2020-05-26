@@ -1,12 +1,19 @@
 <template>
   <section class="cover">
     <h1 class="cover__header">#РАКЛЕЧИТСЯ</h1>
-    <a href="/" class="cover__arrow"></a>
+    <button class="cover__arrow" @click="click"></button>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    click(event) {
+      event.preventDefault();
+      this.$emit('scrollToNextBlock');
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -32,6 +39,8 @@ export default {};
 }
 
 .cover__arrow {
+  border: none;
+  cursor: pointer;
   position: absolute;
   bottom: 40px;
   left: calc(50% - 13px);
