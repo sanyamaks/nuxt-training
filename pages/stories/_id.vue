@@ -7,76 +7,46 @@
             <button type="button" class="story__share">Поделитесь ↗</button>
             <time class="story__date">20 апреля 2018</time>
           </div>
-          <img
-            class="story__photo"
-            src="https://nibler.ru/uploads/users/8039/2013-06-10/kvadrat-seryy-eto-interesno-poznavatelno-kartinki_608533329.png"
-            alt="Фото человека оставившего историю"
-          />
+
+          <div class="story__photo-container">
+            <img
+              class="story__photo"
+              :src="getImage"
+              alt="Фото человека оставившего историю"
+            />
+          </div>
+
           <div class="story__box">
             <h1 class="story__title">
-              <span class="story__person-name">Александр Тарханов:</span>
-              «Я не могу победить свою пунктуальность в отличии от рака»
+              <span class="story__person-name">{{ story.author }} :</span>
+              «{{ story.title }}»
             </h1>
+
             <div class="story__copyright story__copyright_desctop">
               <button type="button" class="story__share">Поделитесь ↗</button>
-              <time class="story__date">20 апреля 2018</time>
+              <time class="story__date">{{ getLocalizedDate }}</time>
             </div>
           </div>
         </div>
-        <article class="story__article">
-          <p class="story__text">
-            Я из военной семьи. Отец хоть и не был военным сам, но нас всех
-            держал в ежовых рукавицах. Думаю, поэтому мы и выросли такими
-            ответственными.
-          </p>
-          <p class="story__text">
-            У меня дома до сих пор стоят часы в каждой комнате, хотя они и не
-            нужны особо — я сам чувствую, опаздываю куда-то или нет, отстаю от
-            нужного графика или опережаю. Вот такие встроенные внутренние часы!
-            Будильник мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже
-            быстро, как в армии, за 45 секунд.
-          </p>
-          <p class="story__text story__text_style_bold">
-            «В футболе если команда опоздала на 15 минут, ей засчитывается
-            поражение».
-          </p>
-          <p class="story__text">
-            Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если
-            знаю, что могу попасть по дороге в пробку, то не еду на машине. В
-            аэропорт приезжаю задолго до начала регистрации. Лучше подожду и
-            кофе попью, чем опоздаю!
-          </p>
-          <p class="story__text">
-            Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать.
-            Я билеты выучил, знал абсолютно все. Пришел в нужное время, а
-            учительница — нет. Ну, я какое-то время подождал ее и ушел. Потом
-            она спрашивала: «Почему не дождался?». Я ответил: «В футболе если
-            команда опоздала на 15 минут, ей засчитывается поражение». Экзамен
-            мне все-таки поставили! Сейчас если кто-то из футболистов моей
-            команды опаздывает — начинаю злиться, могу и прикрикнуть потом. А
-            если кто-то опоздал на тренировку перед игрой — все, подготовка
-            насмарку. Я сразу начинаю думать тогда: «Значит, точно проиграем».
-            Такая болезненная пунктуальность уже не лечится. В отличие от рака.
-          </p>
-          <p class="story__text story__text_style_bold">
-            «Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
-            злиться, могу и прикрикнуть потом. А если кто-то опоздал на
-            тренировку перед игрой — все, подготовка насмарку. Я сразу начинаю
-            думать тогда: «Значит, точно проиграем». Такая болезненная
-            пунктуальность уже не лечится».
-          </p>
+
+        <article class="story__article" v-html="getStoryTextWithClasses">
           <button type="button" class="story__share story__share_long">
             Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
           </button>
         </article>
+
         <div class="story__container">
           <stories-card
-            v-bind:person="item"
-            v-bind:key="item.id"
-            v-for="item in showPersons"
+            v-for="item in showStories"
+            :person="item"
+            :key="item.id"
+            :story="item"
+            :url="`https://strapi.kruzhok.io${item.ImageUrl[0].url}`"
+            @click="goToDetail(item.id)"
           >
           </stories-card>
         </div>
+
         <stories-button class="story__stories-button">
           Больше статей
         </stories-button>
@@ -86,30 +56,104 @@
 </template>
 
 <script>
-import Container from '../components/Container';
-import StoriesCard from '../components/ui/StoriesCard';
-import StoriesButton from '../components/ui/StoriesButton.vue';
+import Container from '@/components/Container';
+import StoriesCard from '@/components/ui/StoriesCard';
+import StoriesButton from '@/components/ui/StoriesButton.vue';
 
 export default {
+  data() {
+    return {
+      storiesToShow: 0,
+    };
+  },
+
   components: {
     container: Container,
     'stories-card': StoriesCard,
     'stories-button': StoriesButton,
   },
 
-  computed: {
-    showPersons() {
-      if (process.browser) {
-        if (window.innerWidth <= 570) {
-          return this.persons.filter((item, index) => index < 2);
-        } else if (window.innerWidth <= 768) {
-          return this.persons.filter((item, index) => index < 3);
-        } else {
-          return this.persons.filter((item, index) => index < 4);
-        }
-      }
+  async fetch({ store, route }) {
+    await store.dispatch('allStories/fetchStoryWithId', {
+      id: route.params.id,
+    });
+    await store.dispatch('allStories/fetchStories'); // правильно ли это фетчить второй раз?
+  },
+
+  methods: {
+    goToDetail(id) {
+      this.$router.push(`/stories/${id}`);
     },
   },
+
+  computed: {
+    defineStoriesToShow() {
+      if (process.browser) {
+        if (window.innerWidth <= 570) return 2;
+        if (window.innerWidth <= 768) return 3;
+      }
+
+      return 4;
+    },
+
+    showStories() {
+      return this.$store.getters['allStories/getStories'].slice(
+        0,
+        this.defineStoriesToShow
+      );
+    },
+
+    story() {
+      return this.$store.getters['allStories/getCurrentStory'];
+    },
+
+    getLocalizedDate() {
+      const date = new Date(this.story.created_at);
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+      const localizedDate = date.toLocaleString('ru', options);
+
+      return localizedDate;
+    },
+
+    getStoryTextWithClasses() {
+      let storyText = this.story.text;
+      const regexBr = /<br>/g;
+      const regexBQ = /<blockquote><p>/g;
+      const regexP = /<p>/g;
+      storyText = storyText.replace(regexBr, '</p><p>');
+      storyText = storyText.replace(
+        regexBQ,
+        '<blockquote><p class="story__text story__text_style_bold">'
+      );
+      storyText = storyText.replace(regexP, '<p class="story__text">');
+
+      return storyText;
+    },
+
+    getImage() {
+      const imageUrl = this.story.ImageUrl[0].formats.medium.url;
+
+      return `https://strapi.kruzhok.io${imageUrl}`; // поправить хардкод
+    },
+  },
+
+  // computed: {
+  //   showPersons() {
+  //     if (process.browser) {
+  //       if (window.innerWidth <= 570) {
+  //         return this.persons.filter((item, index) => index < 2);
+  //       } else if (window.innerWidth <= 768) {
+  //         return this.persons.filter((item, index) => index < 3);
+  //       } else {
+  //         return this.persons.filter((item, index) => index < 4);
+  //       }
+  //     }
+  //   },
+  // },
 
   data() {
     return {
@@ -140,8 +184,26 @@ export default {
   justify-content: space-between;
 }
 
-.story__photo {
+.story__photo-container {
+  position: relative;
+  margin-bottom: 15px;
   width: 43.939393939%;
+}
+
+.story__photo-container::before {
+  content: '';
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.story__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .story__box {
@@ -198,17 +260,17 @@ export default {
   margin-bottom: 190px;
 }
 
-.story__text {
+.story__article >>> .story__text {
   font-size: 22px;
   line-height: 30px;
   margin-bottom: 40px;
 }
 
-.story__text:last-of-type {
+/* .story__article >>> .story__text:last-of-type {
   margin-bottom: 100px;
-}
+} */
 
-.story__text_style_bold {
+.story__article >>> .story__text_style_bold {
   font-weight: 600;
 }
 
@@ -243,12 +305,12 @@ export default {
     line-height: 44px;
   }
 
-  .story__text {
+  .story__article >>> .story__text {
     font-size: 20px;
     line-height: 28px;
   }
 
-  .story__text:last-of-type {
+  .story__article >>> .story__text:last-of-type {
     margin-bottom: 90px;
   }
 }
@@ -272,7 +334,7 @@ export default {
     line-height: 38px;
   }
 
-  .story__text {
+  .story__article >>> .story__text {
     font-size: 18px;
     line-height: 27px;
   }
@@ -285,7 +347,7 @@ export default {
     font-size: 16px;
   }
 
-  .story__text:last-of-type {
+  .story__article >>> .story__text:last-of-type {
     margin-bottom: 70px;
   }
 }
@@ -312,7 +374,7 @@ export default {
     text-align: center;
   }
 
-  .story__photo {
+  .story__photo-container {
     width: 61.046511628%;
     margin-bottom: 60px;
   }
@@ -329,7 +391,7 @@ export default {
 }
 
 @media screen and (max-width: 570px) {
-  .story__photo {
+  .story__photo-container {
     width: 100%;
   }
 
@@ -353,13 +415,13 @@ export default {
     line-height: 16px;
   }
 
-  .story__text {
+  .story__article >>> .story__text {
     font-size: 13px;
     line-height: 16px;
     margin-bottom: 15px;
   }
 
-  .story__text:last-of-type {
+  .story__article >>> .story__text:last-of-type {
     margin-bottom: 60px;
   }
 

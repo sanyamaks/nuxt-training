@@ -7,6 +7,7 @@ export const state = () => ({
   numberOfItems: 0,
   numberOfPages: 0,
   storiesToShow: [],
+  currentStory: {},
 });
 
 export const mutations = {
@@ -32,6 +33,10 @@ export const mutations = {
 
   setNumberOfItems(state, value) {
     state.numberOfItems = value;
+  },
+
+  setState(state, { name, value }) {
+    return (state[name] = value);
   },
 };
 
@@ -95,9 +100,24 @@ export const actions = {
       })
       .catch((error) => console.log(error));
   },
+
+  fetchStoryWithId(state, payload) {
+    return axios
+      .get(`https://strapi.kruzhok.io/stories/${payload.id}`)
+      .then((response) => {
+        return state.commit('setState', {
+          name: 'currentStory',
+          value: response.data,
+        });
+      });
+  },
 };
 
 export const getters = {
+  getStories(state) {
+    return state.stories;
+  },
+
   getStoriesToShow(state) {
     return state.storiesToShow;
   },
@@ -112,5 +132,9 @@ export const getters = {
 
   getTotalItems(state) {
     return state.stories.length;
+  },
+
+  getCurrentStory(state) {
+    return state.currentStory;
   },
 };
