@@ -11,15 +11,18 @@
           <div class="story__photo-container">
             <img
               class="story__photo"
-              :src="`https://strapi.kruzhok.io${getImageUrlBySize(story)}`"
-              alt="Фото человека оставившего историю"
+              :src="`https://strapi.kruzhok.io${getImageUrlBySize(
+                story,
+                'large'
+              )}`"
+              :alt="`Фото ${story.author}`"
             />
             <!-- Поправить хардкод -->
           </div>
 
           <div class="story__box">
             <h1 class="story__title">
-              <span class="story__person-name">{{ story.author }} :</span>
+              <span class="story__person-name">{{ story.author }}:</span>
               «{{ story.title }}»
             </h1>
 
@@ -31,10 +34,14 @@
         </div>
 
         <article class="story__article" v-html="getStoryTextWithClasses">
-          <button type="button" class="story__share story__share_long">
+          <!-- <button type="button" class="story__share story__share_long">
             Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
-          </button>
+          </button> -->
         </article>
+
+        <button type="button" class="story__share story__share_long">
+          Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
+        </button>
 
         <div class="story__container">
           <stories-card
@@ -123,23 +130,25 @@ export default {
     },
 
     getLocalizedDate() {
-      const date = new Date(this.story.created_at);
+      const date = new Date(this.story.date);
       const options = {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
       };
-      const localizedDate = date.toLocaleString('ru', options);
+      const localizedDate = date
+        .toLocaleString('ru', options)
+        .replace(/\s*г\./, '');
 
       return localizedDate;
     },
 
     getStoryTextWithClasses() {
       let storyText = this.story.text;
-      const regexBr = /<br>/g;
+      const regexDoubleBr = /(<br>){2,}/g;
       const regexBQ = /<blockquote><p>/g;
       const regexP = /<p>/g;
-      storyText = storyText.replace(regexBr, '</p><p>');
+      storyText = storyText.replace(regexDoubleBr, '</p><p>');
       storyText = storyText.replace(
         regexBQ,
         '<blockquote><p class="story__text story__text_style_bold">'
@@ -148,17 +157,6 @@ export default {
 
       return storyText;
     },
-  },
-
-  data() {
-    return {
-      persons: [
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-        { name: 'Человек', quote: 'Цитата Человека' },
-      ],
-    };
   },
 };
 </script>
@@ -181,7 +179,6 @@ export default {
 
 .story__photo-container {
   position: relative;
-  margin-bottom: 15px;
   width: 43.939393939%;
 }
 
@@ -206,6 +203,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 30px 0;
 }
 
 .story__title {
@@ -224,7 +224,6 @@ export default {
   width: 100%;
   display: flex;
   color: #121212;
-  margin-bottom: 30px;
   justify-content: space-between;
 }
 
@@ -243,6 +242,10 @@ export default {
 .story__share_long {
   width: 100%;
   text-align: center;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  margin: 70px 0 60px;
+  padding: 30px 0;
 }
 
 .story__date {
@@ -252,7 +255,6 @@ export default {
 .story__article {
   max-width: 780px;
   margin: auto;
-  margin-bottom: 190px;
 }
 
 .story__article >>> .story__text {
@@ -292,7 +294,6 @@ export default {
 
   .story__article {
     max-width: 720px;
-    margin-bottom: 180px;
   }
 
   .story__title {
@@ -305,8 +306,12 @@ export default {
     line-height: 28px;
   }
 
-  .story__article >>> .story__text:last-of-type {
+  /* .story__article >>> .story__text:last-of-type {
     margin-bottom: 90px;
+  } */
+
+  .story__share_long {
+    margin: 60px 0 150px;
   }
 }
 
@@ -321,7 +326,10 @@ export default {
 
   .story__article {
     max-width: 640px;
-    margin-bottom: 144px;
+  }
+
+  .story__box {
+    padding: 20px 0;
   }
 
   .story__title {
@@ -334,6 +342,11 @@ export default {
     line-height: 27px;
   }
 
+  .story__share_long {
+    margin: 46px 0 120px;
+    padding: 24px 0;
+  }
+
   .story__share {
     font-size: 16px;
   }
@@ -342,9 +355,9 @@ export default {
     font-size: 16px;
   }
 
-  .story__article >>> .story__text:last-of-type {
+  /* .story__article >>> .story__text:last-of-type {
     margin-bottom: 70px;
-  }
+  } */
 }
 
 @media screen and (max-width: 768px) {
@@ -371,7 +384,11 @@ export default {
 
   .story__photo-container {
     width: 61.046511628%;
-    margin-bottom: 60px;
+  }
+
+  .story__share_long {
+    margin: 80px 0 120px;
+    padding: 24px 0;
   }
 
   .story__copyright_desctop {
@@ -379,6 +396,7 @@ export default {
   }
 
   .story__copyright_mobile {
+    margin-top: 30px;
     max-width: 640px;
     display: flex;
     margin-bottom: 0;
@@ -391,7 +409,7 @@ export default {
   }
 
   .story__article {
-    margin-bottom: 120px;
+    margin-bottom: 60px;
   }
 
   .story__title {
@@ -416,9 +434,9 @@ export default {
     margin-bottom: 15px;
   }
 
-  .story__article >>> .story__text:last-of-type {
+  /* .story__article >>> .story__text:last-of-type {
     margin-bottom: 60px;
-  }
+  } */
 
   .story__person {
     margin-bottom: 60px;
@@ -440,6 +458,11 @@ export default {
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 30px;
+  }
+
+  .story__share_long {
+    margin: 40px 0 100px;
+    padding: 20px 0;
   }
 }
 </style>
