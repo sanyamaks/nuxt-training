@@ -15,7 +15,7 @@
         v-for="item in showStories"
         :key="item.id"
         :story="item"
-        :url="`https://strapi.kruzhok.io${item.ImageUrl[0].url}`"
+        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item)}`"
         @click="goToDetail(item.id)"
       >
         <!-- поправить хардкод в :url -->
@@ -54,6 +54,20 @@ export default {
 
     changeCurrentIndex(index) {
       this.$store.dispatch('allStories/changeCurrentIndex', { index });
+    },
+
+    getImageUrlBySize(item, size = 'medium') {
+      // нужно отрефакторить и перенести в стор
+      if (item.ImageUrl[0].formats[size])
+        return item.ImageUrl[0].formats[size].url;
+      if (item.ImageUrl[0].formats.large)
+        return item.ImageUrl[0].formats.large.url;
+      if (item.ImageUrl[0].formats.medium)
+        return item.ImageUrl[0].formats.medium.url;
+      if (item.ImageUrl[0].formats.small)
+        return item.ImageUrl[0].formats.small.url;
+      if (item.ImageUrl[0].formats.thumbnail)
+        return item.ImageUrl[0].formats.thumbnail.url;
     },
   },
 

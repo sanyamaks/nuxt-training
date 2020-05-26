@@ -11,9 +11,10 @@
           <div class="story__photo-container">
             <img
               class="story__photo"
-              :src="getImage"
+              :src="`https://strapi.kruzhok.io${getImageUrlBySize(story)}`"
               alt="Фото человека оставившего историю"
             />
+            <!-- Поправить хардкод -->
           </div>
 
           <div class="story__box">
@@ -84,6 +85,20 @@ export default {
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
     },
+
+    getImageUrlBySize(item, size = 'medium') {
+      // нужно отрефакторить и перенести в стор
+      if (item.ImageUrl[0].formats[size])
+        return item.ImageUrl[0].formats[size].url;
+      if (item.ImageUrl[0].formats.large)
+        return item.ImageUrl[0].formats.large.url;
+      if (item.ImageUrl[0].formats.medium)
+        return item.ImageUrl[0].formats.medium.url;
+      if (item.ImageUrl[0].formats.small)
+        return item.ImageUrl[0].formats.small.url;
+      if (item.ImageUrl[0].formats.thumbnail)
+        return item.ImageUrl[0].formats.thumbnail.url;
+    },
   },
 
   computed: {
@@ -133,27 +148,7 @@ export default {
 
       return storyText;
     },
-
-    getImage() {
-      const imageUrl = this.story.ImageUrl[0].formats.medium.url;
-
-      return `https://strapi.kruzhok.io${imageUrl}`; // поправить хардкод
-    },
   },
-
-  // computed: {
-  //   showPersons() {
-  //     if (process.browser) {
-  //       if (window.innerWidth <= 570) {
-  //         return this.persons.filter((item, index) => index < 2);
-  //       } else if (window.innerWidth <= 768) {
-  //         return this.persons.filter((item, index) => index < 3);
-  //       } else {
-  //         return this.persons.filter((item, index) => index < 4);
-  //       }
-  //     }
-  //   },
-  // },
 
   data() {
     return {
