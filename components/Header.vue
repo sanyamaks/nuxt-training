@@ -27,7 +27,6 @@ export default {
   justify-content: space-between;
   font-weight: 600;
   font-size: 16px;
-  padding: 0 60px;
 }
 
 .header__logo {
@@ -41,10 +40,6 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .header {
-    padding: 0 50px;
-  }
-
   .header__logo {
     line-height: 18px;
   }
@@ -53,14 +48,12 @@ export default {
 @media screen and (max-width: 768px) {
   .header {
     min-height: 72px;
-    padding: 0 40px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .header {
     min-height: 64px;
-    padding: 0 15px;
   }
 
   .header__logo {
