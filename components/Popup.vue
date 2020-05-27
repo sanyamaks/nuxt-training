@@ -76,7 +76,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 63.88%;
+  width: 63.888888889%;
+  max-width: 920px;
   height: 600px;
   background-color: #ffffff;
   position: relative;
@@ -96,7 +97,6 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .popup-content {
-    width: 62.5%;
     height: 520px;
   }
 
@@ -107,17 +107,14 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
-}
-
-@media screen and (max-width: 928px) {
   .popup-content {
-    width: 580px;
+    width: 78.125%;
   }
 }
 
 @media screen and (max-width: 768px) {
   .popup-content {
-    width: 75.52%;
+    width: 80.555555556%;
     padding: 4.68%;
   }
   .popup__close-button {
@@ -126,15 +123,15 @@ export default {
   }
 }
 
-@media screen and (max-width: 384px) {
+@media screen and (max-width: 425px) {
   .popup-content {
-    width: 290px;
+    width: 90.625%;
+    min-width: 290px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .popup-content {
-    min-width: 290px;
     padding: 15px;
   }
 }
