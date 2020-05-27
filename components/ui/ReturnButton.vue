@@ -28,5 +28,6 @@ export default {
   background-color: unset;
   outline: none;
   cursor: pointer;
+  padding: 0;
 }
 </style>

@@ -16,13 +16,17 @@
       />
       <!--Заменить на компонент Input-->
       <div class="quiz__button-container">
-        <return-button @click="prevQuestion">Назад</return-button>
-        <middle-button
-          class="quiz__middle-button"
-          @click="nextQuestion"
-          :text="dataQuestionLength !== numberQuestion ? 'Далее' : 'Отправить'"
-          type="submit"
-        ></middle-button>
+        <div class="quiz__button-box">
+          <return-button @click="prevQuestion">Назад</return-button>
+          <middle-button
+            class="quiz__middle-button"
+            @click="nextQuestion"
+            :text="
+              dataQuestionLength !== numberQuestion ? 'Далее' : 'Отправить'
+            "
+            type="submit"
+          ></middle-button>
+        </div>
         <p
           v-if="dataQuestionLength === numberQuestion"
           class="quiz__personal-data-processing"
@@ -150,9 +154,13 @@ export default {
 .quiz__answer::placeholder {
   color: #666666;
 }
+
 .quiz__button-container {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.quiz__button-box {
+  display: flex;
 }
 
 .quiz__middle-button {
@@ -212,6 +220,24 @@ export default {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .quiz__personal-data-processing {
+    margin: 10px 0px;
+  }
+
+  .quiz__button-container {
+    flex-wrap: wrap;
+  }
+
+  .quiz__middle-button {
+    margin: 0 0 0 30px;
+  }
+
+  .quiz__button-box {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .quiz__title {
     font-size: 18px;
@@ -227,6 +253,12 @@ export default {
   .quiz__answer {
     font-size: 13px;
     line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .quiz__middle-button {
+    margin: 0 0 0 15px;
   }
 }
 </style>
