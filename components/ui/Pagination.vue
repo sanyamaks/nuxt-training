@@ -4,7 +4,7 @@
       :class="[
         'pagination__link',
         {
-          pagination__link_inactive: active === 1,
+          pagination__link_inactive: activePage === 1,
         },
       ]"
       @click="jumpToPage(true)"
@@ -24,7 +24,7 @@
             :class="[
               'pagination__control pagination__control_type_button',
               {
-                pagination__control_active: item === active,
+                pagination__control_active: item === activePage,
               },
             ]"
           >
@@ -43,7 +43,7 @@
       :class="[
         'pagination__link',
         {
-          pagination__link_inactive: active === numberOfPages,
+          pagination__link_inactive: activePage === numberOfPages,
         },
       ]"
       @click="jumpToPage(false)"
@@ -57,12 +57,16 @@
 export default {
   data() {
     return {
-      active: 1,
+      activePage: 1,
       //numberOfPages: 1,
     };
   },
 
   props: {
+    // activePage: {
+    //   type: Number,
+    //   default: 1,
+    // },
     totalItems: {
       type: Number,
       default: 0,
@@ -83,23 +87,23 @@ export default {
 
   methods: {
     setActive(item) {
-      this.active = item;
+      this.activePage = item;
       this.$emit('onPageChanged', item);
     },
 
     changeActivePage(increasing) {
       if (increasing) {
-        if (this.active != this.numberOfPages) this.active++;
+        if (this.activePage != this.numberOfPages) this.activePage++;
       } else {
-        if (this.active != 1) this.active--;
+        if (this.activePage != 1) this.activePage--;
       }
 
-      this.$emit('onPageChanged', this.active);
+      this.$emit('onPageChanged', this.activePage);
     },
 
     jumpToPage(First) {
-      First ? (this.active = 1) : (this.active = this.numberOfPages);
-      this.$emit('onPageChanged', this.active);
+      First ? (this.activePage = 1) : (this.activePage = this.numberOfPages);
+      this.$emit('onPageChanged', this.activePage);
     },
   },
 };

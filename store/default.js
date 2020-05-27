@@ -137,4 +137,19 @@ export const getters = {
   getCurrentStory(state) {
     return state.currentStory;
   },
+
+  getStoryById: (state) => (id) => {
+    return state.stories.find((story) => story.id === id);
+  },
+
+  getImageUrlBySize: (state) => (item, size = 'medium') => {
+    const formats = item.ImageUrl[0].formats;
+    const sizes = ['large', 'medium', 'small', 'thumbnail'];
+
+    if (formats[size]) return formats[size].url;
+
+    const maxAvailableImgSize = sizes.find((size) => formats[size]);
+
+    return formats[maxAvailableImgSize].url;
+  },
 };

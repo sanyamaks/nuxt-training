@@ -5,10 +5,14 @@
     </section-title>
     <div class="main-stories__container">
       <stories-card
-        v-bind:story="item"
-        v-bind:key="item.id"
         v-for="item in showStories"
+        :person="item"
+        :key="item.id"
+        :story="item"
+        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item, 'small')}`"
+        @click="goToDetail(item.id)"
       >
+        <!-- поправить хардкод в :url -->
       </stories-card>
     </div>
     <stories-button class="main-stories__stories-button">
@@ -30,31 +34,31 @@ export default {
   },
 
   computed: {
-    showStories() {
+    defineStoriesToShow() {
       if (process.browser) {
-        if (window.innerWidth > 425 && window.innerWidth <= 768) {
-          return this.stories.filter((item, index) => index < 9);
-        } else {
-          return this.stories.filter((item, index) => index < 8);
-        }
+        if (window.innerWidth <= 570) return 6;
+        if (window.innerWidth <= 768) return 9;
       }
+
+      return 8;
+    },
+
+    showStories() {
+      return this.$store.getters['default/getStories'].slice(
+        0,
+        this.defineStoriesToShow
+      );
     },
   },
 
-  data() {
-    return {
-      stories: [
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-        { author: 'Человек', title: 'Цитата Человека' },
-      ],
-    };
+  methods: {
+    goToDetail(id) {
+      this.$router.push(`/stories/${id}`);
+    },
+
+    getImageUrlBySize(item, size) {
+      return this.$store.getters['default/getImageUrlBySize'](item, size);
+    },
   },
 };
 </script>
