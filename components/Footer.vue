@@ -70,7 +70,7 @@ export default {
   max-width: 1440px;
   min-height: 356px;
   margin: auto;
-  padding: 60px;
+  padding: 60px 0px;
   display: flex;
   align-items: stretch;
   background: #fbfbfb;
@@ -138,7 +138,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .footer {
-    padding: 50px;
+    padding: 50px 0px;
     min-height: 316px;
   }
 
@@ -179,7 +179,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .footer {
-    padding: 40px;
+    padding: 40px 0px;
   }
 
   .footer__navigation {
@@ -231,7 +231,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .footer {
-    padding: 40px 25px;
+    padding: 40px 0px;
   }
 
   .footer__half {
@@ -254,7 +254,7 @@ export default {
 
 @media screen and (max-width: 320px) {
   .footer {
-    padding: 40px 15px;
+    padding: 40px 0px;
   }
 }
 </style>

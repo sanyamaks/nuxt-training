@@ -43,6 +43,7 @@ export default {
   font-size: 18px;
   font-weight: normal;
   text-decoration: none;
+  padding: 0;
   border: none;
   outline: none;
   background: none;
@@ -88,6 +89,11 @@ export default {
   .menu__link {
     display: none;
   }
+
+  .menu__button {
+    display: none;
+  }
+
   .menu__bar {
     display: inline-block;
   }

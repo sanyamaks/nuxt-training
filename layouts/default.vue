@@ -1,9 +1,13 @@
 <template>
   <div class="layout">
-    <main-header />
+    <container>
+      <main-header />
+    </container>
     <nuxt />
-    <popup v-if="isShowPopup"> </popup>
-    <main-footer />
+    <container>
+      <popup v-if="isShowPopup"> </popup>
+      <main-footer />
+    </container>
   </div>
 </template>
 
@@ -11,12 +15,14 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Popup from '@/components/Popup';
+import Container from '@/components/Container';
 
 export default {
   components: {
     'main-header': Header,
     'main-footer': Footer,
     popup: Popup,
+    container: Container,
   },
   computed: {
     isShowPopup() {
