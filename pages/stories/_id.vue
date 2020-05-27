@@ -49,7 +49,10 @@
             :person="item"
             :key="item.id"
             :story="item"
-            :url="`https://strapi.kruzhok.io${item.ImageUrl[0].url}`"
+            :url="`https://strapi.kruzhok.io${getImageUrlBySize(
+              item,
+              'small'
+            )}`"
             @click="goToDetail(item.id)"
           >
           </stories-card>
@@ -82,10 +85,9 @@ export default {
   },
 
   async fetch({ store, route }) {
-    await store.dispatch('allStories/fetchStoryWithId', {
+    await store.dispatch('default/fetchStoryWithId', {
       id: route.params.id,
     });
-    await store.dispatch('allStories/fetchStories'); // правильно ли это фетчить второй раз?
   },
 
   methods: {
@@ -93,18 +95,8 @@ export default {
       this.$router.push(`/stories/${id}`);
     },
 
-    getImageUrlBySize(item, size = 'medium') {
-      // нужно отрефакторить и перенести в стор
-      if (item.ImageUrl[0].formats[size])
-        return item.ImageUrl[0].formats[size].url;
-      if (item.ImageUrl[0].formats.large)
-        return item.ImageUrl[0].formats.large.url;
-      if (item.ImageUrl[0].formats.medium)
-        return item.ImageUrl[0].formats.medium.url;
-      if (item.ImageUrl[0].formats.small)
-        return item.ImageUrl[0].formats.small.url;
-      if (item.ImageUrl[0].formats.thumbnail)
-        return item.ImageUrl[0].formats.thumbnail.url;
+    getImageUrlBySize(item, size) {
+      return this.$store.getters['default/getImageUrlBySize'](item, size);
     },
   },
 
@@ -119,14 +111,14 @@ export default {
     },
 
     showStories() {
-      return this.$store.getters['allStories/getStories'].slice(
+      return this.$store.getters['default/getStories'].slice(
         0,
         this.defineStoriesToShow
       );
     },
 
     story() {
-      return this.$store.getters['allStories/getCurrentStory'];
+      return this.$store.getters['default/getCurrentStory'];
     },
 
     getLocalizedDate() {

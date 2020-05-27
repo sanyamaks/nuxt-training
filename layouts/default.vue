@@ -24,10 +24,16 @@ export default {
     popup: Popup,
     container: Container,
   },
+
   computed: {
     isShowPopup() {
       return this.$store.getters['popup/getPopupShown'];
     },
+  },
+
+  async fetch() {
+    await this.$store.dispatch('default/fetchStories');
+    this.$store.dispatch('default/countNumberOfItems');
   },
 };
 </script>

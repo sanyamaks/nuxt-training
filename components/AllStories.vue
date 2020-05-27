@@ -15,7 +15,7 @@
         v-for="item in showStories"
         :key="item.id"
         :story="item"
-        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item)}`"
+        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item, 'small')}`"
         @click="goToDetail(item.id)"
       >
         <!-- поправить хардкод в :url -->
@@ -53,47 +53,32 @@ export default {
     },
 
     changeCurrentIndex(index) {
-      this.$store.dispatch('allStories/changeCurrentIndex', { index });
+      this.$store.dispatch('default/changeCurrentIndex', { index });
     },
 
-    getImageUrlBySize(item, size = 'medium') {
-      // нужно отрефакторить и перенести в стор
-      if (item.ImageUrl[0].formats[size])
-        return item.ImageUrl[0].formats[size].url;
-      if (item.ImageUrl[0].formats.large)
-        return item.ImageUrl[0].formats.large.url;
-      if (item.ImageUrl[0].formats.medium)
-        return item.ImageUrl[0].formats.medium.url;
-      if (item.ImageUrl[0].formats.small)
-        return item.ImageUrl[0].formats.small.url;
-      if (item.ImageUrl[0].formats.thumbnail)
-        return item.ImageUrl[0].formats.thumbnail.url;
+    getImageUrlBySize(item, size) {
+      return this.$store.getters['default/getImageUrlBySize'](item, size);
     },
   },
 
   computed: {
     showStories() {
-      this.$store.dispatch('allStories/defineStoriesToShow');
-      return this.$store.getters['allStories/getStoriesToShow'];
+      this.$store.dispatch('default/defineStoriesToShow');
+      return this.$store.getters['default/getStoriesToShow'];
     },
 
     getTotalItems() {
-      return this.$store.getters['allStories/getTotalItems'];
+      return this.$store.getters['default/getTotalItems'];
     },
 
     getItemsPerPage() {
-      return this.$store.getters['allStories/getItemsPerPage'];
+      return this.$store.getters['default/getItemsPerPage'];
     },
 
     getNumberOfPages() {
-      this.numberOfPages = this.$store.getters['allStories/getNumberOfPages'];
+      this.numberOfPages = this.$store.getters['default/getNumberOfPages'];
       return this.numberOfPages;
     },
-  },
-
-  async fetch() {
-    await this.$store.dispatch('allStories/fetchStories');
-    this.$store.dispatch('allStories/countNumberOfItems');
   },
 };
 </script>
