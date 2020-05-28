@@ -1,5 +1,5 @@
 <template>
-  <div class="mobile-menu">
+  <div :class="['mobile-menu', { 'mobile-menu_opened': isMobileMenuOpened }]">
     <nuxt-link to="/" class="mobile-menu_link">Главная</nuxt-link>
     <nuxt-link to="/stories" class="mobile-menu_link">Истории</nuxt-link>
     <a class="mobile-menu_link" @click.prevent="showPopup"
@@ -17,19 +17,34 @@ export default {
       this.$store.dispatch('quiz/showQuiz');
     },
   },
+
+  computed: {
+    isMobileMenuOpened() {
+      return this.$store.getters['mobileMenu/getMobileMenuState'];
+    },
+  },
 };
 </script>
 
 <style scoped>
 .mobile-menu {
-  /* display: none; */
-  min-height: 120px;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: 0.2s;
   display: flex;
   flex-direction: column;
-  padding-top: 18px;
-  padding-bottom: 18px;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.mobile-menu_opened {
+  visibility: visible;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  height: 120px;
+  opacity: 1;
 }
 
 .mobile-menu_link {

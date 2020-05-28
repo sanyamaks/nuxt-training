@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <container>
-      <mobile-menu v-if="isMobileMenuOpened"></mobile-menu>
+      <mobile-menu></mobile-menu>
       <main-header :blockContent="getBlockByName('header')" />
     </container>
     <nuxt />
@@ -29,10 +29,6 @@ export default {
   computed: {
     isShowPopup() {
       return this.$store.getters['popup/getPopupShown'];
-    },
-
-    isMobileMenuOpened() {
-      return this.$store.getters['mobileMenu/getMobileMenuState'];
     },
   },
 
