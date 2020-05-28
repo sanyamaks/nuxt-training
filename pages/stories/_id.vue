@@ -4,7 +4,13 @@
       <section class="story">
         <div class="story__person">
           <div class="story__copyright story__copyright_mobile">
-            <button type="button" class="story__share">Поделитесь ↗</button>
+            <button
+              type="button"
+              class="story__share"
+              @click.prevent="showPopup"
+            >
+              Поделитесь ↗
+            </button>
             <time class="story__date">20 апреля 2018</time>
           </div>
 
@@ -40,7 +46,11 @@
           v-html="getStoryTextWithClasses"
         ></article>
 
-        <button type="button" class="story__share story__share_long">
+        <button
+          type="button"
+          class="story__share story__share_long"
+          @click.prevent="showPopup"
+        >
           Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
         </button>
 
