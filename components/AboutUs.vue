@@ -1,34 +1,54 @@
 <template>
-  <section class="about-us">
-    <h2 class="about-us__title">{{ blockContent.hashtag }}</h2>
+  <section :class="['about-us', `about-us_theme_${theme}`]">
+    <h2 class="about-us__title" v-if="blockContent.hashtag">
+      {{ blockContent.hashtag }}
+    </h2>
 
     <div class="about-us__container">
-      <section-title class="about-us__section-title">{{
-        blockContent.title
-      }}</section-title>
+      <section-title
+        :class="[
+          'about-us__section-title',
+          `about-us__section-title_theme_${theme}`,
+        ]"
+        >{{ blockContent.title }}</section-title
+      >
 
-      <section-description class="about-us__section-description">
+      <section-description
+        :class="[
+          'about-us__section-description',
+          `about-us__section-description_theme_${theme}`,
+        ]"
+      >
         {{ blockContent.text.replace(/(<\/?p>)/g, '') }}
       </section-description>
 
       <div class="about-us__toggle-links">
         <toggle-link
-          v-for="toggleButton in blockContent.extraTexts"
-          :key="toggleButton.id"
-          name="options"
+          v-for="(toggleButton, index) in blockContent.extraTexts"
+          :key="index"
+          :name="`${blockContent.block}-option`"
           :label="toggleButton.id"
-          :id="`radio-${toggleButton.id}`"
+          :id="index"
           :value="toggleButton.id"
-          @change="showContentById"
+          @change="showContentById(index)"
           class="about-us__toggle-link"
+          :theme="theme"
           >{{ toggleButton.title }}</toggle-link
         >
       </div>
 
       <div class="about-us__text-container">
-        <section-text class="about-us__text">
-          {{ textToShow.replace(/(<\/?p>)/g, '') }}
+        <section-text
+          :class="['about-us__text', `about-us__text_theme_${theme}`]"
+        >
+          {{ options.textToShow }}
         </section-text>
+        <middle-button
+          v-if="showButton"
+          :text="options.textToShowForButton"
+          class="about-us__middle-button"
+          @click="options.handler"
+        ></middle-button>
       </div>
     </div>
   </section>
@@ -40,6 +60,7 @@ import ToggleLink from '@/components/ui/ToggleLink';
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
 import SectionText from '@/components/ui/SectionText';
+import MiddleButton from '@/components/ui/MiddleButton';
 
 export default {
   components: {
@@ -47,12 +68,28 @@ export default {
     'section-title': SectionTitle,
     'section-description': SectionDescription,
     'section-text': SectionText,
+    'middle-button': MiddleButton,
   },
 
   data() {
     return {
-      textToShow: this.blockContent.extraTexts[0].text,
+      options: {
+        textToShow: '',
+        textToShowForButton: '',
+        handler: '',
+      },
+      button: '',
     };
+  },
+
+  props: {
+    showButton: {
+      type: Boolean,
+      default: false,
+    },
+    theme: {
+      type: String,
+    },
   },
 
   mixins: [mixinBlockContent],
@@ -66,29 +103,47 @@ export default {
     },
   },
   methods: {
-    // setChecked() {
-    //   this.checked++;
-    //   return this.checked;
-    // },
-
-    showContentById(id) {
-      const extraTexts = this.blockContent.extraTexts.find(
-        (text) => text.id === id
-      );
-      this.textToShow = extraTexts.text;
-      //this.$store.commit('aboutUs/showContentById', e);
+    showContentById(index = 0) {
+      this.options.textToShow = this.blockContent.extraTexts[
+        index
+      ].text.replace(/(<\/?p>)/g, '');
+      this.options.textToShowForButton =
+        index === 0 ? 'Заполнить форму' : 'Оставить контакт';
+      this.options.handler =
+        index === 0 ? this.showPopupQuiz : this.showPopupContactMe;
     },
+
+    showPopupQuiz() {
+      this.$store.commit('popup/openPopup');
+      this.$store.dispatch('quiz/showQuiz');
+    },
+
+    showPopupContactMe() {
+      this.$store.commit('popup/openPopup');
+      this.$store.dispatch('contactMe/showContactMe');
+    },
+  },
+
+  created() {
+    this.showContentById();
   },
 };
 </script>
 
 <style scoped>
 .about-us {
-  background: #613a93;
   padding: 0 60px;
   min-height: 650px;
   padding-top: 90px;
   padding-bottom: 100px;
+}
+
+.about-us_theme_purple {
+  background: #613a93;
+}
+
+.about-us_theme_gray {
+  background: #f7f7f7;
 }
 
 .about-us__title {
@@ -96,13 +151,12 @@ export default {
   font-size: 64px;
   line-height: 77px;
   text-align: center;
-
+  margin-bottom: 70px;
   color: #ffffff;
 }
 
 .about-us__container {
   margin: 0 auto;
-  margin-top: 70px;
   max-width: 1320px;
   display: grid;
   grid-template-areas:
@@ -115,12 +169,26 @@ export default {
 
 .about-us__section-title {
   grid-area: section-title;
+}
+
+.about-us__section-title_theme_purple {
   color: #ffffff;
+}
+
+.about-us__section-title_theme_gray {
+  color: #000;
 }
 
 .about-us__section-description {
   grid-area: section-description;
+}
+
+.about-us__section-description_theme_purple {
   color: #dedede;
+}
+
+.about-us__section-description_theme_gray {
+  color: #666;
 }
 
 .about-us__toggle-links {
@@ -151,12 +219,23 @@ export default {
 
 .about-us__text {
   margin-bottom: 20px;
+}
 
+.about-us__text_theme_purple {
   color: #dedede;
+}
+
+.about-us__text_theme_gray {
+  color: #666;
 }
 
 .about-us__text:last-of-type {
   margin-bottom: 0;
+}
+
+.about-us__middle-button {
+  width: 280px;
+  margin-top: 78px;
 }
 
 @media screen and (max-width: 1280px) {

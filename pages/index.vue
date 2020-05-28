@@ -21,16 +21,24 @@
         class="content__instagram"
         :blockContent="getBlockByName('instagram')"
       />
-      <tell-story
+    </container>
+    <about-us
+      class="content__tell-story"
+      :blockContent="getBlockByName('story')"
+      :showButton="true"
+      :theme="'gray'"
+    />
+    <!-- <tell-story
         class="content__tell-story"
         :blockContent="getBlockByName('story')"
-      />
+      /> -->
+    <container>
       <statistika
         class="content__statistika"
         :blockContent="getBlockByName('statistics')"
       />
     </container>
-    <about-us :blockContent="getBlockByName('about')" />
+    <about-us :blockContent="getBlockByName('about')" :theme="'purple'" />
 
     <!--<last-popup></last-popup НУЖНО ПЕРЕРАБОТАТЬ ДАННЫЙ ПОПАП>-->
   </main>
