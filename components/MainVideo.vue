@@ -4,12 +4,10 @@
       <div class="main-video__desc-box">
         <div class="main-video__description">
           <section-title class="main-video__section-title">
-            Истории людей, победивших рак, но не свои привычки
+            {{ blockContent.title }}
           </section-title>
           <section-description class="main-video__section-description">
-            Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я»,
-            фобии, страхи. Но это точно не рак. Рак лечится. Лучшее
-            доказательство — люди с их историями.
+            {{ blockContent.text.replace(/(<\/?p>)/g, '') }}
           </section-description>
         </div>
         <div class="main-video__controls main-video__controls_big">
@@ -37,13 +35,12 @@
           </div>
         </div>
         <p class="main-video__desc">
-          Все видео вы можете найте на нашем
           <a
             class="main-video__link"
             target="_blank"
             href="https://www.youtube.com/channel/UCcxMSzN1R4JfW1vLu3swCaQ"
           >
-            YouTube канале.
+            {{ blockContent.note }}
           </a>
         </p>
       </div>
@@ -52,14 +49,17 @@
 </template>
 
 <script>
-import SectionTitle from '../components/ui/SectionTitle';
-import SectionDescription from '../components/ui/SectionDescription';
+import mixinBlockContent from '@/mixins/mixinBlockContent';
+import SectionTitle from '@/components/ui/SectionTitle';
+import SectionDescription from '@/components/ui/SectionDescription';
 
 export default {
   components: {
     'section-title': SectionTitle,
     'section-description': SectionDescription,
   },
+
+  mixins: [mixinBlockContent],
 };
 </script>
 

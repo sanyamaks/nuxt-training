@@ -1,7 +1,7 @@
 <template>
   <section class="main-stories">
     <section-title class="main-stories__section-title">
-      Истории неизлечимых привычек
+      {{ blockContent.title }}
     </section-title>
     <div class="main-stories__container">
       <stories-card
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
 import StoriesCard from '@/components/ui/StoriesCard';
 import SectionTitle from '@/components/ui/SectionTitle';
 import StoriesButton from '@/components/ui/StoriesButton.vue';
@@ -31,6 +32,8 @@ export default {
     'section-title': SectionTitle,
     'stories-button': StoriesButton,
   },
+
+  mixins: [mixinBlockContent],
 
   data() {
     return {

@@ -3,7 +3,7 @@
     <section class="footer__container">
       <div class="footer__half">
         <h2 class="footer__title">
-          Спасибо всем, кто помог состояться этому проекту
+          {{ blockContent.title }}
         </h2>
         <div class="footer__navigation">
           <nuxt-link to="/" class="footer__link">
@@ -39,7 +39,7 @@
       </div>
 
       <div class="footer__half">
-        <small class="footer__text">Рак Лечится 2020</small>
+        <small class="footer__text">{{ blockContent.text }}</small>
 
         <p class="footer__text">Сделано студентами Яндекс&nbsp;Практикум</p>
       </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Menu from '@/components/Menu';
 
@@ -56,6 +57,9 @@ export default {
     'section-title': SectionTitle,
     'main-menu': Menu,
   },
+
+  mixins: [mixinBlockContent],
+
   methods: {
     showPopup() {
       this.$store.commit('popup/openPopup');

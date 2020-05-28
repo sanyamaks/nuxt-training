@@ -1,12 +1,15 @@
 <template>
   <section class="cover">
-    <h1 class="cover__header">#РАКЛЕЧИТСЯ</h1>
+    <h1 class="cover__header">{{ blockContent.hashtag }}</h1>
     <button class="cover__arrow" @click="click"></button>
   </section>
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
+
 export default {
+  mixins: [mixinBlockContent],
   methods: {
     click(event) {
       event.preventDefault();

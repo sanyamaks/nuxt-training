@@ -1,12 +1,12 @@
 <template>
   <div class="layout">
     <container>
-      <main-header />
+      <main-header :blockContent="getBlockByName('header')" />
     </container>
     <nuxt />
     <container>
       <popup v-if="isShowPopup"> </popup>
-      <main-footer />
+      <main-footer :blockContent="getBlockByName('footer')" />
     </container>
   </div>
 </template>
@@ -29,9 +29,12 @@ export default {
     isShowPopup() {
       return this.$store.getters['popup/getPopupShown'];
     },
+  },
 
-    blocksList() {
-      return this.$store.getters['default/getBlocks'];
+  methods: {
+    getBlockByName(blockName) {
+      const blocks = this.$store.getters['default/getBlocks'];
+      return blocks.find((block) => block.block === blockName);
     },
   },
 

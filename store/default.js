@@ -28,4 +28,10 @@ export const getters = {
   getBlocks(state) {
     return state.blocks;
   },
+
+  getBlockByName: (state) => (blockName) => {
+    return state.blocks.find((block) => {
+      block.block === blockName;
+    });
+  },
 };
