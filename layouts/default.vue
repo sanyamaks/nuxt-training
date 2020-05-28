@@ -4,10 +4,8 @@
       <main-header :blockContent="getBlockByName('header')" />
     </container>
     <nuxt />
-    <container>
-      <popup v-if="isShowPopup"> </popup>
-      <main-footer :blockContent="getBlockByName('footer')" />
-    </container>
+    <popup v-if="isShowPopup"> </popup>
+    <main-footer :blockContent="getBlockByName('footer')" />
   </div>
 </template>
 

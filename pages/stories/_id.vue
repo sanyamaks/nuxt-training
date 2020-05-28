@@ -23,7 +23,13 @@
             </h1>
 
             <div class="story__copyright story__copyright_desctop">
-              <button type="button" class="story__share">Поделитесь ↗</button>
+              <button
+                type="button"
+                class="story__share"
+                @click.prevent="showPopup"
+              >
+                Поделитесь ↗
+              </button>
               <time class="story__date">{{ getLocalizedDate }}</time>
             </div>
           </div>
@@ -90,6 +96,11 @@ export default {
 
     getImageUrlBySize(item, size) {
       return this.$store.getters['allStories/getImageUrlBySize'](item, size);
+    },
+
+    showPopup() {
+      this.$store.commit('popup/openPopup');
+      this.$store.dispatch('SocialMedia/showSocialMedia');
     },
   },
 

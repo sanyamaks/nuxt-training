@@ -106,7 +106,7 @@ export default {
     showContentById(index = 0) {
       this.options.textToShow = this.blockContent.extraTexts[
         index
-      ].text.replace(/(<\/?p>)/g, '');
+      ].text.replace(/(<\/?p>)|<?br>?|&[a-z]+;/g, '');
       this.options.textToShowForButton =
         index === 0 ? 'Заполнить форму' : 'Оставить контакт';
       this.options.handler =
