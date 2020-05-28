@@ -13,7 +13,7 @@ export const mutations = {
 export const actions = {
   fetchBlocks({ commit }) {
     return this.$axios
-      .$get('blocks')
+      .$get('/blocks')
       .then((response) => {
         return commit('setState', {
           name: 'blocks',

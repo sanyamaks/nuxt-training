@@ -95,7 +95,7 @@ export const actions = {
 
   fetchStories({ commit }) {
     return this.$axios
-      .$get('stories')
+      .$get('/stories')
       .then((response) => {
         return commit('setState', {
           name: 'stories',
@@ -106,7 +106,7 @@ export const actions = {
   },
 
   fetchStoryWithId({ commit }, payload) {
-    return this.$axios.$get(`stories/${payload.id}`).then((response) => {
+    return this.$axios.$get(`/stories/${payload.id}`).then((response) => {
       return commit('setState', {
         name: 'currentStory',
         value: response,

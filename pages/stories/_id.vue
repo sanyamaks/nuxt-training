@@ -11,13 +11,9 @@
           <div class="story__photo-container">
             <img
               class="story__photo"
-              :src="`https://strapi.kruzhok.io${getImageUrlBySize(
-                story,
-                'large'
-              )}`"
+              :src="`${apiURL}${getImageUrlBySize(story, 'large')}`"
               :alt="`Фото ${story.author}`"
             />
-            <!-- Поправить хардкод -->
           </div>
 
           <div class="story__box">
@@ -33,11 +29,10 @@
           </div>
         </div>
 
-        <article class="story__article" v-html="getStoryTextWithClasses">
-          <!-- <button type="button" class="story__share story__share_long">
-            Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
-          </button> -->
-        </article>
+        <article
+          class="story__article"
+          v-html="getStoryTextWithClasses"
+        ></article>
 
         <button type="button" class="story__share story__share_long">
           Поделитесь этой статьей в своих социальных&nbsp;сетях ↗
@@ -49,10 +44,7 @@
             :person="item"
             :key="item.id"
             :story="item"
-            :url="`https://strapi.kruzhok.io${getImageUrlBySize(
-              item,
-              'small'
-            )}`"
+            :url="`${apiURL}${getImageUrlBySize(item, 'small')}`"
             @click="goToDetail(item.id)"
           >
           </stories-card>
@@ -75,6 +67,7 @@ export default {
   data() {
     return {
       storiesToShow: 0,
+      apiURL: process.env.apiURL,
     };
   },
 
