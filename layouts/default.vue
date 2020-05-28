@@ -32,8 +32,8 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('default/fetchStories');
-    this.$store.dispatch('default/countNumberOfItems');
+    await this.$store.dispatch('allStories/fetchStories');
+    this.$store.dispatch('allStories/countNumberOfItems');
   },
 };
 </script>
