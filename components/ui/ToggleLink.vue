@@ -4,7 +4,7 @@
       type="radio"
       class="toggle__radio"
       :id="id"
-      :value="label"
+      :value="value"
       :name="name"
       v-model="radioButtonValue"
     />
@@ -17,14 +17,14 @@
 
 <script>
 export default {
-  props: ['id', 'label', 'name', 'value'],
+  props: ['id', 'label', 'name', 'value', 'firstChecked'],
   computed: {
     radioButtonValue: {
       get: function () {
-        return this.value;
+        return this.label;
       },
       set: function () {
-        this.$emit('change', this.label);
+        this.$emit('change', this.value);
       },
     },
   },

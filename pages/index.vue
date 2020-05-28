@@ -1,17 +1,36 @@
 <template>
   <main class="content">
-    <cover @scrollToNextBlock="scrollToNextBlock"></cover>
+    <cover
+      @scrollToNextBlock="scrollToNextBlock"
+      :blockContent="getBlockByName('cover')"
+    />
     <container>
-      <main-video ref="scroll-to-here" class="content__main-video"></main-video>
+      <main-video
+        class="content__main-video"
+        ref="scroll-to-here"
+        :blockContent="getBlockByName('videos')"
+      />
       <!-- текст скроллится впритык к верхней границе экрана потому что заданы марджины -->
-      <banner>И в отличие от рака,</banner>
-      <main-stories class="content__main-stories"></main-stories>
-      <banner>Рассказывайте ваши истории в Инстаграм</banner>
-      <instagram class="content__instagram"></instagram>
-      <tell-story class="content__tell-story"> </tell-story>
-      <statistika class="content__statistika"></statistika>
+      <banner :blockContent="getBlockByName('note-1')" />
+      <main-stories
+        class="content__main-stories"
+        :blockContent="getBlockByName('stories')"
+      />
+      <banner :blockContent="getBlockByName('note-2')" />
+      <instagram
+        class="content__instagram"
+        :blockContent="getBlockByName('instagram')"
+      />
+      <tell-story
+        class="content__tell-story"
+        :blockContent="getBlockByName('story')"
+      />
+      <statistika
+        class="content__statistika"
+        :blockContent="getBlockByName('statistics')"
+      />
     </container>
-    <about-us></about-us>
+    <about-us :blockContent="getBlockByName('about')" />
 
     <!--<last-popup></last-popup НУЖНО ПЕРЕРАБОТАТЬ ДАННЫЙ ПОПАП>-->
   </main>
@@ -29,9 +48,6 @@ import AboutUs from '@/components/AboutUs';
 import Container from '@/components/Container';
 
 export default {
-  props: {
-    blocks: Array,
-  },
   components: {
     container: Container,
     cover: Cover,
@@ -43,6 +59,7 @@ export default {
     'tell-story': TellStory,
     'main-video': MainVideo,
   },
+
   methods: {
     scrollToNextBlock() {
       this.$refs['scroll-to-here'].$el.scrollIntoView({
@@ -50,9 +67,11 @@ export default {
         behavior: 'smooth',
       });
     },
-  },
-  data() {
-    return {};
+
+    getBlockByName(blockName) {
+      const blocks = this.$store.getters['default/getBlocks'];
+      return blocks.find((block) => block.block === blockName);
+    },
   },
 };
 </script>

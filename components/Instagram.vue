@@ -2,15 +2,12 @@
   <section class="instagram">
     <div class="instagram__container">
       <div class="instagram__side">
-        <section-title class="instagram__section-title"
-          >Инстаграм</section-title
-        >
+        <section-title class="instagram__section-title">{{
+          blockContent.title
+        }}</section-title>
 
         <section-description class="instagram__section-description">
-          Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
-          Все истории, где нет нецензурных выражений и запрещенного контента
-          попадают сюда. Следите за правильным написанием хештега, чтобы мы не
-          пропустили вашу историю.
+          {{ blockContent.text.replace(/(<\/?p>)/g, '') }}
         </section-description>
       </div>
 
@@ -79,6 +76,8 @@
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
+
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
 
@@ -87,6 +86,8 @@ export default {
     'section-title': SectionTitle,
     'section-description': SectionDescription,
   },
+
+  mixins: [mixinBlockContent],
 };
 </script>
 

@@ -1,14 +1,17 @@
 <template>
   <section class="banner">
     <h2 class="banner__title">
-      <slot>Текст баннера</slot>
-      <span class="banner__hashtag">#этонелечится</span>
+      {{ blockContent.title }}
+      <span class="banner__hashtag">{{ blockContent.hashtag }}</span>
     </h2>
   </section>
 </template>
 
 <script>
-export default {};
+import mixinBlockContent from '@/mixins/mixinBlockContent';
+export default {
+  mixins: [mixinBlockContent],
+};
 </script>
 
 <style scoped>

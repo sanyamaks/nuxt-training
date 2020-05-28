@@ -1,7 +1,7 @@
 <template>
   <section class="statistika">
     <section-title class="statistika__section-title">
-      Статистика по онкозаболеваниям
+      {{ blockContent.title }}
     </section-title>
     <div class="statistika__card">
       <div class="stat-card">
@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
 import SectionTitle from './ui/SectionTitle';
 import ProgressBar from './ui/ProgressBar';
 import ProgressBarDouble from './ui/ProgressBarDouble';
@@ -82,6 +83,8 @@ export default {
     'progress-bar': ProgressBar,
     'progress-bar-double': ProgressBarDouble,
   },
+
+  mixins: [mixinBlockContent],
 };
 </script>
 

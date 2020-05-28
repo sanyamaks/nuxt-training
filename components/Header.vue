@@ -1,18 +1,20 @@
 <template>
   <header class="header">
     <nuxt-link to="/" class="header__logo">
-      Проект Благотворительного Фонда Константина Хабенского
+      {{ blockContent.title }}
     </nuxt-link>
     <main-menu :isLastButtonShown="true" />
   </header>
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
 import Menu from '@/components/Menu';
 export default {
   components: {
     'main-menu': Menu,
   },
+  mixins: [mixinBlockContent],
 };
 </script>
 

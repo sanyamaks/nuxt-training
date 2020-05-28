@@ -1,22 +1,24 @@
 <template>
   <section class="about-us">
-    <h2 class="about-us__title">#РАКЛЕЧИТСЯ</h2>
+    <h2 class="about-us__title">{{ blockContent.hashtag }}</h2>
 
     <div class="about-us__container">
-      <section-title class="about-us__section-title">О проекте</section-title>
+      <section-title class="about-us__section-title">{{
+        blockContent.title
+      }}</section-title>
 
       <section-description class="about-us__section-description">
-        Этот проект был создан благотворительным фондом Константина Хабенского.
+        {{ blockContent.text.replace(/(<\/?p>)/g, '') }}
       </section-description>
 
       <div class="about-us__toggle-links">
         <toggle-link
-          v-for="toggleButton in toggleButtons"
+          v-for="toggleButton in blockContent.extraTexts"
           :key="toggleButton.id"
           name="options"
           :label="toggleButton.id"
           :id="`radio-${toggleButton.id}`"
-          :value="1"
+          :value="toggleButton.id"
           @change="showContentById"
           class="about-us__toggle-link"
           >{{ toggleButton.title }}</toggle-link
@@ -24,12 +26,8 @@
       </div>
 
       <div class="about-us__text-container">
-        <section-text
-          class="about-us__text"
-          v-for="paragraph in contentToShow.paragraphs"
-          :key="paragraph.id"
-        >
-          {{ paragraph.text }}
+        <section-text class="about-us__text">
+          {{ textToShow.replace(/(<\/?p>)/g, '') }}
         </section-text>
       </div>
     </div>
@@ -37,6 +35,7 @@
 </template>
 
 <script>
+import mixinBlockContent from '@/mixins/mixinBlockContent';
 import ToggleLink from '@/components/ui/ToggleLink';
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
@@ -49,6 +48,15 @@ export default {
     'section-description': SectionDescription,
     'section-text': SectionText,
   },
+
+  data() {
+    return {
+      textToShow: this.blockContent.extraTexts[0].text,
+    };
+  },
+
+  mixins: [mixinBlockContent],
+
   computed: {
     contentToShow() {
       return this.$store.getters['aboutUs/getContentToShow'];
@@ -58,8 +66,17 @@ export default {
     },
   },
   methods: {
-    showContentById(e) {
-      this.$store.commit('aboutUs/showContentById', e);
+    // setChecked() {
+    //   this.checked++;
+    //   return this.checked;
+    // },
+
+    showContentById(id) {
+      const extraTexts = this.blockContent.extraTexts.find(
+        (text) => text.id === id
+      );
+      this.textToShow = extraTexts.text;
+      //this.$store.commit('aboutUs/showContentById', e);
     },
   },
 };
