@@ -17,7 +17,7 @@
           <p class="footer__text footer__text_type_link">
             Мы в
             <a
-              href="https://www.instagram.com/raklechi"
+              href="https://www.instagram.com/raklechitsa/"
               class="footer__link"
               target="_blank"
               >Инстаграме</a
@@ -31,9 +31,9 @@
               Youtube
             </a>
           </p>
-          <nuxt-link to="/" class="footer__link" @click.native="showPopup">
+          <a class="footer__link" @click.prevent="showPopup">
             Поделитесь &#8599;
-          </nuxt-link>
+          </a>
         </div>
       </div>
 
@@ -72,16 +72,16 @@ export default {
 
 <style scoped>
 .footer {
-  max-width: 1440px;
   min-height: 356px;
   margin: auto;
-  padding: 60px 0px;
+  padding: 60px;
   display: flex;
   align-items: stretch;
   background: #fbfbfb;
 }
 
 .footer__container {
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -113,12 +113,16 @@ export default {
 }
 
 .footer__link {
+  border: none;
+  background: transparent;
+  display: inline;
   color: #000000;
   cursor: pointer;
   font-size: 18px;
   font-weight: normal;
   text-decoration: none;
 }
+
 .footer__text:nth-child(1) .footer__link {
   border-bottom: solid 2px black;
 }
@@ -143,8 +147,12 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .footer {
-    padding: 50px 0px;
+    padding: 50px;
     min-height: 316px;
+  }
+
+  .footer__container {
+    max-width: 1180px;
   }
 
   .footer__title {
@@ -184,7 +192,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .footer {
-    padding: 40px 0px;
+    padding: 40px;
   }
 
   .footer__navigation {
@@ -235,10 +243,6 @@ export default {
 }
 
 @media screen and (max-width: 425px) {
-  .footer {
-    padding: 40px 0px;
-  }
-
   .footer__half {
     flex-direction: column;
   }
@@ -259,7 +263,7 @@ export default {
 
 @media screen and (max-width: 320px) {
   .footer {
-    padding: 40px 0px;
+    padding: 40px 15px;
   }
 }
 </style>
