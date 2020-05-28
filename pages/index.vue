@@ -29,7 +29,9 @@ import AboutUs from '@/components/AboutUs';
 import Container from '@/components/Container';
 
 export default {
-  props: {},
+  props: {
+    blocks: Array,
+  },
   components: {
     container: Container,
     cover: Cover,

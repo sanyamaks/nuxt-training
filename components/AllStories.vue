@@ -53,30 +53,30 @@ export default {
     },
 
     changeCurrentIndex(index) {
-      this.$store.dispatch('default/changeCurrentIndex', { index });
+      this.$store.dispatch('allStories/changeCurrentIndex', { index });
     },
 
     getImageUrlBySize(item, size) {
-      return this.$store.getters['default/getImageUrlBySize'](item, size);
+      return this.$store.getters['allStories/getImageUrlBySize'](item, size);
     },
   },
 
   computed: {
     showStories() {
-      this.$store.dispatch('default/defineStoriesToShow');
-      return this.$store.getters['default/getStoriesToShow'];
+      this.$store.dispatch('allStories/defineStoriesToShow');
+      return this.$store.getters['allStories/getStoriesToShow'];
     },
 
     getTotalItems() {
-      return this.$store.getters['default/getTotalItems'];
+      return this.$store.getters['allStories/getTotalItems'];
     },
 
     getItemsPerPage() {
-      return this.$store.getters['default/getItemsPerPage'];
+      return this.$store.getters['allStories/getItemsPerPage'];
     },
 
     getNumberOfPages() {
-      this.numberOfPages = this.$store.getters['default/getNumberOfPages'];
+      this.numberOfPages = this.$store.getters['allStories/getNumberOfPages'];
       return this.numberOfPages;
     },
   },

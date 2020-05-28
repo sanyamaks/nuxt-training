@@ -29,11 +29,16 @@ export default {
     isShowPopup() {
       return this.$store.getters['popup/getPopupShown'];
     },
+
+    blocksList() {
+      return this.$store.getters['default/getBlocks'];
+    },
   },
 
   async fetch() {
-    await this.$store.dispatch('default/fetchStories');
-    this.$store.dispatch('default/countNumberOfItems');
+    await this.$store.dispatch('default/fetchBlocks');
+    await this.$store.dispatch('allStories/fetchStories');
+    this.$store.dispatch('allStories/countNumberOfItems'); // вот это на самом деле, наверное, и не нужно
   },
 };
 </script>

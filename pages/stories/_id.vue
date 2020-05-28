@@ -85,7 +85,7 @@ export default {
   },
 
   async fetch({ store, route }) {
-    await store.dispatch('default/fetchStoryWithId', {
+    await store.dispatch('allStories/fetchStoryWithId', {
       id: route.params.id,
     });
   },
@@ -96,7 +96,7 @@ export default {
     },
 
     getImageUrlBySize(item, size) {
-      return this.$store.getters['default/getImageUrlBySize'](item, size);
+      return this.$store.getters['allStories/getImageUrlBySize'](item, size);
     },
   },
 
@@ -111,14 +111,14 @@ export default {
     },
 
     showStories() {
-      return this.$store.getters['default/getStories'].slice(
+      return this.$store.getters['allStories/getStories'].slice(
         0,
         this.defineStoriesToShow
       );
     },
 
     story() {
-      return this.$store.getters['default/getCurrentStory'];
+      return this.$store.getters['allStories/getCurrentStory'];
     },
 
     getLocalizedDate() {

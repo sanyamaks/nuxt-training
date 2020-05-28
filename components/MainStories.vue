@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import StoriesCard from './ui/StoriesCard';
-import SectionTitle from './ui/SectionTitle';
-import StoriesButton from './ui/StoriesButton.vue';
+import StoriesCard from '@/components/ui/StoriesCard';
+import SectionTitle from '@/components/ui/SectionTitle';
+import StoriesButton from '@/components/ui/StoriesButton.vue';
 
 export default {
   components: {
@@ -44,7 +44,7 @@ export default {
     },
 
     showStories() {
-      return this.$store.getters['default/getStories'].slice(
+      return this.$store.getters['allStories/getStories'].slice(
         0,
         this.defineStoriesToShow
       );
@@ -57,7 +57,7 @@ export default {
     },
 
     getImageUrlBySize(item, size) {
-      return this.$store.getters['default/getImageUrlBySize'](item, size);
+      return this.$store.getters['allStories/getImageUrlBySize'](item, size);
     },
   },
 };
