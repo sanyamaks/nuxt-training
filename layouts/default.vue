@@ -1,6 +1,7 @@
 <template>
   <div class="layout">
     <container>
+      <mobile-menu v-if="isMobileMenuOpened"></mobile-menu>
       <main-header :blockContent="getBlockByName('header')" />
     </container>
     <nuxt />
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import MobileMenu from '@/components/MobileMenu';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Popup from '@/components/Popup';
@@ -17,6 +19,7 @@ import Container from '@/components/Container';
 
 export default {
   components: {
+    'mobile-menu': MobileMenu,
     'main-header': Header,
     'main-footer': Footer,
     popup: Popup,
@@ -26,6 +29,10 @@ export default {
   computed: {
     isShowPopup() {
       return this.$store.getters['popup/getPopupShown'];
+    },
+
+    isMobileMenuOpened() {
+      return this.$store.getters['mobileMenu/getMobileMenuState'];
     },
   },
 
