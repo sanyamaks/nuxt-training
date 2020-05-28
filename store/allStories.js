@@ -92,24 +92,25 @@ export const actions = {
     dispatch('defineStoriesToShow');
   },
 
-  fetchStories({ state, commit, dispatch }) {
-    return axios
-      .get('https://strapi.kruzhok.io/stories') // надо будет убрать хардкод
+  fetchStories({ commit }) {
+    return this.$axios
+      .$get('stories')
       .then((response) => {
-        return commit('setStories', response.data);
+        return commit('setState', {
+          name: 'stories',
+          value: response,
+        });
       })
       .catch((error) => console.log(error));
   },
 
-  fetchStoryWithId(state, payload) {
-    return axios
-      .get(`https://strapi.kruzhok.io/stories/${payload.id}`)
-      .then((response) => {
-        return state.commit('setState', {
-          name: 'currentStory',
-          value: response.data,
-        });
+  fetchStoryWithId({ commit }, payload) {
+    return this.$axios.$get(`stories/${payload.id}`).then((response) => {
+      return commit('setState', {
+        name: 'currentStory',
+        value: response,
       });
+    });
   },
 };
 
