@@ -15,7 +15,6 @@ export const actions = {
     return this.$axios
       .$get('blocks')
       .then((response) => {
-        console.log(response);
         return commit('setState', {
           name: 'blocks',
           value: response,

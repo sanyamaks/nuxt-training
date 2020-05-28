@@ -1,6 +1,5 @@
 <template>
   <div class="layout">
-    <div>{{ blocksList }}</div>
     <container>
       <main-header />
     </container>
@@ -32,16 +31,14 @@ export default {
     },
 
     blocksList() {
-      const blocks = this.$store.getters['default/getBlocks'];
-      console.dir(blocks);
-      //return this.$store.getters['default/getBlocks'];
+      return this.$store.getters['default/getBlocks'];
     },
   },
 
   async fetch() {
     await this.$store.dispatch('default/fetchBlocks');
     await this.$store.dispatch('allStories/fetchStories');
-    this.$store.dispatch('allStories/countNumberOfItems');
+    this.$store.dispatch('allStories/countNumberOfItems'); // вот это на самом деле, наверное, и не нужно
   },
 };
 </script>

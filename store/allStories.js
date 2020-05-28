@@ -28,6 +28,7 @@ export const mutations = {
   },
 
   setStories(state, stories) {
+    // не используется
     state.stories = stories;
   },
 
