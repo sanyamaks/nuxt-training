@@ -9,10 +9,9 @@
         :person="item"
         :key="item.id"
         :story="item"
-        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item, 'small')}`"
+        :url="`${apiURL}${getImageUrlBySize(item, 'small')}`"
         @click="goToDetail(item.id)"
       >
-        <!-- поправить хардкод в :url -->
       </stories-card>
     </div>
     <stories-button class="main-stories__stories-button">
@@ -31,6 +30,12 @@ export default {
     'stories-card': StoriesCard,
     'section-title': SectionTitle,
     'stories-button': StoriesButton,
+  },
+
+  data() {
+    return {
+      apiURL: process.env.apiURL,
+    };
   },
 
   computed: {

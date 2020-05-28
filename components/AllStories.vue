@@ -15,10 +15,9 @@
         v-for="item in showStories"
         :key="item.id"
         :story="item"
-        :url="`https://strapi.kruzhok.io${getImageUrlBySize(item, 'small')}`"
+        :url="`${apiURL}${getImageUrlBySize(item, 'small')}`"
         @click="goToDetail(item.id)"
       >
-        <!-- поправить хардкод в :url -->
       </stories-card>
     </div>
     <pagination
@@ -45,6 +44,12 @@ export default {
     'middle-button': MiddleButton,
     pagination: Pagination,
     'search-input': SearchInput,
+  },
+
+  data() {
+    return {
+      apiURL: process.env.apiURL,
+    };
   },
 
   methods: {

@@ -48,7 +48,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'https://strapi.kruzhok.io/',
+    baseURL: 'https://strapi.kruzhok.io',
   },
   /*
    ** Build configuration
@@ -58,5 +58,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+  },
+  env: {
+    apiURL: 'https://strapi.kruzhok.io',
   },
 };
