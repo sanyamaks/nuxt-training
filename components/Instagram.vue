@@ -10,65 +10,79 @@
           {{ blockContent.text.replace(/(<\/?p>)/g, '') }}
         </section-description>
       </div>
+      <!-- 
+      <ul class="instagram__items">
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+        <li class="instagram__item">
+          <a
+            href="https://www.instagram.com/raklechitsa/"
+            class="instagram__link"
+            target="_blank"
+          ></a>
+        </li>
+      </ul> -->
 
       <ul class="instagram__items">
-        <!-- сделать v-for для элементов li -->
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <!-- вставить ссылки nuxt -->
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
-        </li>
-        <li class="instagram__item">
-          <a
-            href="https://www.instagram.com/raklechitsa/"
-            class="instagram__link"
-            target="_blank"
-          ></a>
+        <li
+          class="instagram__item"
+          v-for="(photo, index) in instagram"
+          :key="index"
+        >
+          <a class="instagram__link" :href="photo.url" target="_blank">
+            <img
+              class="instagram__img"
+              :src="photo.display_url"
+              :alt="photo.accessibility_caption"
+            />
+          </a>
         </li>
       </ul>
     </div>
@@ -88,6 +102,17 @@ export default {
   },
 
   mixins: [mixinBlockContent],
+
+  computed: {
+    instagram() {
+      const { instagram } = this.$store.state;
+      return instagram.photos.slice(0, 8);
+    },
+  },
+
+  async fetch() {
+    await this.$store.dispatch('instagram/GET_PHOTOS');
+  },
 };
 </script>
 
@@ -148,6 +173,12 @@ export default {
   right: 0;
   bottom: 0;
   background-color: #00000070;
+}
+
+.instagram__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 1280px) {
