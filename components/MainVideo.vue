@@ -17,9 +17,9 @@
           ></button>
         </div>
       </div>
+
       <div class="main-video__video-box">
         <div class="main-video__video-wrapper">
-          <iframe class="main-video__video" src=""> </iframe>
           <img
             class="main-video__icon"
             src="../static/images/icon_play.png"
@@ -27,11 +27,12 @@
           />
           <div class="main-video__controls_small">
             <button
-              class="main-video__control main-video__control_left"
+              class="swiper-button-prev main-video__control main-video__control_left"
             ></button>
             <button
-              class="main-video__control main-video__control_right"
+              class="swiper-button-next main-video__control main-video__control_right swiper-button-next"
             ></button>
+            <super-slider :videoArr="videoArr"></super-slider>
           </div>
         </div>
         <p class="main-video__desc">
@@ -52,11 +53,19 @@
 import mixinBlockContent from '@/mixins/mixinBlockContent';
 import SectionTitle from '@/components/ui/SectionTitle';
 import SectionDescription from '@/components/ui/SectionDescription';
+import Slider from '@/components/ui/Slider';
 
 export default {
   components: {
     'section-title': SectionTitle,
     'section-description': SectionDescription,
+    'super-slider': Slider,
+  },
+  computed: {
+    videoArr() {
+      const arr = this.$store.getters['video/getUrls'];
+      return arr;
+    },
   },
 
   mixins: [mixinBlockContent],
