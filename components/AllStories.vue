@@ -52,6 +52,11 @@ export default {
     };
   },
 
+  beforeMount() {
+    this.$store.dispatch('allStories/defineStoriesToShow');
+    this.changeCurrentIndex(1);
+  },
+
   methods: {
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
@@ -68,7 +73,6 @@ export default {
 
   computed: {
     showStories() {
-      this.$store.dispatch('allStories/defineStoriesToShow');
       return this.$store.getters['allStories/getStoriesToShow'];
     },
 

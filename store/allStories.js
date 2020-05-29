@@ -61,7 +61,9 @@ export const actions = {
   },
 
   calcNumberOfPages({ state, commit }) {
-    const numberOfPages = Math.ceil(state.numberOfItems / state.itemsPerPage);
+    const numberOfPages = Math.ceil(
+      (state.stories.length + 1) / state.itemsPerPage
+    );
     commit('setNumberOfPages', numberOfPages);
   },
 
