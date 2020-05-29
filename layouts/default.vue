@@ -42,6 +42,7 @@ export default {
   async fetch() {
     await this.$store.dispatch('default/fetchBlocks');
     await this.$store.dispatch('allStories/fetchStories');
+    await this.$store.dispatch('statistics/fetchStatistics');
     //this.$store.dispatch('allStories/countNumberOfItems'); // вот это на самом деле, наверное, и не нужно
   },
 };
