@@ -47,11 +47,22 @@ export const actions = {
     commit('setNumberOfItems', numberOfItems);
   },
 
-  defineStoriesToShow({ state, commit, dispatch }) {
+  defineStoriesToShow({ state, commit, dispatch }, search) {
     dispatch('changeItemsPerPage');
 
-    const { stories } = state;
+    let { stories } = state;
+
+    if (search) {
+      stories = stories.filter((item) => {
+        //можно вынести в отдельную функцию
+        if (item.author.toLowerCase().includes(search)) return true;
+        if (item.text.toLowerCase().includes(search)) return true;
+        if (item.title.toLowerCase().includes(search)) return true;
+      });
+    }
+
     const storiesToShow = stories.filter(
+      //можно вынести в отдельную функцию
       (item, index) =>
         index >= state.CurrentIndex &&
         index <= state.CurrentIndex + state.itemsPerPage - 1
@@ -64,6 +75,7 @@ export const actions = {
     const numberOfPages = Math.ceil(
       (state.stories.length + 1) / state.itemsPerPage
     );
+
     commit('setNumberOfPages', numberOfPages);
   },
 
@@ -87,12 +99,13 @@ export const actions = {
     }
   },
 
-  changeCurrentIndex({ state, dispatch, commit }, { index }) {
+  changeCurrentIndex({ state, dispatch, commit }, { index, search }) {
     const { itemsPerPage } = state;
     const newCurrentIndex = (index - 1) * itemsPerPage;
 
+    console.log(search);
     commit('setCurrentIndex', newCurrentIndex);
-    dispatch('defineStoriesToShow');
+    dispatch('defineStoriesToShow', search);
   },
 
   fetchStories({ commit }) {

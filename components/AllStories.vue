@@ -3,12 +3,18 @@
     <section-title class="all-stories__section-title">
       Истории неизлечимых привычек
     </section-title>
-    <form class="all-stories__form">
-      <search-input class="all-stories__search" type="text" name="" id="" />
+
+    <form class="all-stories__form" @submit.prevent="handleSubmit">
+      <search-input
+        class="all-stories__search"
+        @input="handleInput"
+        :placeholder="placeholder"
+      />
       <middle-button class="all-stories__middle-button" text="Поиск">
       </middle-button>
       <button class="all-stories__small-button"></button>
     </form>
+
     <div class="all-stories__container">
       <stories-card
         class="all-stories__stories-card"
@@ -20,6 +26,7 @@
       >
       </stories-card>
     </div>
+
     <pagination
       class="all-stories__pagination"
       :totalItems="getTotalItems"
@@ -49,6 +56,8 @@ export default {
   data() {
     return {
       apiURL: process.env.apiURL,
+      search: '',
+      placeholder: '',
     };
   },
 
@@ -63,11 +72,22 @@ export default {
     },
 
     changeCurrentIndex(index) {
-      this.$store.dispatch('allStories/changeCurrentIndex', { index });
+      const search = this.search.toLowerCase();
+      this.$store.dispatch('allStories/changeCurrentIndex', { index, search });
     },
 
     getImageUrlBySize(item, size) {
       return this.$store.getters['allStories/getImageUrlBySize'](item, size);
+    },
+
+    handleInput(value) {
+      this.search = value;
+    },
+
+    handleSubmit() {
+      const search = this.search.toLowerCase();
+      this.$store.dispatch('allStories/defineStoriesToShow', search);
+      this.getNumberOfPages;
     },
   },
 
