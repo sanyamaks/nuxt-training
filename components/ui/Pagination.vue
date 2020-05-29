@@ -18,17 +18,17 @@
       ></button>
 
       <ul class="pagination__items">
-        <li v-for="item in numberOfPages" :key="item" class="pagination__item">
+        <li v-for="page in pagesToRender" :key="page" class="pagination__item">
           <button
-            @click="setActive(item)"
+            @click="setActive(page)"
             :class="[
               'pagination__control pagination__control_type_button',
               {
-                pagination__control_active: item === activePage,
+                pagination__control_active: page === activePage,
               },
             ]"
           >
-            {{ item }}
+            {{ page }}
           </button>
         </li>
       </ul>
@@ -57,8 +57,10 @@
 export default {
   data() {
     return {
+      firstPage: 1,
       activePage: 1,
-      //numberOfPages: 1,
+      pageLimit: 5,
+      pagesToRender: [],
     };
   },
 
@@ -79,10 +81,6 @@ export default {
       type: Number,
       default: 1,
     },
-    maxPageToRender: {
-      type: Number,
-      default: 5,
-    },
   },
 
   methods: {
@@ -93,18 +91,77 @@ export default {
 
     changeActivePage(increasing) {
       if (increasing) {
-        if (this.activePage != this.numberOfPages) this.activePage++;
+        if (this.activePage != this.numberOfPages) {
+          this.activePage++;
+          this.firstPage++;
+          this.pagesToRender = this.definePagesToRender();
+        }
       } else {
-        if (this.activePage != 1) this.activePage--;
+        if (this.activePage != 1) {
+          this.activePage--;
+          this.firstPage--;
+          this.pagesToRender = this.definePagesToRender();
+        }
       }
 
       this.$emit('onPageChanged', this.activePage);
     },
 
-    jumpToPage(First) {
-      First ? (this.activePage = 1) : (this.activePage = this.numberOfPages);
+    jumpToPage(first) {
+      if (first) {
+        this.activePage = 1;
+        this.firstPage = 1;
+        this.pagesToRender = this.definePagesToRender();
+      } else {
+        this.activePage = this.numberOfPages;
+        this.firstPage = this.numberOfPages - this.pageLimit + 1;
+        this.pagesToRender = this.definePagesToRender();
+      }
+
       this.$emit('onPageChanged', this.activePage);
     },
+
+    definePageLimit() {
+      if (process.browser) {
+        if (window.innerWidth <= 570) return 3;
+        if (window.innerWidth <= 768) return 4;
+      }
+
+      return 5;
+    },
+
+    definePagesToRender() {
+      const result = [];
+      let from = this.firstPage;
+      let to = this.firstPage + this.pageLimit;
+
+      if (this.firstPage > this.numberOfPages - this.pageLimit) {
+        from = this.numberOfPages - this.pageLimit + 1;
+      }
+
+      if (from <= 1) {
+        from = 1;
+      }
+
+      if (this.pageLimit + this.firstPage > this.numberOfPages) {
+        to = this.numberOfPages + 1;
+      }
+
+      if (to <= this.pageLimit) {
+        to = this.pageLimit + 1;
+      }
+
+      for (let i = from; i < to; i++) {
+        result.push(i);
+      }
+
+      return result;
+    },
+  },
+
+  beforeMount() {
+    this.pageLimit = this.definePageLimit();
+    this.pagesToRender = this.definePagesToRender();
   },
 };
 </script>
