@@ -7,6 +7,7 @@ export const state = () => ({
   numberOfItems: 0,
   numberOfPages: 0,
   storiesToShow: [],
+  amountOfStoriesToShow: 0,
   currentStory: {},
 });
 
@@ -42,6 +43,13 @@ export const mutations = {
 };
 
 export const actions = {
+  countStories({ commit }, storiesList) {
+    commit('setState', {
+      name: 'amountOfStoriesToShow',
+      value: storiesList.length,
+    });
+  },
+
   countNumberOfItems({ state, commit }) {
     const numberOfItems = state.stories.length + 1;
     commit('setNumberOfItems', numberOfItems);
@@ -56,10 +64,13 @@ export const actions = {
       stories = stories.filter((item) => {
         //можно вынести в отдельную функцию
         if (item.author.toLowerCase().includes(search)) return true;
-        if (item.text.toLowerCase().includes(search)) return true;
         if (item.title.toLowerCase().includes(search)) return true;
+        //if (item.text.toLowerCase().includes(search)) return true; //Нужно ли искать в самом тексте?
       });
     }
+
+    dispatch('countStories', stories);
+    dispatch('calcNumberOfPages');
 
     const storiesToShow = stories.filter(
       //можно вынести в отдельную функцию
@@ -73,7 +84,7 @@ export const actions = {
 
   calcNumberOfPages({ state, commit }) {
     const numberOfPages = Math.ceil(
-      (state.stories.length + 1) / state.itemsPerPage
+      state.amountOfStoriesToShow / state.itemsPerPage
     );
 
     commit('setNumberOfPages', numberOfPages);
@@ -103,7 +114,6 @@ export const actions = {
     const { itemsPerPage } = state;
     const newCurrentIndex = (index - 1) * itemsPerPage;
 
-    console.log(search);
     commit('setCurrentIndex', newCurrentIndex);
     dispatch('defineStoriesToShow', search);
   },
@@ -121,12 +131,15 @@ export const actions = {
   },
 
   fetchStoryWithId({ commit }, payload) {
-    return this.$axios.$get(`/stories/${payload.id}`).then((response) => {
-      return commit('setState', {
-        name: 'currentStory',
-        value: response,
-      });
-    });
+    return this.$axios
+      .$get(`/stories/${payload.id}`)
+      .then((response) => {
+        return commit('setState', {
+          name: 'currentStory',
+          value: response,
+        });
+      })
+      .catch((error) => console.log(error));
   },
 };
 

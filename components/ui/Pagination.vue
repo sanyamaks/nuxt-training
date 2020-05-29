@@ -18,7 +18,11 @@
       ></button>
 
       <ul class="pagination__items">
-        <li v-for="page in pagesToRender" :key="page" class="pagination__item">
+        <li
+          v-for="page in definePagesToRender()"
+          :key="page"
+          class="pagination__item"
+        >
           <button
             @click="setActive(page)"
             :class="[
@@ -57,7 +61,6 @@
 export default {
   data() {
     return {
-      firstPage: 1,
       activePage: 1,
       pageLimit: 5,
       pagesToRender: [],
@@ -65,18 +68,6 @@ export default {
   },
 
   props: {
-    // activePage: {
-    //   type: Number,
-    //   default: 1,
-    // },
-    totalItems: {
-      type: Number,
-      default: 0,
-    },
-    itemsPerPage: {
-      type: Number,
-      default: 0,
-    },
     numberOfPages: {
       type: Number,
       default: 1,
@@ -93,14 +84,10 @@ export default {
       if (increasing) {
         if (this.activePage != this.numberOfPages) {
           this.activePage++;
-          this.firstPage++;
-          this.pagesToRender = this.definePagesToRender();
         }
       } else {
         if (this.activePage != 1) {
           this.activePage--;
-          this.firstPage--;
-          this.pagesToRender = this.definePagesToRender();
         }
       }
 
@@ -110,12 +97,8 @@ export default {
     jumpToPage(first) {
       if (first) {
         this.activePage = 1;
-        this.firstPage = 1;
-        this.pagesToRender = this.definePagesToRender();
       } else {
         this.activePage = this.numberOfPages;
-        this.firstPage = this.numberOfPages - this.pageLimit + 1;
-        this.pagesToRender = this.definePagesToRender();
       }
 
       this.$emit('onPageChanged', this.activePage);
@@ -131,37 +114,40 @@ export default {
     },
 
     definePagesToRender() {
+      //безумная логика чтобы определить какие странички должны попасть в нужный промежуток для отображения
       const result = [];
-      let from = this.firstPage;
-      let to = this.firstPage + this.pageLimit;
 
-      if (this.firstPage > this.numberOfPages - this.pageLimit) {
-        from = this.numberOfPages - this.pageLimit + 1;
+      let from = this.activePage - 2, // сначала устанавливаем "От"
+        to,
+        limit;
+
+      if (from < 1) from = 0; // если "От" меньше 1, то "От" равно 1
+
+      if (this.pageLimit >= this.numberOfPages) {
+        // Выясняем что больше - либо ограничитель страниц, либо количество страниц
+        limit = this.numberOfPages;
+      } else {
+        limit = this.pageLimit;
       }
 
-      if (from <= 1) {
-        from = 1;
+      to = from + limit; // "До" - в зависимости от лимита
+
+      if (to >= this.numberOfPages) {
+        // если "До" получилось больше кол-ва страниц, то уравниваем
+        to = this.numberOfPages;
+        from = this.numberOfPages - limit; // и тогда снова выставляем "От"
       }
 
-      if (this.pageLimit + this.firstPage > this.numberOfPages) {
-        to = this.numberOfPages + 1;
-      }
-
-      if (to <= this.pageLimit) {
-        to = this.pageLimit + 1;
-      }
-
-      for (let i = from; i < to; i++) {
+      for (let i = 1; i <= this.numberOfPages; i++) {
         result.push(i);
       }
 
-      return result;
+      return result.slice(from, to);
     },
   },
 
   beforeMount() {
     this.pageLimit = this.definePageLimit();
-    this.pagesToRender = this.definePagesToRender();
   },
 };
 </script>
