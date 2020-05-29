@@ -10,7 +10,12 @@
         @input="handleInput"
         :placeholder="placeholder"
       />
-      <middle-button class="all-stories__middle-button" text="Поиск">
+      <middle-button
+        class="all-stories__middle-button"
+        text="Поиск"
+        :type="'submit'"
+        @click="handleSubmit"
+      >
       </middle-button>
       <button class="all-stories__small-button"></button>
     </form>
@@ -29,9 +34,7 @@
 
     <pagination
       class="all-stories__pagination"
-      :totalItems="getTotalItems"
-      :itemsPerPage="getItemsPerPage"
-      :numberOfPages="getNumberOfPages"
+      :numberOfPages="getNumberOfPages()"
       @onPageChanged="changeCurrentIndex"
     />
   </section>
@@ -58,12 +61,14 @@ export default {
       apiURL: process.env.apiURL,
       search: '',
       placeholder: '',
+      pages: 5,
     };
   },
 
   beforeMount() {
     this.$store.dispatch('allStories/defineStoriesToShow');
     this.changeCurrentIndex(1);
+    this.pages = this.getNumberOfPages();
   },
 
   methods: {
@@ -87,7 +92,12 @@ export default {
     handleSubmit() {
       const search = this.search.toLowerCase();
       this.$store.dispatch('allStories/defineStoriesToShow', search);
-      this.getNumberOfPages;
+      this.pages = this.getNumberOfPages();
+      this.changeCurrentIndex(1);
+    },
+
+    getNumberOfPages() {
+      return this.$store.getters['allStories/getNumberOfPages'];
     },
   },
 
@@ -96,18 +106,9 @@ export default {
       return this.$store.getters['allStories/getStoriesToShow'];
     },
 
-    getTotalItems() {
-      return this.$store.getters['allStories/getTotalItems'];
-    },
-
-    getItemsPerPage() {
-      return this.$store.getters['allStories/getItemsPerPage'];
-    },
-
-    getNumberOfPages() {
-      this.numberOfPages = this.$store.getters['allStories/getNumberOfPages'];
-      return this.numberOfPages;
-    },
+    // getNumberOfPages() {
+    //   return this.$store.getters['allStories/getNumberOfPages'];
+    // },
   },
 };
 </script>
@@ -120,7 +121,7 @@ export default {
 .all-stories__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, auto);
+  /* grid-template-rows: repeat(4, auto); */
   grid-column-gap: 3.0303%;
   grid-row-gap: 70px;
   margin-bottom: 140px;
@@ -215,7 +216,7 @@ export default {
 @media screen and (max-width: 768px) {
   .all-stories__container {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, auto);
+    /* grid-template-rows: repeat(4, auto); */
     grid-row-gap: 40px;
     margin-bottom: 146px;
   }
