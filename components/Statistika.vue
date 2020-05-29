@@ -3,69 +3,41 @@
     <section-title class="statistika__section-title">
       {{ blockContent.title }}
     </section-title>
+
     <div class="statistika__card">
-      <div class="stat-card">
+      <div class="stat-card" v-for="item in statistics" :key="item.id">
         <h3 class="stat-card__title">
-          Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918
-          000 человек.
+          {{ item.description }}
         </h3>
-        <progress-bar
-          :value="3"
-          :max-value="10"
-          class="stat-card__progress-bar"
-        >
-        </progress-bar>
-        <p class="stat-card__number">
-          1 из 3
-        </p>
-        <p class="stat-card__logo">Левада-Центр 2018</p>
-      </div>
 
-      <div class="stat-card">
-        <h3 class="stat-card__title">2,6% Россиян имеют онкозаболевания.</h3>
         <progress-bar
-          :value="0.5"
-          :max-value="10"
+          v-if="item.oldValue === 0"
+          :value="item.currentValue"
+          :max-value="item.maxValue"
           class="stat-card__progress-bar"
-        ></progress-bar>
-        <p class="stat-card__number">
-          3 700 000
-        </p>
-        <p class="stat-card__logo">Росстат 2018</p>
-      </div>
+        />
 
-      <div class="stat-card">
-        <h3 class="stat-card__title">
-          На 28% выросла доля выявления заболеваний на ранней стадии за 10 лет.
-        </h3>
+        <!-- <progress-bar-double
+          v-else
+          :max-value="item.maxValue"
+          :new-value="item.currentValue"
+          :old-value="item.oldValue"
+          class="stat-card__progress-bar"
+        /> -->
+        <!-- Закомменчено потому что в api данные === null -->
 
         <progress-bar-double
+          v-else
           :max-value="5"
           :new-value="3"
           :old-value="2"
           class="stat-card__progress-bar"
-        ></progress-bar-double>
-        <p class="stat-card__number">
-          &uarr; 28%
-        </p>
-        <p class="stat-card__logo">МНИОИ Герцена 2018</p>
-      </div>
+        />
 
-      <div class="stat-card">
-        <h3 class="stat-card__title">
-          На 25% снизилась смертность в течение первого года после постановки
-          диагноза
-        </h3>
-        <progress-bar-double
-          :max-value="5"
-          :new-value="2"
-          :old-value="3"
-          class="stat-card__progress-bar"
-        ></progress-bar-double>
         <p class="stat-card__number">
-          &darr; 25%
+          {{ item.summary }}
         </p>
-        <p class="stat-card__logo">МНИОИ Герцена 2018</p>
+        <p class="stat-card__logo">{{ item.source }}</p>
       </div>
     </div>
   </section>
@@ -85,6 +57,12 @@ export default {
   },
 
   mixins: [mixinBlockContent],
+
+  computed: {
+    statistics() {
+      return this.$store.getters['statistics/getStatistics'];
+    },
+  },
 };
 </script>
 
